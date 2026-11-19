@@ -98,6 +98,16 @@ svg text{font-family:var(--body)}
 .pager a.nx{text-align:right;background:#0d0d0d;color:#fff;border-color:#0d0d0d}
 .pager a.nx small{color:var(--brand-2)}
 .toc a.active{background:var(--g-soft);font-weight:700}
+
+.wia-src{font-size:.85rem;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+.wia-src h4{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.wia-src ol{list-style:none;padding:0;margin:0}.wia-src li{margin:3px 0}.wia-src a{color:var(--muted)}
+
+.objectives{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--brand-4);border-radius:0 12px 12px 0;padding:14px 20px;margin:20px 0 8px}
+.objectives h4,.keypoints h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.objectives ul,.keypoints ul{margin:0;padding-left:20px}.objectives li,.keypoints li{margin:4px 0}
+.keypoints{background:#0d0d0d;color:#f0f0f0;border-radius:14px;padding:20px 24px;margin:36px 0 0}
+.keypoints h4{color:var(--brand-2)}.keypoints li::marker{color:var(--brand-1)}
 /* masthead */
 .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0d0d0d;color:#f4f4f4}
 .topbar::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:5px;background:linear-gradient(90deg,var(--brand-1) 0 38%,var(--brand-2) 38% 42%,#0d0d0d 42% 58%,var(--brand-2) 58% 62%,var(--brand-4) 62% 100%)}
@@ -374,6 +384,7 @@ ol.sources li{margin:4px 0}
   <ul class="toc" id="toc">
     <li><a href="#home" data-k=""><span class="tick">⌂</span>Dashboard</a></li>
     <li class="grp">Start</li>
+    <li><a href="#whatis" data-k=""><span class="tick">AI</span>What is AI?</a></li>
     <li><a href="#welcome" data-k=""><span class="tick">i</span>Welcome and the team</a></li>
     <li><a href="#requirements" data-k=""><span class="tick">R</span>Requirements</a></li>
     <li class="grp">Core course</li>
@@ -403,11 +414,14 @@ ol.sources li{margin:4px 0}
       <div class="eyebrow" id="homeGreet">Your learning dashboard</div>
       <h1>Learn to use AI safely at work</h1>
       <p>A self-paced course for NGO and SACCO staff in Tanzania and East Africa. Short chapters, real examples, quizzes and tools you can use on Monday.</p>
-      <div class="row"><a class="btn" id="continueBtn" href="#welcome">Start learning</a><a class="btn ghost" href="#sectors">Find your sector</a></div>
+      <div class="row"><a class="btn" id="continueBtn" href="#whatis">Start learning</a><a class="btn ghost" href="#sectors">Find your sector</a></div>
       <div class="facts"><span><b class="num" id="hPct">0%</b>complete</span><span><b class="num" id="hQuiz">0/14</b>quizzes done</span><span><b class="num" id="hXp">0</b>points</span><span><b class="num" id="hBadge">0/8</b>badges</span></div>
     </div>
   </div>
   <section class="chapter" style="max-width:980px">
+    <div class="kicker">Start here</div>
+    <h2>New to AI? Begin with the basics</h2>
+    <a class="dcard wide" href="#whatis" style="margin-bottom:40px"><span class="dnum">AI</span><span><b>What is AI, and how did it change the world?</b><small>A plain definition, 70 years of history, the money behind AI, and how Klarna, Safaricom, CRDB and NMB use it · 20 min</small></span></a>
     <div class="kicker">Core course</div>
     <h2>Your four chapters</h2>
     <p class="lede">Work through them in order. Each ends with a quiz; score 80% or more to earn its badge.</p>
@@ -433,6 +447,164 @@ ol.sources li{margin:4px 0}
   </section>
 </div>
 
+
+<section class="chapter view" id="whatis" aria-labelledby="wia-h">
+  <div class="kicker">Start here · Before Chapter 1</div>
+  <h2 id="wia-h">What is AI, and how did it change the world?</h2>
+  <p class="lede">Before you use AI at work, it helps to know what it is, where it came from, how much money is behind it, and how real organizations already use it, including banks and telecoms in Tanzania and Kenya.</p>
+  <div class="objectives wia-box"><h4>In this chapter you will learn</h4><ul><li>A plain definition of AI, machine learning and generative AI</li><li>Seventy years of AI history, from a 1950 question to a billion weekly users</li><li>How big the AI economy has become, in spending and company value</li><li>How businesses in Africa and around the world already use AI, and what went wrong for some</li></ul></div>
+
+  <h3>1. A plain definition</h3>
+  <p class="prose"><b>Artificial intelligence (AI)</b> is computer software that does tasks we normally associate with human thinking: recognizing faces and voices, understanding language, spotting patterns, making predictions and, more recently, writing and drawing.</p>
+  <p class="prose">Older software follows rules a programmer writes by hand: “if the balance is below zero, block the payment.” Most modern AI instead <b>learns patterns from examples</b>. Show it millions of past transactions labelled “fraud” or “not fraud”, and it learns to flag new suspicious ones by itself. This is called <b>machine learning</b>.</p>
+  <figure>
+    <div class="art">
+      <svg viewBox="0 0 720 300" role="img" aria-labelledby="nest-t nest-d">
+        <title id="nest-t">AI, machine learning, deep learning and generative AI</title>
+        <desc id="nest-d">Four nested circles: artificial intelligence contains machine learning, which contains deep learning, which contains generative AI such as ChatGPT.</desc>
+        <ellipse cx="250" cy="152" rx="236" ry="140" class="f4" opacity=".18"/>
+        <ellipse cx="290" cy="164" rx="186" ry="114" class="f1" opacity=".25"/>
+        <ellipse cx="326" cy="176" rx="136" ry="86" class="f2" opacity=".55"/>
+        <ellipse cx="358" cy="188" rx="84" ry="56" class="f3"/>
+        <g font-family="Bricolage Grotesque, Inter, sans-serif" font-weight="800" class="fi">
+          <text x="40" y="70" font-size="17">Artificial intelligence</text>
+          <text x="128" y="100" font-size="16">Machine learning</text>
+          <text x="214" y="140" font-size="15">Deep learning</text>
+        </g>
+        <text x="358" y="186" font-size="14" font-weight="800" fill="#FCD116" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif">Generative AI</text>
+        <text x="358" y="204" font-size="11" fill="#f4f4f4" text-anchor="middle">ChatGPT, Claude, Gemini</text>
+        <g font-size="13" class="fi">
+          <text x="520" y="60" font-weight="700">AI</text><text x="520" y="78" class="fm">Any software doing “thinking” tasks</text>
+          <text x="520" y="112" font-weight="700">Machine learning</text><text x="520" y="130" class="fm">Learns patterns from examples</text>
+          <text x="520" y="164" font-weight="700">Deep learning</text><text x="520" y="182" class="fm">Many-layered neural networks</text>
+          <text x="520" y="216" font-weight="700">Generative AI</text><text x="520" y="234" class="fm">Creates new text, images, audio</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Each circle is a type of the one around it. The tools in this course are generative AI.</figcaption>
+  </figure>
+
+  <h3>2. AI you already use every day</h3>
+  <div class="grid g3">
+    <div class="card"><h4>Mobile money</h4><p>Safaricom has built AI into M-Pesa for real-time monitoring and fraud detection [W6].</p></div>
+    <div class="card"><h4>Customer chatbots</h4><p>Safaricom's Zuri, CRDB Bank's Elle and NMB Bank's Jirani answer customers on WhatsApp and online [W6][W7][W8].</p></div>
+    <div class="card"><h4>Your phone</h4><p>Face unlock, voice typing, spam filters, map traffic times and photo search all use machine learning.</p></div>
+  </div>
+
+  <h3>3. Seventy years in eight moments</h3>
+  <figure>
+    <div class="art">
+      <svg viewBox="0 0 760 330" role="img" aria-labelledby="tl2-t tl2-d">
+        <title id="tl2-t">A short history of AI</title>
+        <desc id="tl2-d">1950 Turing asks whether machines can think. 1956 the term artificial intelligence is coined at Dartmouth. 1970s to 1990s funding collapses called AI winters. 1997 Deep Blue beats the world chess champion. 2012 AlexNet wins ImageNet. 2017 the transformer is published. November 2022 ChatGPT launches. 2026 ChatGPT passes one billion weekly users.</desc>
+        <rect x="20" y="160" width="720" height="6" rx="3" class="fl"/>
+        <rect x="430" y="160" width="310" height="6" rx="3" class="f1"/>
+        <rect x="175" y="160" width="190" height="6" rx="3" class="f4" opacity=".5"/>
+        <g font-size="12">
+          <circle cx="40" cy="163" r="9" class="f3"/><text x="40" y="140" text-anchor="middle" font-weight="800" class="fi">1950</text><text x="40" y="196" text-anchor="middle" class="fi">Turing asks</text><text x="40" y="211" text-anchor="middle" class="fi">“Can machines</text><text x="40" y="226" text-anchor="middle" class="fi">think?”</text>
+          <circle cx="130" cy="163" r="9" class="f3"/><text x="130" y="76" text-anchor="middle" font-weight="800" class="fi">1956</text><text x="130" y="92" text-anchor="middle" class="fi">Name “artificial</text><text x="130" y="107" text-anchor="middle" class="fi">intelligence” coined</text><text x="130" y="122" text-anchor="middle" class="fi">at Dartmouth</text><path d="M130 127v26" class="sm" stroke-width="1.5"/>
+          <text x="270" y="196" text-anchor="middle" font-weight="800" class="fi">1970s–1990s</text><text x="270" y="211" text-anchor="middle" class="fi">“AI winters”: hype fades,</text><text x="270" y="226" text-anchor="middle" class="fi">funding collapses twice</text>
+          <circle cx="380" cy="163" r="9" class="f3"/><text x="380" y="92" text-anchor="middle" font-weight="800" class="fi">1997</text><text x="380" y="107" text-anchor="middle" class="fi">Deep Blue beats</text><text x="380" y="122" text-anchor="middle" class="fi">chess champion</text><path d="M380 127v26" class="sm" stroke-width="1.5"/>
+          <circle cx="455" cy="163" r="9" class="f1"/><text x="455" y="196" text-anchor="middle" font-weight="800" class="fi">2012</text><text x="455" y="211" text-anchor="middle" class="fi">AlexNet: deep</text><text x="455" y="226" text-anchor="middle" class="fi">learning on GPUs</text><text x="455" y="241" text-anchor="middle" class="fi">wins ImageNet</text>
+          <circle cx="545" cy="163" r="9" class="f1"/><text x="545" y="76" text-anchor="middle" font-weight="800" class="fi">2017</text><text x="545" y="92" text-anchor="middle" class="fi">Google publishes</text><text x="545" y="107" text-anchor="middle" class="fi">the “transformer”,</text><text x="545" y="122" text-anchor="middle" class="fi">basis of ChatGPT</text><path d="M545 127v26" class="sm" stroke-width="1.5"/>
+          <circle cx="630" cy="163" r="11" class="f2" stroke="#0d0d0d" stroke-width="2"/><text x="630" y="196" text-anchor="middle" font-weight="800" class="fi">Nov 2022</text><text x="630" y="211" text-anchor="middle" class="fi">ChatGPT launches;</text><text x="630" y="226" text-anchor="middle" class="fi">100M users in</text><text x="630" y="241" text-anchor="middle" class="fi">about 2 months</text>
+          <circle cx="718" cy="163" r="11" class="f4" stroke="#0d0d0d" stroke-width="2"/><text x="712" y="92" text-anchor="middle" font-weight="800" class="fi">2026</text><text x="712" y="107" text-anchor="middle" class="fi">1 billion+</text><text x="712" y="122" text-anchor="middle" class="fi">weekly users</text><path d="M716 127v24" class="sm" stroke-width="1.5"/>
+        </g>
+        <text x="20" y="300" font-size="11" class="fm">Not to scale. Green: the modern deep-learning era. Sources: [W1][W2][W3].</text>
+      </svg>
+    </div>
+  </figure>
+  <div class="tablewrap"><table><thead><tr><th>When</th><th>What happened</th><th>Why it matters</th></tr></thead><tbody>
+    <tr><td>1950</td><td>Alan Turing asks “Can machines think?” and proposes a test for it.</td><td>The question that started the field.</td></tr>
+    <tr><td>1956</td><td>A workshop at Dartmouth College names the field “artificial intelligence”.</td><td>AI becomes a research discipline.</td></tr>
+    <tr><td>1970s–1990s</td><td>Two “AI winters”: promises outran results and funding collapsed.</td><td>A warning about hype that still applies.</td></tr>
+    <tr><td>1997</td><td>IBM's Deep Blue beats world chess champion Garry Kasparov.</td><td>Computers beat humans at a narrow, rule-based task.</td></tr>
+    <tr><td>2012</td><td>AlexNet, a deep neural network trained on GPUs, wins the ImageNet image-recognition challenge by a wide margin [W1].</td><td>Start of the deep-learning era.</td></tr>
+    <tr><td>2017</td><td>Google researchers publish “Attention Is All You Need”, introducing the transformer [W1].</td><td>Nearly every modern language model, including ChatGPT, builds on it.</td></tr>
+    <tr><td>Nov 2022</td><td>OpenAI releases ChatGPT; it reaches 100 million monthly users by January 2023 [W2].</td><td>AI becomes something anyone can use by typing.</td></tr>
+    <tr><td>2026</td><td>ChatGPT passes 1 billion weekly users [W3].</td><td>Roughly one in eight people on Earth uses one AI tool every week.</td></tr>
+  </tbody></table></div>
+
+  <h3>4. The money behind AI</h3>
+  <p class="prose">AI is now one of the largest investments in economic history. Most of the money so far goes into chips, data centres and cloud services, built by technology companies.</p>
+  <div class="grid g3">
+    <div class="stat"><div class="big num">$2.67 trillion</div><p>forecast worldwide AI spending in 2026, up 49.5% on 2025 (Gartner, September 2026) [W4]</p></div>
+    <div class="stat"><div class="big num">$5 trillion</div><p>Nvidia, which makes most AI chips, became the first company ever worth this much, in October 2025 [W5]</p></div>
+    <div class="stat"><div class="big num">88%</div><p>of organizations in McKinsey's 2025 global survey use AI in at least one business function [W9]</p></div>
+  </div>
+  <figure>
+    <div class="art">
+      <svg viewBox="0 0 720 270" role="img" aria-labelledby="sp-t sp-d">
+        <title id="sp-t">Worldwide AI spending and business adoption</title>
+        <desc id="sp-d">Left: Gartner AI spending, 1.79 trillion dollars in 2025, 2.67 trillion forecast for 2026 and 3.64 trillion forecast for 2027. Right: share of organizations using AI in at least one function, 20 percent in 2017, 55 percent in 2023, 78 percent in 2024, 88 percent in 2025.</desc>
+        <text x="20" y="22" font-size="14" font-weight="700" class="fi">Worldwide AI spending, US$ trillion</text>
+        <line x1="20" y1="220" x2="330" y2="220" class="sl" stroke-width="1.5"/>
+        <rect x="45" y="167" width="70" height="53" rx="3" class="f1"/><rect x="140" y="140" width="70" height="80" rx="3" class="f1" opacity=".75"/><rect x="235" y="111" width="70" height="109" rx="3" class="f1" opacity=".45"/>
+        <g font-size="15" font-weight="700" class="fi" text-anchor="middle"><text x="80" y="160">1.79</text><text x="175" y="133">2.67</text><text x="270" y="104">3.64</text></g>
+        <g font-size="12" class="fm" text-anchor="middle"><text x="80" y="238">2025</text><text x="175" y="238">2026 forecast</text><text x="270" y="238">2027 forecast</text></g>
+        <text x="20" y="262" font-size="11" class="fm">Source: Gartner, September 2026 [W4]</text>
+        <text x="390" y="22" font-size="14" font-weight="700" class="fi">Organizations using AI, %</text>
+        <line x1="400" y1="220" x2="700" y2="220" class="sl" stroke-width="1.5"/>
+        <line x1="400" y1="45" x2="700" y2="45" class="sl" stroke-dasharray="3 4"/><text x="702" y="49" font-size="10" class="fm">100</text>
+        <polyline points="420,185 590,123.75 645,83.5 690,66" fill="none" class="s4" stroke-width="3"/>
+        <g class="f4"><circle cx="420" cy="185" r="5"/><circle cx="590" cy="123.75" r="5"/><circle cx="645" cy="83.5" r="5"/><circle cx="690" cy="66" r="6"/></g>
+        <g font-size="13" font-weight="700" class="fi" text-anchor="middle"><text x="420" y="175">20%</text><text x="590" y="113">55%</text><text x="640" y="73">78%</text><text x="686" y="56">88%</text></g>
+        <g font-size="12" class="fm" text-anchor="middle"><text x="420" y="238">2017</text><text x="590" y="238">2023</text><text x="645" y="238">2024</text><text x="690" y="238">2025</text></g>
+        <text x="390" y="262" font-size="11" class="fm">Source: McKinsey Global Survey [W9]</text>
+      </svg>
+    </div>
+    <figcaption>Spending and use are both rising fast. Value is not guaranteed: in McKinsey's 2025 survey most organizations were still at pilot stage [W9].</figcaption>
+  </figure>
+
+  <h3>5. How businesses run with AI</h3>
+  <p class="prose">Four real organizations, three of them African, show what AI does in practice, and what goes wrong.</p>
+  <div class="worked">
+    <header><span class="tag">Case 1</span><h4>Klarna (Sweden, payments): AI customer service, then a correction</h4></header>
+    <div class="wstep"><div class="wnum">1</div><div><h5>What they did</h5><p style="margin:0">In its first month (2024), Klarna's AI assistant handled 2.3 million conversations, two-thirds of all customer service chats, which Klarna said equalled the work of 700 full-time agents [W10]. Resolution time reportedly fell from 11 minutes to under 2 [W10].</p></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>What went wrong</h5><p style="margin:0">In May 2025 Klarna reversed parts of its AI-only approach and began hiring human agents again [W10].</p></div></div>
+    <div class="wstep"><div class="wnum">3</div><div><h5>The lesson for NGOs</h5><p style="margin:0">AI handled the high volume of simple, repetitive questions; harder cases still needed people. The same balance applies to any helpline or beneficiary feedback line.</p></div></div>
+  </div>
+  <div class="worked">
+    <header><span class="tag">Case 2</span><h4>Safaricom (Kenya, telecoms and M-Pesa): the Zuri chatbot</h4></header>
+    <div class="wstep"><div class="wnum">1</div><div><h5>What they did</h5><p style="margin:0">Safaricom launched Zuri in 2018 on Telegram and Facebook Messenger to handle tasks like M-Pesa reversals, balance checks and airtime top-ups, and later added WhatsApp [W6]. Safaricom has since built generative AI and fraud detection into M-Pesa [W6], and in 2025 launched FarmerAI with the NGO Opportunity International to advise smallholder farmers through its DigiFarm service [W6].</p></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>What went wrong</h5><p style="margin:0">In 2026 a customer took a case to Kenya's High Court arguing that Zuri cannot adequately resolve all customer concerns; the article noted Kenya has no specific law regulating AI [W6].</p></div></div>
+    <div class="wstep"><div class="wnum">3</div><div><h5>The lesson for NGOs</h5><p style="margin:0">People must always be able to reach a human. A chatbot that blocks that path damages trust, however efficient it is.</p></div></div>
+  </div>
+  <div class="worked">
+    <header><span class="tag">Case 3</span><h4>CRDB Bank and NMB Bank (Tanzania): AI in everyday banking</h4></header>
+    <div class="wstep"><div class="wnum">1</div><div><h5>What they did</h5><p style="margin:0">CRDB Bank launched “Elle”, an AI customer service chatbot, in October 2024 [W7], and rebuilt its SimBanking app using AI [W7]. NMB Bank introduced “Jirani”, an AI chatbot on WhatsApp that lets customers buy motor insurance from their phones [W8]; more than 4.7 million customers use NMB Mkononi, and 96% of the bank's transactions in 2024 were digital [W8].</p></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>The lesson for NGOs</h5><p style="margin:0">Tanzanians already talk to AI in Swahili on WhatsApp. Your beneficiaries and members are getting used to it, so NGOs need staff who understand both its value and its limits.</p></div></div>
+  </div>
+  <div class="worked">
+    <header><span class="tag">Case 4</span><h4>Nvidia (USA, chips): selling the tools behind the boom</h4></header>
+    <div class="wstep"><div class="wnum">1</div><div><h5>What they did</h5><p style="margin:0">Nvidia makes the graphics chips (GPUs) used to train and run most AI models. In October 2025 it became the first public company ever valued at $5 trillion [W5].</p></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>The lesson for NGOs</h5><p style="margin:0">Most of today's AI money flows to the companies that build the infrastructure. For NGOs, the opportunity is different: powerful tools that once cost millions are now available on a phone, often free.</p></div></div>
+  </div>
+
+  <h3>6. What this means for your organization</h3>
+  <ol class="steps">
+    <li><b>The tools are already in your office.</b> Staff are using them, with or without rules.</li>
+    <li><b>Big companies learned the hard way</b> that AI works best on high-volume, repetitive work, with people handling the hard cases.</li>
+    <li><b>Spending is not the same as value.</b> Most organizations are still piloting. Measure what AI saves you, honestly.</li>
+    <li><b>Trust is the asset NGOs cannot lose.</b> Use AI in ways that protect the people you serve. The rest of this course shows how.</li>
+  </ol>
+  <div class="keypoints wia-dark"><h4>Key points</h4><ul><li>AI is software that learns patterns from examples; generative AI creates new text and images.</li><li>The field is 70 years old, but the modern boom began with deep learning in 2012 and ChatGPT in 2022.</li><li>Worldwide AI spending is forecast at about $2.67 trillion in 2026, mostly on infrastructure.</li><li>Businesses from Klarna to CRDB Bank use AI for high-volume customer work, and the best keep humans available.</li><li>Figures in this chapter are dated; check the sources for the latest numbers.</li></ul></div>
+  <div class="wia-src">
+    <h4>Sources for this chapter (checked November 2026)</h4>
+    <ol>
+      <li value="1">[W1] <a href="https://physea-wiki.pages.dev/history-and-context/key-milestones-timeline/deep-learning-breakthrough">Physea: deep learning milestones (AlexNet 2012, transformer 2017)</a></li>
+      <li value="2">[W2] <a href="https://www.getpanto.ai/blog/openai-statistics">ChatGPT user milestones, citing Reuters and OpenAI</a></li>
+      <li value="3">[W3] <a href="https://superlines.io/articles/chatgpt-statistics">ChatGPT passes 1 billion weekly users (OpenAI, 2026)</a></li>
+      <li value="4">[W4] <a href="https://gartner.com/en/newsroom/press-releases/2026-09-16-gartner-forecasts-worldwide-ai-spending-to-grow-49-point-5-percent-in-2026">Gartner: worldwide AI spending to grow 49.5% in 2026</a></li>
+      <li value="5">[W5] <a href="https://www.clickorlando.com/news/2025/10/29/nvidia-has-started-the-5-trillion-club-a-look-at-its-rise-by-the-numbers/">AP: Nvidia becomes first $5 trillion company</a></li>
+      <li value="6">[W6] <a href="https://techtrendske.co.ke/safaricom-zuri-ai-chatbot/">Safaricom Zuri launch</a>; <a href="https://tech-ish.com/2020/02/22/safaricom-zuri-chatbot-whatsapp/">Zuri on WhatsApp</a>; <a href="https://www.techinafrica.com/safaricom-innovation-strategy-ai-fintech-future-kenya-tech-ecosystem/">Safaricom AI strategy</a>; <a href="https://safaricom.co.ke/media-center-landing/press-releases/opportunity-international-safaricom-launch-new-ai-chatbot-for-smallholder-farmers">FarmerAI launch</a>; <a href="https://thestandard.ke/business/amp/crime-and-justice/article/2001545642/safaricoms-zuri-on-trial-man-in-court-over-use-of-ai-for-customer-care">The Standard: Zuri court case</a></li>
+      <li value="7">[W7] <a href="https://ippmedia.com/the-guardian/business/read/crdb-launches-ai-empowered-customer-service-system-2024-10-09-074514">The Guardian (Tanzania): CRDB launches Elle</a>; <a href="https://dailynews.co.tz/?p=33894">Daily News: CRDB SimBanking uses AI</a></li>
+      <li value="8">[W8] <a href="https://ippmedia.co.tz/the-guardian/business/read/nmb-bank-heavily-invests-on-digital-platforms-to-boost-financial-inclusion-2025-07-09-115836">The Guardian (Tanzania): NMB digital platforms</a>; <a href="https://thedigitalbanker.com/nmb-launches-digital-insurance-services/">The Digital Banker: NMB Jirani</a></li>
+      <li value="9">[W9] <a href="https://www.mckinsey.com/featured-insights/charts/ai-at-work-but-not-at-scale">McKinsey: AI at work but not at scale (2025)</a></li>
+      <li value="10">[W10] <a href="https://www.usefini.com/blog/klarna-automates-two-thirds-of-customer-service-with-ai-assistant">Klarna AI assistant: results and 2025 reversal</a>; <a href="https://thom.eu/?p=22732">resolution time and rehiring</a></li>
+    </ol>
+  </div>
+</section>
 
 <div class="view" id="welcome"><div class="hero">
   <svg class="ribbon" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
@@ -1503,8 +1675,8 @@ document.querySelectorAll("[data-strip]").forEach(function(el){el.outerHTML=stri
 document.querySelectorAll(".quiz[data-quiz]").forEach(function(el){if(!el.closest("#sector-panel"))renderQuiz(el,el.dataset.quiz);});
 
 /* ---------- dashboard and one-chapter-at-a-time navigation ---------- */
-var VIEWS=["home","welcome","requirements","ch1","ch2","ch3","ch4","sectors","functions","templates","safety","worksheets","achievements","glossary"];
-var VT={home:"Dashboard",welcome:"Welcome and the team",requirements:"Requirements",ch1:"Chapter 1: Understanding AI",ch2:"Chapter 2: Prompting",ch3:"Chapter 3: Checking and protecting",ch4:"Chapter 4: Your new workflow",sectors:"Chapter 5: AI across NGO sectors",functions:"Chapter 6: AI by job role",templates:"Template library",safety:"Safety and data rules",worksheets:"Worksheets",achievements:"Achievements",glossary:"Glossary and sources"};
+var VIEWS=["home","whatis","welcome","requirements","ch1","ch2","ch3","ch4","sectors","functions","templates","safety","worksheets","achievements","glossary"];
+var VT={home:"Dashboard",whatis:"What is AI?",welcome:"Welcome and the team",requirements:"Requirements",ch1:"Chapter 1: Understanding AI",ch2:"Chapter 2: Prompting",ch3:"Chapter 3: Checking and protecting",ch4:"Chapter 4: Your new workflow",sectors:"Chapter 5: AI across NGO sectors",functions:"Chapter 6: AI by job role",templates:"Template library",safety:"Safety and data rules",worksheets:"Worksheets",achievements:"Achievements",glossary:"Glossary and sources"};
 var CORE=[["ch1","Understanding AI","How AI writes, where it fails, hallucinations","20 min"],["ch2","Prompting for NGO tasks","The four-part prompt and Prompt Builder","30 min"],["ch3","Checking and protecting","Data traffic light, four checks, two games","35 min"],["ch4","Your new workflow","Redesign a task and measure the time saved","25 min"]];
 function statusOf(k){var s=quizStats(k);if(s.ans===s.n)return passed(k)?["done","Badge earned"]:["prog","Retry for badge"];if(s.ans)return ["prog",s.ans+"/"+s.n+" answered"];return (S.seen&&S.seen[k])?["prog","In progress"]:["","Not started"];}
 function nextCore(){for(var i=0;i<CORE.length;i++){if(!passed(CORE[i][0]))return CORE[i][0];}return "sectors";}
@@ -1515,7 +1687,7 @@ function renderHome(){
   var nx=nextCore(),last=S.last&&S.last!=="home"&&!(Q[S.last]&&passed(S.last))?S.last:null;
   var started=!!last||done>0;
   $("continueBtn").textContent=started?"Continue: "+VT[last||nx]:"Start learning";
-  $("continueBtn").setAttribute("href","#"+(started?(last||nx):"welcome"));
+  $("continueBtn").setAttribute("href","#"+(started?(last||nx):"whatis"));
   $("homeGreet").textContent=started?"Welcome back · your learning dashboard":"Your learning dashboard";
   $("dashCore").className="dash core";
   $("dashCore").innerHTML=CORE.map(function(c,i){var st=statusOf(c[0]),s=quizStats(c[0]);var pct=s.n?Math.round(s.ans/s.n*100):0;return '<a class="dcard'+(c[0]===nx?" next":"")+'" href="#'+c[0]+'">'+(c[0]===nx?'<span class="up">Up next</span>':'')+'<span class="dnum">'+(i+1)+'</span><span><b>'+c[1]+'</b><small>'+c[2]+' · '+c[3]+'</small></span><span class="bar"><i style="width:'+pct+'%"></i></span><span class="dstat '+st[0]+'">'+st[1]+'</span></a>';}).join("");
