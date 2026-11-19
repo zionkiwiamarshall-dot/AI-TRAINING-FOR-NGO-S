@@ -1,19 +1,18 @@
 # AI at Work for NGO Teams
 
-Website for a hands-on AI training camp for NGO and SACCO teams in Tanzania and East Africa.
+A self-paced learning website for NGO and SACCO staff in Tanzania and East Africa: how to use AI tools safely on real work.
 
-- `index.html`: the landing page (programme, stories, sector tracks, pilot process, FAQ, pilot request).
-- `course/index.html`: the interactive learner's guide (lessons, illustrated worked examples, 14 quizzes with an answer sheet, games, templates, worksheets).
-- `assets/scenes.js`: the illustration code shared by both pages (staff characters, office scenes, three-panel stories).
+- `index.html`: the whole course. It opens on a learning dashboard (progress, next chapter, sector and toolkit cards) and shows one chapter at a time with Previous and Next links.
+- `course/index.html`: redirects old links to the home page.
 
-Plain HTML, CSS and JavaScript. No build step. Hosted with GitHub Pages from the `main` branch root.
+Plain HTML, CSS and JavaScript in one file. No build step. Hosted with GitHub Pages from the `main` branch root. Learner progress is saved in each visitor's own browser.
 
 ## Editing
 
-- **Contact details:** in `index.html`, find `var SITE=` and set `email` and, optionally, `whatsapp` (digits with country code). The pilot form opens WhatsApp if a number is set, otherwise the visitor's email app.
-- **Brand colours:** the four `--brand` tokens at the top of each page's `<style>`. Change them for a location-neutral edition.
-- **Quiz questions, sectors and stories:** data arrays in the `<script>` of `course/index.html` (`Q`, `SECT`, `FN`, `TPL`) and `STRIPS` in `assets/scenes.js`.
+- **Brand colours:** the four `--brand` tokens at the top of the `<style>`. Change them for a location-neutral edition.
+- **Quizzes, sectors, roles, templates and stories:** data arrays in the `<script>`: `Q`, `SECT`, `FN`, `TPL`, `STRIPS`, `PPL`.
+- **Chapter order and titles in the Previous/Next links:** `VIEWS` and `VT`.
 
 ## Content notes
 
-Personas and stories are fictional. AI outputs in the examples are illustrative, not recorded sessions. The sample results report on the landing page uses illustrative figures. Statistics are sourced in the footer and in the guide's Sources section.
+Personas and stories are fictional. AI outputs in the examples are illustrative, not recorded sessions. Statistics are sourced in the Glossary and sources chapter.
