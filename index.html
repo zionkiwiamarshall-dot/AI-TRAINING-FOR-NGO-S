@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI at Work for NGO Teams · AI Training Camp</title>
+<meta name="description" content="A four-session, hands-on AI training camp for NGO and SACCO teams in Tanzania and East Africa. Real work, data protection first, measured results. Swahili and English.">
+<meta property="og:title" content="AI at Work for NGO Teams · AI Training Camp">
+<meta property="og:description" content="Train your team to use AI safely on real work, in four sessions. Swahili and English.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' rx='6' fill='%231EB53A'/%3E%3Cpath d='M26 0v26H0z' fill='%2300A3DD'/%3E%3Cpath d='M-2 23 23-2l5 5L3 28z' fill='%23FCD116'/%3E%3Cpath d='M0 24 24 0l2 2L2 26z' fill='%230d0d0d'/%3E%3C/svg%3E">
+<style>
+/* Training camp landing page. Same brand as the learner's guide: Tanzania flag colours on black and white.
+   For a location-neutral edition, change only the four --brand tokens. */
+:root{
+  --brand-1:#1EB53A; --brand-2:#FCD116; --brand-3:#0d0d0d; --brand-4:#00A3DD;
+  --g-ink:#14822f; --b-ink:#00739c;
+  --bg:#f6f7f5; --surface:#ffffff; --ink:#141a16; --muted:#58625b; --line:#dfe4e0;
+  --g-soft:#e7f6eb; --b-soft:#e2f3fa; --y-soft:#fff6cc;
+  --wall:#eef2ee; --floor:#dfe5df; --sky:#cdeefb;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
+  --radius:12px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --g-ink:#55d97a; --b-ink:#4cc6f2;
+    --bg:#0d110f; --surface:#151b17; --ink:#e8eee9; --muted:#a1aca4; --line:#29322c;
+    --g-soft:#14291a; --b-soft:#0f2630; --y-soft:#2e2a10;
+    --wall:#1b2420; --floor:#141b17; --sky:#173847; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --g-ink:#55d97a; --b-ink:#4cc6f2;
+  --bg:#0d110f; --surface:#151b17; --ink:#e8eee9; --muted:#a1aca4; --line:#29322c;
+  --g-soft:#14291a; --b-soft:#0f2630; --y-soft:#2e2a10;
+  --wall:#1b2420; --floor:#141b17; --sky:#173847; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:var(--b-ink)}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-.02em}
+h3{font-size:1.2rem}
+p{margin:.6rem 0}
+:focus-visible{outline:3px solid var(--brand-4);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+svg text{font-family:var(--body)}
+.f1{fill:var(--brand-1)}.f2{fill:var(--brand-2)}.f3{fill:var(--brand-3)}.f4{fill:var(--brand-4)}
+.fs{fill:var(--surface)}.fl{fill:var(--line)}.fi{fill:var(--ink)}.fm{fill:var(--muted)}.fbg{fill:var(--bg)}
+.sl{stroke:var(--line)}.si{stroke:var(--ink)}.sm{stroke:var(--muted)}
+.wall{fill:var(--wall)}.floor{fill:var(--floor)}.sky{fill:var(--sky)}.gsoft{fill:var(--g-soft)}.bsoft{fill:var(--b-soft)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+section{padding:84px 0}
+.kicker{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--g-ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.kicker::before{content:"";width:22px;height:4px;background:linear-gradient(90deg,var(--brand-1) 50%,var(--brand-4) 50%);border-radius:2px}
+.lede{font-size:1.18rem;color:var(--muted);max-width:62ch}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:11px 18px;font-weight:700;text-decoration:none;cursor:pointer;font-size:1rem}
+.btn:hover{border-color:var(--brand-1)}
+.btn.yellow{background:var(--brand-2);border-color:var(--brand-2);color:#0d0d0d}
+.btn.green{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.btn.ghost{background:transparent;color:#f4f4f4;border-color:#555}
+.src{font-size:.82rem;color:var(--muted)}
+.src a{color:var(--muted)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:40;background:#0d0d0d;color:#f4f4f4}
+header.nav::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:5px;background:linear-gradient(90deg,var(--brand-1) 0 38%,var(--brand-2) 38% 42%,#0d0d0d 42% 58%,var(--brand-2) 58% 62%,var(--brand-4) 62% 100%)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:1.08rem;color:#fff;text-decoration:none;white-space:nowrap}
+.logo svg{width:28px;height:28px}
+.nav nav{display:flex;gap:4px;margin-left:auto}
+.nav nav a{color:#d6d6d6;text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:.95rem}
+.nav nav a:hover{color:#fff;background:#1d1d1d}
+.nav .btn{padding:8px 14px;font-size:.92rem}
+.menu{display:none;background:transparent;border:1px solid #444;color:#fff;border-radius:8px;padding:7px 12px;font-weight:700}
+@media (max-width:920px){
+  .nav nav{display:none;position:absolute;top:69px;left:0;right:0;background:#0d0d0d;flex-direction:column;padding:10px 16px 16px;border-bottom:1px solid #222}
+  .nav nav.open{display:flex}
+  .menu{display:inline-flex;margin-left:auto}
+  .nav .cta{display:none}
+}
+
+/* hero */
+.hero{background:#0d0d0d;color:#f4f4f4;position:relative;overflow:hidden;padding:72px 0 0}
+.hero .ribbon{position:absolute;right:0;top:0;height:100%;width:42%;opacity:.95}
+.hero .wrap{position:relative;z-index:1}
+.hero .eyebrow{color:var(--brand-2);font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.3rem);letter-spacing:-.03em;max-width:15ch;margin-top:12px}
+.hero h1 em{font-style:normal;color:var(--brand-2)}
+.hero p.sub{font-size:1.2rem;color:#cfcfcf;max-width:52ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:760px;gap:0;margin-top:52px;border-top:1px solid #2a2a2a}
+.hero .facts div{padding:20px 18px 26px 0}
+.hero .facts b{display:block;font-family:var(--display);font-size:2rem;color:#fff}
+.hero .facts span{color:#bdbdbd;font-size:.95rem}
+@media (max-width:760px){.hero .ribbon{opacity:.25;width:80%}.hero .facts{grid-template-columns:repeat(2,1fr)}}
+
+/* problem */
+.scene{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:28px}
+.scene svg{display:block;width:100%;height:auto}
+.cards{display:grid;gap:14px}
+.c4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.c3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.card h3{margin-bottom:6px}
+.person{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.person .av{width:46px;height:46px;border-radius:50%;overflow:hidden;flex:none}
+.person .av svg{width:100%;height:100%;display:block}
+.person b{font-family:var(--display)}
+.person small{display:block;color:var(--muted);line-height:1.3}
+
+/* gap chart */
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.chart svg{display:block;width:100%;height:auto}
+
+/* programme */
+.sessions{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px;counter-reset:s}
+@media (max-width:980px){.sessions{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.sessions{grid-template-columns:1fr}}
+.session{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;border-top:6px solid var(--brand-1);display:flex;flex-direction:column}
+.session:nth-child(2){border-top-color:var(--brand-2)}.session:nth-child(3){border-top-color:var(--brand-3)}.session:nth-child(4){border-top-color:var(--brand-4)}
+.session .n{font-family:var(--display);font-weight:800;font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.session h3{margin:6px 0 8px}
+.session ul{padding-left:18px;margin:6px 0 12px;font-size:.95rem}
+.session .leave{margin-top:auto;font-size:.9rem;background:var(--bg);border-radius:8px;padding:10px 12px}
+.session .leave b{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g-ink)}
+
+/* story */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0}
+.strip .frame{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.strip .frame svg{display:block;width:100%;height:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip .plab{display:flex;align-items:center;gap:8px;padding:10px 12px;font-family:var(--display);font-weight:700}
+.strip .plab span{width:24px;height:24px;border-radius:50%;background:#0d0d0d;color:var(--brand-2);display:grid;place-items:center;font-size:.78rem}
+.strip .frame:nth-child(3) .plab span{background:var(--brand-1);color:#08210f}
+.strip .frame p{margin:0;padding:10px 12px 12px;font-size:.92rem;color:var(--muted)}
+@media (max-width:760px){.strip{grid-template-columns:1fr}}
+.storytabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.storytabs button{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 14px 5px 5px;cursor:pointer;font-weight:700;color:var(--ink)}
+.storytabs button .av{width:30px;height:30px;border-radius:50%;overflow:hidden}
+.storytabs button .av svg{width:100%;height:100%;display:block}
+.storytabs button[aria-selected="true"]{background:#0d0d0d;color:#fff;border-color:#0d0d0d}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:32px}
+.feat div{background:var(--surface);padding:24px}
+.feat .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px}
+.feat .ic svg{width:22px;height:22px}
+
+@media (max-width:860px){.feat{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.feat{grid-template-columns:1fr}}
+/* sectors */
+.sectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:32px}
+.sector{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.sector svg{width:46px;height:46px;flex:none}
+.sector h3{font-size:1.02rem}
+.sector p{margin:.3rem 0 .4rem;font-size:.93rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.tag.strong{background:var(--g-soft);color:var(--g-ink)}
+.tag.thin{background:var(--y-soft);color:#8a5d00}
+:root[data-theme="dark"] .tag.thin{color:var(--brand-2)}
+
+/* timeline */
+.dark{background:#0d0d0d;color:#f4f4f4}
+.dark .lede{color:#bdbdbd}
+.dark .kicker{color:var(--brand-2)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:22px;height:4px;background:linear-gradient(90deg,var(--brand-1),var(--brand-2),var(--brand-4))}
+.step{position:relative;padding:0 18px 0 0}
+.step .dot{width:48px;height:48px;border-radius:50%;background:#0d0d0d;border:4px solid var(--brand-2);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--brand-2);position:relative}
+.step:first-child .dot{border-color:var(--brand-1);color:var(--brand-1)}
+.step:last-child .dot{border-color:var(--brand-4);color:var(--brand-4)}
+.step h3{margin:16px 0 4px;color:#fff}
+.step .when{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:#9a9a9a;font-weight:700}
+.step p{color:#c9c9c9;font-size:.95rem}
+@media (max-width:820px){.timeline{grid-template-columns:1fr;gap:22px}.timeline::before{left:22px;right:auto;top:0;bottom:0;width:4px;height:auto}.step{padding-left:70px}.step .dot{position:absolute;left:0;top:0}.step h3{margin-top:4px}}
+
+/* results */
+.report{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.report h3{font-size:1.05rem}
+.report .row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.report .row div{background:var(--bg);border-radius:10px;padding:12px}
+.report .row b{display:block;font-family:var(--display);font-size:1.5rem}
+.report .row small{color:var(--muted)}
+.report svg{display:block;width:100%;height:auto}
+.sample{display:inline-block;background:var(--y-soft);color:#7a5200;font-weight:800;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+
+/* course preview */
+.preview{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+@media (max-width:860px){.preview{grid-template-columns:1fr}}
+.mock{background:#0d0d0d;border-radius:16px;padding:10px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+.mock .bar{display:flex;gap:6px;padding:4px 6px 10px}
+.mock .bar i{width:10px;height:10px;border-radius:50%;background:#333;display:block}
+.mock .screen{background:var(--bg);border-radius:10px;overflow:hidden}
+.mock svg{display:block;width:100%;height:auto}
+.ticks{list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}
+.ticks li{display:flex;gap:10px;align-items:flex-start}
+.ticks li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--brand-1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' stroke='%2308210f' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/100% no-repeat}
+
+/* audience */
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.roles span{background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-weight:600;font-size:.93rem}
+
+/* faq */
+.faq{max-width:820px;margin-top:28px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;padding:0 18px}
+.faq summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.05rem;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--g-ink)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 16px;color:var(--muted)}
+
+/* cta */
+.cta-box{background:#0d0d0d;color:#f4f4f4;border-radius:20px;padding:clamp(24px,5vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:32px;position:relative;overflow:hidden}
+.cta-box h2{color:#fff}
+.cta-box p{color:#c9c9c9}
+@media (max-width:860px){.cta-box{grid-template-columns:1fr}}
+form.pilot{display:grid;gap:10px;position:relative;z-index:1}
+form.pilot label{display:grid;gap:4px;font-weight:600;font-size:.92rem;color:#e8e8e8}
+form.pilot input,form.pilot select,form.pilot textarea{font:inherit;border:1px solid #3a3a3a;background:#161616;color:#fff;border-radius:10px;padding:10px 12px;width:100%}
+form.pilot textarea{min-height:80px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+#formMsg{font-size:.92rem;color:var(--brand-2);min-height:1.4em}
+
+footer{padding:40px 0 60px;border-top:1px solid var(--line);margin-top:20px}
+footer .cols{display:grid;grid-template-columns:1.2fr 2fr;gap:30px}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+footer ol{font-size:.85rem;color:var(--muted);padding-left:18px;margin:6px 0}
+footer ol a{color:var(--muted)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<!-- sector icons -->
+    <symbol id="i-health" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f1"/><path d="M24 37s-12-7-12-15a6.5 6.5 0 0 1 12-3.5A6.5 6.5 0 0 1 36 22c0 8-12 15-12 15z" fill="#fff"/><path d="M22 20h4v3h3v4h-3v3h-4v-3h-3v-4h3z" class="f1"/></symbol>
+    <symbol id="i-education" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><path d="M10 15c5-2 10-2 14 1v19c-4-3-9-3-14-1z" fill="#fff"/><path d="M38 15c-5-2-10-2-14 1v19c4-3 9-3 14-1z" fill="#e6f6fc"/><path d="M28 20h6M28 24h6M28 28h4" stroke="#00A3DD" stroke-width="1.6"/></symbol>
+    <symbol id="i-agri" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f1"/><path d="M24 38V22" stroke="#fff" stroke-width="2.4"/><path d="M24 25c-7 0-11-4-11-10 7 0 11 4 11 10zM24 22c0-7 4-11 11-11 0 7-4 11-11 11z" fill="#FCD116"/><path d="M12 38h24" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-human" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" fill="#0d0d0d"/><path d="M24 10 9 36h30z" class="f4"/><path d="M24 22l-6 14h12z" fill="#0d0d0d"/><path d="M24 10v-2" stroke="#FCD116" stroke-width="2"/><path d="M6 37h36" stroke="#FCD116" stroke-width="2"/></symbol>
+    <symbol id="i-env" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><circle cx="34" cy="14" r="5" fill="#FCD116"/><path d="M18 12c-6 5-8 12-5 17h10c3-5 1-12-5-17z" class="f1"/><path d="M18 26v12" stroke="#0d0d0d" stroke-width="2.4"/><path d="M8 38h32" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-wash" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><path d="M24 8s-11 13-11 20a11 11 0 0 0 22 0c0-7-11-20-11-20z" fill="#fff"/><path d="M18 29a6 6 0 0 0 6 6" stroke="#00A3DD" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-liveli" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f2"/><ellipse cx="20" cy="33" rx="9" ry="3.5" fill="#0d0d0d"/><rect x="11" y="24" width="18" height="9" fill="#0d0d0d"/><ellipse cx="20" cy="24" rx="9" ry="3.5" fill="#1EB53A"/><ellipse cx="32" cy="22" rx="7" ry="3" fill="#0d0d0d"/><rect x="25" y="14" width="14" height="8" fill="#0d0d0d"/><ellipse cx="32" cy="14" rx="7" ry="3" fill="#00A3DD"/></symbol>
+    <symbol id="i-protect" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" fill="#0d0d0d"/><path d="M24 8 11 13v10c0 9 6 15 13 18 7-3 13-9 13-18V13z" class="f1"/><path d="M18 24l4 4 8-9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gov" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f2"/><path d="M24 9 9 17h30z" fill="#0d0d0d"/><path d="M13 19v14M20 19v14M28 19v14M35 19v14" stroke="#0d0d0d" stroke-width="3"/><path d="M9 36h30" stroke="#0d0d0d" stroke-width="3"/></symbol>
+  
+</defs></svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="6" fill="#1EB53A"/><path d="M26 0v26H0z" fill="#00A3DD"/><path d="M-2 23 23-2l5 5L3 28z" fill="#FCD116"/><path d="M0 24 24 0l2 2L2 26z" fill="#0d0d0d"/></svg>
+      AI at Work for NGO Teams
+    </a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+    <nav id="links" aria-label="Main">
+      <a href="#programme">Programme</a>
+      <a href="#stories">Stories</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#pilot">How a pilot works</a>
+      <a href="course/">Learner's guide</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn yellow cta" href="#contact">Request a pilot</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <svg class="ribbon" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    <path d="M140 0h260v400z" fill="#1EB53A"/><path d="M400 130V400H180z" fill="#00A3DD"/>
+    <path d="M170 0h70L400 245v70z" fill="#FCD116"/><path d="M200 0h40L400 255v30z" fill="#0d0d0d"/><path d="M140 0h30L400 345v55z" fill="#0d0d0d"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">AI training camp · NGOs and SACCOs · Tanzania and East Africa</div>
+    <h1>Your team already uses AI. <em>Teach them to use it well.</em></h1>
+    <p class="sub">Four hands-on sessions that train NGO staff to use AI tools on their real work, check every output, protect the people they serve, and prove the time saved.</p>
+    <div class="ctas"><a class="btn yellow" href="#contact">Request a pilot</a><a class="btn ghost" href="course/">Preview the learner's guide</a></div>
+    <div class="facts">
+      <div><b class="num">4</b><span>live sessions of 90 minutes</span></div>
+      <div><b class="num">15–25</b><span>staff per cohort</span></div>
+      <div><b>Sw · En</b><span>Swahili and English delivery</span></div>
+      <div><b class="num">9</b><span>sector tracks</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="kicker">Sound familiar?</div>
+    <h2>Monday morning, in almost every NGO office.</h2>
+    <p class="lede">Reports, posts, minutes, member updates, translations. Small teams carry a mountain of writing, and staff are quietly turning to AI tools to cope, often with no rules and no training.</p>
+    <div class="scene" id="office"></div>
+    <div class="cards c4" style="margin-top:16px" id="castCards"></div>
+  </div>
+</section>
+
+<section id="gap" style="padding-top:0">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">The gap</div>
+      <h2>Almost everyone uses AI. Almost no one has rules for it.</h2>
+      <p class="lede">The largest survey of humanitarian workers on AI asked 2,539 people in 144 countries. Individual use is nearly universal; organizational readiness is not.</p>
+      <p>That gap is where the risks live: invented statistics in donor reports, beneficiary data pasted into public tools, and time savings no one can prove. Closing it is what this programme does.</p>
+      <p class="src">Source: Humanitarian Leadership Academy and Data Friendly Space, 2025 [1][2].</p>
+    </div>
+    <div class="chart">
+      <svg viewBox="0 0 560 250" role="img" aria-label="93% have used AI tools, 70% use them weekly or daily, 22% work under a formal AI policy, 8% are in organizations with wide AI integration, 4% consider themselves expert.">
+        <g class="sl"><line x1="230" y1="14" x2="230" y2="222"/><line x1="350" y1="14" x2="350" y2="222" stroke-dasharray="3 4"/><line x1="470" y1="14" x2="470" y2="222" stroke-dasharray="3 4"/></g>
+        <g font-size="14" class="fi" text-anchor="end"><text x="220" y="40">Have used AI for work</text><text x="220" y="82">Use it weekly or daily</text><text x="220" y="124">Work under an AI policy</text><text x="220" y="166">Org has wide integration</text><text x="220" y="208">Consider themselves expert</text></g>
+        <rect x="230" y="22" width="279" height="28" rx="3" class="f1"/><rect x="230" y="64" width="210" height="28" rx="3" class="f1" opacity=".7"/>
+        <rect x="230" y="106" width="66" height="28" rx="3" class="f4"/><rect x="230" y="148" width="24" height="28" rx="3" class="f4"/><rect x="230" y="190" width="12" height="28" rx="3" class="f4"/>
+        <g font-size="15" font-weight="700" class="fi"><text x="516" y="42">93%</text><text x="447" y="84">70%</text><text x="303" y="126">22%</text><text x="261" y="168">8%</text><text x="249" y="210">4%</text></g>
+        <g font-size="11" class="fm" text-anchor="middle"><text x="230" y="242">0</text><text x="350" y="242">40%</text><text x="470" y="242">80%</text></g>
+      </svg>
+      <p class="src" style="margin:6px 0 0">Green: what individuals do. Blue: what organizations have in place.</p>
+    </div>
+  </div>
+</section>
+
+<section id="programme" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">The programme</div>
+    <h2>Four sessions. One real task redesigned. Results you can show your board.</h2>
+    <p class="lede">Every session is 90 minutes: a short live demonstration, a hands-on task on the learner's own work, and a review. No slides-only lectures.</p>
+    <div class="sessions">
+      <div class="session"><div class="n">Session 1</div><h3>Understanding AI</h3><ul><li>What AI can and cannot do</li><li>Hallucinations and how to spot them</li><li>First task on your own document</li></ul><div class="leave"><b>You leave with</b>A summary of your own work, checked line by line.</div></div>
+      <div class="session"><div class="n">Session 2</div><h3>Prompting for NGO work</h3><ul><li>The four-part prompt</li><li>Marking gaps instead of guessing</li><li>Improving drafts with follow-ups</li></ul><div class="leave"><b>You leave with</b>A tested prompt for a task you do every week.</div></div>
+      <div class="session"><div class="n">Session 3</div><h3>Checking and protecting</h3><ul><li>Red, amber, green data rule</li><li>The four checks</li><li>Consent, donor rules, Tanzania's data protection law</li></ul><div class="leave"><b>You leave with</b>A corrected draft and your organization's data rules.</div></div>
+      <div class="session"><div class="n">Session 4</div><h3>Your new workflow</h3><ul><li>Redesign one real task</li><li>Time it honestly, checking included</li><li>Write a 30-day plan</li></ul><div class="leave"><b>You leave with</b>A measured workflow and a plan to keep using it.</div></div>
+    </div>
+    <div class="feat">
+      <div><div class="ic" style="background:var(--g-soft)"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4zM8 20h8M12 16v4" stroke="var(--g-ink)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><h3>Real work, not slides</h3><p>Every exercise uses the learner's own emails, reports and notes, so the skill transfers on Monday.</p></div>
+      <div><div class="ic" style="background:var(--b-soft)"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 5 3 8 7 9 4-1 7-4 7-9V6z" stroke="var(--b-ink)" stroke-width="2" fill="none"/></svg></div><h3>Data protection first</h3><p>Built around safeguarding, donor rules and Tanzania's Personal Data Protection Act, 2022 [3].</p></div>
+      <div><div class="ic" style="background:var(--y-soft)"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="#8a5d00" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><h3>Measured results</h3><p>Before and after surveys, a time log for each learner, and a 30-day check. You get a results report.</p></div>
+      <div><div class="ic" style="background:var(--g-soft)"><svg viewBox="0 0 24 24"><path d="M4 6h10M9 4v2M6 6c1 5 4 7 7 8M12 6c-1 4-4 7-8 8M13 20l4-9 4 9M14.5 17h5" stroke="var(--g-ink)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><h3>Swahili and English</h3><p>Delivered in the language your staff work in, with materials in both.</p></div>
+      <div><div class="ic" style="background:var(--b-soft)"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" stroke="var(--b-ink)" stroke-width="2" fill="none"/><circle cx="17" cy="9" r="2.5" stroke="var(--b-ink)" stroke-width="2" fill="none"/><path d="M2 20c0-4 3-6 6-6s6 2 6 6M14 20c0-3 1.5-5 3-5s4 1 4 5" stroke="var(--b-ink)" stroke-width="2" fill="none"/></svg></div><h3>Role tracks</h3><p>Admin, finance and operations, customer-facing staff and managers each get examples from their own work.</p></div>
+      <div><div class="ic" style="background:var(--y-soft)"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 10h6M9 14h6M9 18h3" stroke="#8a5d00" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>A guide they keep</h3><p>An interactive learner's guide with quizzes, games, templates and worksheets, available after the course.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="wrap">
+    <div class="kicker">See it in practice</div>
+    <h2>Real tasks. What AI does. What checking catches.</h2>
+    <p class="lede">Every lesson follows NGO staff through a real task. The people are fictional; the tasks and the mistakes are the ones teams meet every week.</p>
+    <div class="storytabs" role="tablist" id="storyTabs"></div>
+    <div id="storyStrip"></div>
+  </div>
+</section>
+
+<section id="sectors" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Sector tracks</div>
+    <h2>Examples from your sector, not someone else's.</h2>
+    <p class="lede">Each track adds sector scenarios, the data that must stay protected, and what an organization needs in place. Where we found published evidence, we cite it. Where we did not, we say so.</p>
+    <div class="sectors" id="sectorGrid"></div>
+  </div>
+</section>
+
+<section id="pilot" class="dark">
+  <div class="wrap">
+    <div class="kicker">How a pilot works</div>
+    <h2 style="color:#fff">From first call to a results report in about six weeks.</h2>
+    <p class="lede">Start with one cohort of 15 to 25 staff. If it works, scale to more teams and sector tracks.</p>
+    <div class="timeline">
+      <div class="step"><div class="dot">1</div><div class="when">Week 1</div><h3>Discovery call</h3><p>30 minutes on your teams, tasks, tools, donors and data rules. We agree the cohort and the tasks to target.</p></div>
+      <div class="step"><div class="dot">2</div><div class="when">Week 1–2</div><h3>Tailoring</h3><p>We collect a few non-confidential sample documents, your data and safeguarding policies, and run a baseline survey.</p></div>
+      <div class="step"><div class="dot">3</div><div class="when">Week 2–5</div><h3>Four sessions</h3><p>Live in Dar es Salaam or online, weekly or compressed into two days. Learners use the guide between sessions.</p></div>
+      <div class="step"><div class="dot">4</div><div class="when">Week 6 + 30 days</div><h3>Results report</h3><p>Time saved per task, confidence before and after, templates in use, and the 30-day follow-up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">What you get</div>
+      <h2>Proof, not promises.</h2>
+      <p class="lede">Every learner times one real task before and after, with checking included. You receive the numbers, not a feel-good survey.</p>
+      <ul class="ticks">
+        <li>Minutes saved per redesigned task, measured honestly</li>
+        <li>Confidence using AI safely, before and after (1 to 5)</li>
+        <li>Which templates staff still use after 30 days</li>
+        <li>Problems caught: errors, data concerns, and how they were handled</li>
+        <li>A draft AI use policy outline for your leadership</li>
+      </ul>
+    </div>
+    <div class="report">
+      <span class="sample">Sample report · illustrative figures</span>
+      <h3 style="margin-top:8px">Peter's monthly SACCO member update</h3>
+      <svg viewBox="0 0 520 150" role="img" aria-label="Before: 120 minutes. After: 55 minutes including checking. 65 minutes saved per month.">
+        <text x="0" y="34" font-size="13" font-weight="700" class="fi">Before</text><text x="0" y="50" font-size="12" class="fm">120 min</text>
+        <rect x="70" y="18" width="105" height="34" class="fl"/><rect x="175" y="18" width="210" height="34" class="f4"/><rect x="385" y="18" width="70" height="34" class="f2"/><rect x="455" y="18" width="35" height="34" class="fm"/>
+        <g font-size="11"><text x="76" y="39" class="fi">Figures 30</text><text x="181" y="39" fill="#00202c" font-weight="700">Writing 60</text><text x="389" y="39" fill="#0d0d0d">Translate 20</text></g>
+        <text x="0" y="104" font-size="13" font-weight="700" class="fi">After</text><text x="0" y="120" font-size="12" class="fm">55 min</text>
+        <rect x="70" y="88" width="105" height="34" class="fl"/><rect x="175" y="88" width="17.5" height="34" class="f1"/><rect x="192.5" y="88" width="52.5" height="34" class="f3"/><rect x="245" y="88" width="17.5" height="34" class="fm"/>
+        <g font-size="11"><text x="76" y="109" class="fi">Figures 30</text><text x="196" y="109" fill="#FCD116" font-weight="700">Check 15</text></g>
+        <text x="276" y="110" font-size="14" font-weight="700" fill="var(--g-ink)">65 min saved a month</text>
+        <text x="70" y="144" font-size="10.5" class="fm">Collecting figures does not get faster: AI cannot see the SACCO's records.</text>
+      </svg>
+      <div class="row"><div><b class="num">13 h</b><small>saved per year</small></div><div><b class="num">2 → 4</b><small>confidence, 1–5</small></div><div><b class="num">1</b><small>error caught: invented rate</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="guide" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap preview">
+    <div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="screen">
+      <svg viewBox="0 0 560 330" aria-label="Preview of the learner's guide: chapter list, a quiz with instant feedback, points and a progress bar" role="img">
+        <rect width="560" height="330" class="fbg"/><rect width="560" height="34" fill="#0d0d0d"/><rect y="34" width="560" height="4" fill="#1EB53A"/><rect x="200" y="34" width="20" height="4" fill="#FCD116"/><rect x="220" y="34" width="70" height="4" fill="#0d0d0d"/><rect x="290" y="34" width="20" height="4" fill="#FCD116"/><rect x="310" y="34" width="250" height="4" fill="#00A3DD"/>
+        <text x="16" y="22" font-size="12" font-weight="700" fill="#fff">AI at Work for NGO Teams</text><rect x="470" y="9" width="78" height="17" rx="5" fill="#FCD116"/><text x="479" y="21" font-size="10" font-weight="700" fill="#0d0d0d">Answer sheet</text>
+        <rect x="12" y="52" width="130" height="50" rx="6" class="fs sl"/><text x="20" y="68" font-size="10" font-weight="700" class="fi">Your progress</text><rect x="20" y="76" width="112" height="6" rx="3" class="fl"/><rect x="20" y="76" width="64" height="6" rx="3" class="f1"/><text x="20" y="95" font-size="9" class="fm">8 of 14 quizzes</text>
+        <g font-size="10" class="fi"><circle cx="24" cy="120" r="7" class="f1"/><text x="38" y="124">Understanding AI</text><circle cx="24" cy="142" r="7" class="f1"/><text x="38" y="146">Prompting</text><circle cx="24" cy="164" r="7" class="fl"/><text x="38" y="168">Checking and protecting</text><circle cx="24" cy="186" r="7" class="fl"/><text x="38" y="190">Your new workflow</text><circle cx="24" cy="208" r="7" class="fl"/><text x="38" y="212">AI across NGO sectors</text></g>
+        <rect x="158" y="52" width="388" height="264" rx="8" class="fs sl"/><rect x="158" y="52" width="388" height="28" rx="8" fill="var(--y-soft)"/><text x="170" y="70" font-size="11" font-weight="700" class="fi">Chapter 3 quiz: Checking and protecting</text><text x="470" y="70" font-size="10" font-weight="700" class="fi">Score 4 / 6</text>
+        <text x="170" y="100" font-size="11" font-weight="700" class="fi">286 of 412 clients attended. What percentage is that?</text>
+        <rect x="170" y="110" width="364" height="24" rx="5" fill="var(--g-soft)" stroke="#1EB53A"/><rect x="176" y="115" width="14" height="14" rx="3" class="f1"/><text x="197" y="126" font-size="10.5" class="fi">About 69%</text>
+        <rect x="170" y="140" width="364" height="24" rx="5" class="fbg sl"/><text x="197" y="156" font-size="10.5" class="fi">75%</text>
+        <rect x="170" y="170" width="364" height="24" rx="5" class="fbg sl"/><text x="197" y="186" font-size="10.5" class="fi">41%</text>
+        <rect x="170" y="202" width="364" height="34" rx="5" fill="var(--b-soft)"/><text x="178" y="216" font-size="10" font-weight="700" class="fi">Correct.</text><text x="178" y="229" font-size="10" class="fi">286 ÷ 412 = 0.694. The AI wrote 75%; always recalculate.</text>
+        <rect x="170" y="250" width="110" height="52" rx="8" fill="var(--y-soft)" stroke="#FCD116"/><circle cx="194" cy="276" r="14" fill="#0d0d0d"/><text x="189" y="281" font-size="12" font-weight="800" fill="#FCD116">3</text><text x="214" y="272" font-size="9.5" font-weight="700" class="fi">Data</text><text x="214" y="285" font-size="9.5" font-weight="700" class="fi">Guardian</text>
+        <rect x="292" y="250" width="242" height="52" rx="8" class="fbg sl"/><text x="302" y="268" font-size="10" font-weight="700" class="fi">Game: Red, amber or green?</text><rect x="302" y="278" width="40" height="15" rx="4" fill="#c4302b"/><rect x="346" y="278" width="44" height="15" rx="4" class="fl"/><rect x="394" y="278" width="40" height="15" rx="4" class="fl"/>
+      </svg>
+    </div></div>
+    <div>
+      <div class="kicker">The learner's guide</div>
+      <h2>A course companion staff actually open.</h2>
+      <p class="lede">Every learner gets the interactive guide. It works on a phone, saves progress, and stays useful long after the sessions end.</p>
+      <ul class="ticks">
+        <li>Step-by-step lessons with illustrated worked examples</li>
+        <li>14 quizzes with instant feedback and a side answer sheet</li>
+        <li>Prompt Builder, data-risk game, error-spotting game, time calculator</li>
+        <li>Nine sector guides and six job-role guides</li>
+        <li>Seven copy-ready prompt templates and saved worksheets</li>
+      </ul>
+      <a class="btn green" href="course/">Open the learner's guide</a>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="kicker">Who it is for</div>
+      <h2>Built for teams that serve communities.</h2>
+      <p class="lede">Local and international NGOs, donor-funded programmes, SACCOs and cooperatives. No AI experience needed: a phone or laptop with internet is enough.</p>
+    </div>
+    <div>
+      <h3>Organizations</h3>
+      <div class="roles"><span>Local NGOs</span><span>International NGOs</span><span>Donor-funded programmes</span><span>SACCOs</span><span>Cooperatives</span><span>Community-based organizations</span></div>
+      <h3 style="margin-top:22px">Role tracks</h3>
+      <div class="roles"><span>Admin staff</span><span>Finance and operations</span><span>Customer-facing staff</span><span>Managers</span><span>M&amp;E</span><span>Communications</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Questions</div>
+    <h2>Frequently asked</h2>
+    <div class="faq">
+      <details open><summary>Do our staff need any AI experience?</summary><p>No. Session 1 starts from zero. Learners need a smartphone or computer with internet and a free account with the AI tool chosen for the cohort.</p></details>
+      <details><summary>Which AI tools do you teach?</summary><p>Skills are taught by task, not by brand, so they work with any capable assistant such as ChatGPT, Claude, Copilot or Gemini. We pick one main tool and one backup with you, tested on the phones your staff actually use.</p></details>
+      <details><summary>Is our data safe during the training?</summary><p>Yes. No personal or confidential data is used in any exercise. Learners practise with non-confidential documents and learn the red, amber, green rule before they paste anything. The course covers Tanzania's Personal Data Protection Act and your own policies.</p></details>
+      <details><summary>In which language is it delivered?</summary><p>Swahili or English, or both. Templates and handouts are provided in the delivery language.</p></details>
+      <details><summary>In person or online?</summary><p>Either. In person in Dar es Salaam, or live online for teams spread across regions. Sessions can run weekly or be compressed into two days.</p></details>
+      <details><summary>Do learners get a certificate?</summary><p>Yes, a certificate of completion for learners who attend at least three of four sessions, complete the hands-on tasks, submit a time log and pass the final assessment.</p></details>
+      <details><summary>How much does it cost?</summary><p>Pilot pricing depends on cohort size, delivery mode and language. Request a pilot below and we will send a proposal.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <div class="kicker" style="color:var(--brand-2)">Request a pilot</div>
+        <h2>Train one cohort. See the numbers. Then decide.</h2>
+        <p>Tell us about your team and the work that eats their week. We will reply with a pilot proposal tailored to your sector and language.</p>
+        <p id="contactLine" style="font-weight:700;color:#fff"></p>
+      </div>
+      <form class="pilot" id="pilotForm" novalidate>
+        <div class="two"><label for="f-name">Your name<input id="f-name" required autocomplete="name"></label><label for="f-org">Organization<input id="f-org" required autocomplete="organization"></label></div>
+        <div class="two"><label for="f-sector">Sector<select id="f-sector"><option>Health and nutrition</option><option>Education</option><option>Agriculture and food security</option><option>Humanitarian response</option><option>Environment and climate</option><option>WASH</option><option>SACCO / livelihoods</option><option>Protection and safeguarding</option><option>Governance and advocacy</option><option>Other</option></select></label><label for="f-size">Staff to train<select id="f-size"><option>Under 15</option><option selected>15 to 25</option><option>26 to 50</option><option>More than 50</option></select></label></div>
+        <label for="f-lang">Language<select id="f-lang"><option>Swahili</option><option>English</option><option>Both</option></select></label>
+        <label for="f-msg">What takes your team the most time?<textarea id="f-msg" placeholder="e.g. donor reports, minutes, member updates, translations"></textarea></label>
+        <button class="btn yellow" type="submit">Prepare my request</button>
+        <p id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="#top" style="color:var(--ink)"><svg viewBox="0 0 26 26" aria-hidden="true" style="width:26px;height:26px"><rect width="26" height="26" rx="6" fill="#1EB53A"/><path d="M26 0v26H0z" fill="#00A3DD"/><path d="M-2 23 23-2l5 5L3 28z" fill="#FCD116"/><path d="M0 24 24 0l2 2L2 26z" fill="#0d0d0d"/></svg>AI at Work for NGO Teams</a>
+      <p class="src">Practical AI training for NGO and SACCO teams. Tanzania and East Africa.</p>
+      <p class="src">Personas and stories on this site are fictional. Sample report figures are illustrative.</p>
+    </div>
+    <div>
+      <b>Sources</b>
+      <ol>
+        <li><a href="https://www.humanitarianleadershipacademy.org/news/global-study-highlights-shadow-ai-as-humanitarian-workers-outpace-organizations-in-technology-adoption/">Humanitarian Leadership Academy: global study on AI in the humanitarian sector (2025)</a></li>
+        <li><a href="https://hhi.harvard.edu/publication/humanitarian-artificial-intelligence-begins-model-lessons-kobotoolbox-responsible">Harvard Humanitarian Initiative: humanitarian AI begins before the model (22% policy figure)</a></li>
+        <li><a href="https://www.dlapiperdataprotection.com/?c=TZ&amp;t=law">DLA Piper: Data protection laws in Tanzania</a></li>
+      </ol>
+      <p class="src">Sector sources are listed in the <a href="course/#glossary">learner's guide</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/scenes.js"></script>
+<script>
+(function(){
+"use strict";
+/* ===== Set your contact details here (leave empty until ready) ===== */
+var SITE={email:"zion.kiwiamarshall@gmail.com",whatsapp:""}; /* whatsapp: digits only with country code, e.g. 2557XXXXXXXX */
+/* ================================================================== */
+function $(id){return document.getElementById(id);}
+$("menu").addEventListener("click",function(){var o=$("links").classList.toggle("open");this.setAttribute("aria-expanded",o);});
+$("links").addEventListener("click",function(e){if(e.target.closest("a"))$("links").classList.remove("open");});
+
+$("office").innerHTML=officeScene();
+var probs={neema:"Six donor reports due Friday, built from field notes full of sensitive details.",juma:"200 farmers asked about armyworm today. One extension officer, one advice sheet to write.",amina:"Three posts and a newsletter this week, and every number has to be right.",peter:"Two hours on the monthly member update, in English and Swahili. Again."};
+$("castCards").innerHTML=["neema","juma","amina","peter"].map(function(id){return '<div class="card"><div class="person"><span class="av">'+avatar(id)+'</span><div><b>'+PPL[id].name+'</b><small>'+svgEsc(PPL[id].role)+'</small></div></div><p style="margin:0">'+svgEsc(probs[id])+'</p></div>';}).join("");
+
+var STORIES=[["ch2","amina","Amina · social post"],["ch3","neema","Neema · sensitive notes"],["agri","juma","Juma · farmer advice"],["ch4","peter","Peter · member update"],["protect","rehema","Rehema · safeguarding"],["gov","salma","Salma · new bill"]];
+$("storyTabs").innerHTML=STORIES.map(function(s,i){return '<button role="tab" data-k="'+s[0]+'" aria-selected="'+(i===0)+'"><span class="av">'+avatar(s[1])+'</span>'+svgEsc(s[2])+'</button>';}).join("");
+function showStory(k){$("storyStrip").innerHTML=strip(STRIPS[k]);document.querySelectorAll("#storyTabs button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.k===k);});}
+$("storyTabs").addEventListener("click",function(e){var b=e.target.closest("button");if(b)showStory(b.dataset.k);});
+showStory("ch2");
+
+var SECT=[["health","Health and nutrition","Plain-language health messages, supervision summaries, CHW quizzes.","strong"],["education","Education","Lesson plans, leveled questions, parent letters.","strong"],["agri","Agriculture and food security","Farmer advice sheets, radio scripts, market summaries.","strong"],["human","Humanitarian response","Situation reports, assessment summaries, translated notices.","strong"],["env","Environment and climate","Awareness leaflets, report summaries, climate fund proposals.","strong"],["wash","Water, sanitation and hygiene","Hygiene messages, water-point reports, committee training.","thin"],["liveli","SACCOs and livelihoods","Member updates, plain-language policies, financial literacy.","thin"],["protect","Protection and safeguarding","Staff training from public guidance. Case data never.","thin"],["gov","Governance and advocacy","Bill summaries with section checks, policy briefs.","thin"]];
+$("sectorGrid").innerHTML=SECT.map(function(s){return '<a class="sector" href="course/#sectors" style="text-decoration:none;color:inherit"><svg aria-hidden="true"><use href="#i-'+s[0]+'"/></svg><div><h3>'+s[1]+'</h3><p>'+s[2]+'</p><span class="tag '+s[3]+'">'+(s[3]==="strong"?"Published evidence":"Practical uses")+'</span></div></a>';}).join("");
+
+var line=[];if(SITE.email)line.push('Email: <a style="color:#FCD116" href="mailto:'+SITE.email+'">'+svgEsc(SITE.email)+'</a>');if(SITE.whatsapp)line.push('WhatsApp: <a style="color:#FCD116" href="https://wa.me/'+SITE.whatsapp+'">+'+svgEsc(SITE.whatsapp)+'</a>');
+$("contactLine").innerHTML=line.join(" · ");
+$("pilotForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var name=$("f-name").value.trim(),org=$("f-org").value.trim();
+  if(!name||!org){$("formMsg").textContent="Please add your name and organization.";return;}
+  var body="Pilot request\n\nName: "+name+"\nOrganization: "+org+"\nSector: "+$("f-sector").value+"\nStaff to train: "+$("f-size").value+"\nLanguage: "+$("f-lang").value+"\nMost time-consuming work: "+($("f-msg").value.trim()||"-");
+  if(SITE.whatsapp){window.location.href="https://wa.me/"+SITE.whatsapp+"?text="+encodeURIComponent(body);$("formMsg").textContent="Opening WhatsApp with your request…";return;}
+  if(SITE.email){window.location.href="mailto:"+SITE.email+"?subject="+encodeURIComponent("Pilot request: "+org)+"&body="+encodeURIComponent(body);$("formMsg").textContent="Opening your email app with your request…";return;}
+  $("formMsg").textContent="Contact details are being set up. Please check back soon.";
+});
+})();
+</script>
+</body>
+</html>
