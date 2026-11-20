@@ -20,28 +20,48 @@
     '<div class="bk-card">' +
     '<button class="btn small bk-x" id="bkClose" aria-label="Close">Close</button>' +
     '<h3 id="bkTitle">Sign in</h3>' +
-    '<div data-pane="email"><p>Enter your work email. We\'ll send you a sign-in link, so there\'s no password to remember.</p>' +
-    '<form id="bkEmailForm"><label>Work email<input type="email" id="bkEmail" required autocomplete="email"></label>' +
-    '<button class="btn primary" type="submit">Send sign-in link</button></form></div>' +
-    '<div data-pane="sent" hidden><p>Check your inbox for a link from Supabase. Open it on this device to finish signing in. You can close this window.</p></div>' +
-    '<div data-pane="join" hidden><p>One last step. Your trainer gave your organization a pilot code.</p>' +
-    '<form id="bkJoinForm"><label>Your full name<input id="bkName" required maxlength="120" autocomplete="name"></label>' +
-    '<label>Pilot code<input id="bkCode" required maxlength="40" autocapitalize="characters"></label>' +
-    '<label class="bk-check"><input type="checkbox" id="bkConsent" required> I agree that my name, work email, course progress and survey answers are stored so my trainer can track the pilot. They are shared outside my organization only as anonymized results.</label>' +
-    '<button class="btn primary" type="submit">Join the course</button></form></div>' +
+    '<div data-pane="signin"><form id="bkInForm">' +
+    '<label>Email<input type="email" id="bkInEmail" required autocomplete="email"></label>' +
+    '<label>Password<input type="password" id="bkInPass" required autocomplete="current-password"></label>' +
+    '<button class="btn primary" type="submit">Sign in</button></form>' +
+    '<p class="bk-links"><button class="bk-link" data-go-pane="signup">Create an account</button> · <button class="bk-link" data-go-pane="forgot">Forgot password?</button></p></div>' +
+    '<div data-pane="signup" hidden><form id="bkUpForm">' +
+    '<label>Your full name<input id="bkUpName" required maxlength="120" autocomplete="name"></label>' +
+    '<label>Email<input type="email" id="bkUpEmail" required autocomplete="email"></label>' +
+    '<label>Password (at least 8 characters)<input type="password" id="bkUpPass" required minlength="8" autocomplete="new-password"></label>' +
+    '<label class="bk-check"><input type="checkbox" id="bkConsent" required> I agree that my name, email, course progress and survey answers are stored so my trainer can follow my learning. They are only ever shared as anonymized results.</label>' +
+    '<button class="btn primary" type="submit">Create my account</button></form>' +
+    '<p class="bk-links">Already have an account? <button class="bk-link" data-go-pane="signin">Sign in</button></p></div>' +
+    '<div data-pane="forgot" hidden><p>Enter your email and we\'ll send you a link to set a new password.</p><form id="bkFgForm">' +
+    '<label>Email<input type="email" id="bkFgEmail" required autocomplete="email"></label>' +
+    '<button class="btn primary" type="submit">Send reset link</button></form>' +
+    '<p class="bk-links"><button class="bk-link" data-go-pane="signin">Back to sign in</button></p></div>' +
+    '<div data-pane="sent" hidden><p id="bkSentTxt"></p><p class="bk-links"><button class="bk-link" data-go-pane="signin">Back to sign in</button></p></div>' +
+    '<div data-pane="reset" hidden><form id="bkRsForm"><label>New password (at least 8 characters)<input type="password" id="bkRsPass" required minlength="8" autocomplete="new-password"></label>' +
+    '<button class="btn primary" type="submit">Save new password</button></form></div>' +
     '<div data-pane="account" hidden><p id="bkWho"></p><p class="bk-sub" id="bkSync">Your progress is saved to your account.</p>' +
-    '<div class="bk-row"><a class="btn" href="#surveys" id="bkToSurvey">Pilot surveys</a><button class="btn" id="bkOut">Sign out</button></div>' +
+    '<div class="bk-row"><a class="btn" href="#surveys" id="bkToSurvey">Surveys</a><button class="btn" id="bkOut">Sign out</button></div>' +
+    '<details class="bk-code" id="bkCodeBox"><summary>Have a pilot code from your organization?</summary><form id="bkJoinForm">' +
+    '<label>Pilot code<input id="bkCode" required maxlength="40" autocapitalize="characters"></label>' +
+    '<button class="btn" type="submit">Join my organization</button></form></details>' +
     '<p class="bk-sub">On a shared computer, always sign out when you finish. Signing out also clears your progress from this browser.</p></div>' +
     '<p class="bk-msg" id="bkMsg" aria-live="polite"></p></div>';
   document.body.appendChild(modal);
 
-  function pane(name) { modal.querySelectorAll("[data-pane]").forEach(function (p) { p.hidden = p.dataset.pane !== name; }); }
-  function openModal() {
-    status($("bkMsg"), "");
-    if (!user) pane("email"); else if (!profile) pane("join"); else { pane("account"); $("bkWho").innerHTML = "Signed in as <b>" + esc(profile.full_name) + "</b>" + (orgName ? " · " + esc(orgName) : ""); }
-    $("bkTitle").textContent = !user ? "Sign in" : !profile ? "Join your pilot" : "Your account";
+  var TITLES = { signin: "Sign in", signup: "Create your account", forgot: "Reset your password", sent: "Check your email", reset: "Set a new password", account: "Your account" };
+  function pane(name) {
+    modal.querySelectorAll("[data-pane]").forEach(function (p) { p.hidden = p.dataset.pane !== name; });
+    $("bkTitle").textContent = TITLES[name]; status($("bkMsg"), "");
+    var f = modal.querySelector('[data-pane="' + name + '"] input'); if (f && !modal.hidden) f.focus();
+  }
+  modal.addEventListener("click", function (e) { var g = e.target.closest("[data-go-pane]"); if (g) { e.preventDefault(); pane(g.dataset.goPane); } });
+  function openModal(which) {
     modal.hidden = false;
-    var f = modal.querySelector("[data-pane]:not([hidden]) input"); if (f) f.focus();
+    if (which) return pane(which);
+    if (!user) return pane("signin");
+    pane("account");
+    $("bkWho").innerHTML = "Signed in as <b>" + esc(profile ? profile.full_name : user.email) + "</b>" + (orgName ? " · " + esc(orgName) : " · individual learner");
+    $("bkCodeBox").hidden = !!orgName;
   }
   function closeModal() { modal.hidden = true; }
   $("bkClose").addEventListener("click", closeModal);
@@ -53,8 +73,9 @@
   function paintAcct() {
     if (!ON) { acct.hidden = true; return; }
     acct.hidden = false;
-    acct.querySelector(".full").textContent = !user ? "Sign in" : profile ? profile.full_name.split(" ")[0] : "Finish sign-in";
-    acct.querySelector(".short").textContent = !user ? "Sign in" : "Account";
+    var first = profile && profile.full_name ? profile.full_name.split(" ")[0] : "Account";
+    acct.querySelector(".full").textContent = user ? first : "Sign in";
+    acct.querySelector(".short").textContent = user ? "Account" : "Sign in";
     $("tocTrainer").hidden = !admin;
   }
   acct.addEventListener("click", function () { if (ON) openModal(); });
@@ -63,7 +84,7 @@
   function renderSurveys() {
     var box = $("surveyBox");
     if (!ON) { box.innerHTML = '<div class="callout yellow"><h4>Surveys aren\'t switched on yet</h4><p>Your trainer still needs to connect this site to its database. Until then, your progress is saved only in this browser.</p></div>'; return; }
-    if (!user || !profile) { box.innerHTML = '<div class="callout blue"><h4>Sign in to take the pilot surveys</h4><p>You need your work email and the pilot code from your trainer.</p><p><button class="btn primary" id="svSign">Sign in</button></p></div>'; $("svSign").onclick = openModal; return; }
+    if (!user || !profile) { box.innerHTML = '<div class="callout blue"><h4>Sign in to take the surveys</h4><p>Create a free account with your email and a password, or sign in if you already have one.</p><p><button class="btn primary" id="svSign">Sign in or create an account</button></p></div>'; $("svSign").onclick = function () { openModal(); }; return; }
     box.innerHTML = '<p class="bk-sub" id="svState">Loading your answers…</p>' +
       '<form id="svForm" class="card bk-form">' +
       '<fieldset><legend>Which survey are you taking?</legend>' +
@@ -120,12 +141,13 @@
       var orgs = r[0].data, people = r[1].data.filter(function (p) { return p.role !== "admin"; }), prog = {}, sv = r[3].data;
       r[2].data.forEach(function (p) { prog[p.user_id] = p; });
       lastData = { orgs: orgs, people: people, prog: prog, sv: sv };
-      var rows = orgs.map(function (o) {
+      var groups = orgs.concat([{ id: null, name: "Individual learners", pilot_code: "" }]);
+      var rows = groups.map(function (o) {
         var ps = people.filter(function (p) { return p.organization_id === o.id; });
         var sums = ps.map(function (p) { return AIW.summary(prog[p.id] ? prog[p.id].state : {}); });
         var b = sv.filter(function (s) { return s.organization_id === o.id && s.kind === "baseline"; }), f = sv.filter(function (s) { return s.organization_id === o.id && s.kind === "final"; });
         var mb = median(b.map(function (s) { return s.task_minutes; })), mf = median(f.map(function (s) { return s.task_minutes; }));
-        return '<tr><td><b>' + esc(o.name) + '</b><br><code>' + esc(o.pilot_code) + '</code></td><td class="num">' + ps.length + '</td><td class="num">' +
+        return '<tr><td><b>' + esc(o.name) + '</b>' + (o.pilot_code ? '<br><code>' + esc(o.pilot_code) + '</code>' : '<br><small>signed up on their own</small>') + '</td><td class="num">' + ps.length + '</td><td class="num">' +
           (sums.length ? Math.round(avg(sums.map(function (s) { return s.pct; }))) + "%" : "–") + '</td><td class="num">' + sums.filter(function (s) { return s.coreDone === s.coreTotal; }).length + '</td><td class="num">' +
           f1(avg(b.map(function (s) { return s.confidence; }))) + ' → ' + f1(avg(f.map(function (s) { return s.confidence; }))) + '</td><td class="num">' +
           f1(mb) + ' → ' + f1(mf) + (mb && mf ? ' <small>(' + Math.round((1 - mf / mb) * 100) + '% less)</small>' : '') + '</td><td class="num">' +
@@ -134,7 +156,7 @@
       var lrn = people.map(function (p) {
         var s = AIW.summary(prog[p.id] ? prog[p.id].state : {}), o = orgs.filter(function (x) { return x.id === p.organization_id; })[0];
         var mine = sv.filter(function (x) { return x.user_id === p.id; }), kinds = mine.map(function (x) { return x.kind === "baseline" ? "start" : "end"; }).join(", ");
-        return '<tr><td>' + esc(p.full_name) + '</td><td>' + esc(o ? o.name : "–") + '</td><td class="num">' + s.pct + '%</td><td class="num">' + s.coreDone + '/' + s.coreTotal + '</td><td>' + (kinds || "none") + '</td><td>' + (prog[p.id] ? new Date(prog[p.id].updated_at).toLocaleDateString() : "–") + '</td></tr>';
+        return '<tr><td>' + esc(p.full_name) + '</td><td>' + esc(o ? o.name : "Individual") + '</td><td class="num">' + s.pct + '%</td><td class="num">' + s.coreDone + '/' + s.coreTotal + '</td><td>' + (kinds || "none") + '</td><td>' + (prog[p.id] ? new Date(prog[p.id].updated_at).toLocaleDateString() : "–") + '</td></tr>';
       }).join("");
       box.innerHTML =
         '<h3>Pilot results by organization</h3><div class="tbl"><table><thead><tr><th>Organization and code</th><th>Learners</th><th>Avg. progress</th><th>Finished core</th><th>Confidence start → end</th><th>Task minutes, median, start → end</th><th>AI errors caught</th><th>Surveys start / end</th></tr></thead><tbody>' +
@@ -163,7 +185,7 @@
     var cols = ["organization", "learner_ref", "survey", "confidence", "task_name", "task_minutes", "ai_errors_caught", "comment", "date"], ref = {}, n = 0;
     var lines = [cols.join(",")].concat(lastData.sv.map(function (s) {
       if (!ref[s.user_id]) ref[s.user_id] = "L" + (++n); // anonymized learner reference instead of a name
-      return [org[s.organization_id] || "", ref[s.user_id], s.kind, s.confidence, s.task_name, s.task_minutes, s.ai_errors_caught, s.comment, s.created_at.slice(0, 10)]
+      return [org[s.organization_id] || "Individual", ref[s.user_id], s.kind, s.confidence, s.task_name, s.task_minutes, s.ai_errors_caught, s.comment, s.created_at.slice(0, 10)]
         .map(function (v) { v = v == null ? "" : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(",");
     }));
     var a = document.createElement("a");
@@ -202,38 +224,86 @@
 
   function loadProfile() {
     if (!user) { profile = null; admin = false; orgName = ""; paintAcct(); AIW.onView(location.hash.slice(1)); return Promise.resolve(); }
-    return sb.from("profiles").select("*").eq("id", user.id).maybeSingle().then(function (res) {
+    function fetchProfile() { return sb.from("profiles").select("*").eq("id", user.id).maybeSingle(); }
+    return fetchProfile().then(function (res) {
+      if (res.data) return res;
+      // The database creates the profile at sign-up; this covers accounts made before that existed.
+      var name = (user.user_metadata && user.user_metadata.full_name) || (user.email || "").split("@")[0];
+      return sb.rpc("ensure_profile", { p_full_name: name }).then(fetchProfile);
+    }).then(function (res) {
       profile = res.data || null; admin = !!(profile && profile.role === "admin");
-      if (!profile) { paintAcct(); openModal(); return; }
-      return sb.rpc("my_org_name").then(function (o) { orgName = o.data || ""; paintAcct(); AIW.onView(location.hash.slice(1)); return pull(); });
+      return sb.rpc("my_org_name").then(function (o) { orgName = o.data || ""; });
+    }).then(function () {
+      paintAcct(); AIW.onView(location.hash.slice(1)); return pull();
     });
   }
 
   if (!ON) { paintAcct(); AIW.onView(location.hash.slice(1)); return; }
 
   import(CFG.supabaseLib || "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm").then(function (mod) {
-    sb = mod.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey, { auth: { persistSession: true, detectSessionInUrl: true } });
+    sb = mod.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
     paintAcct();
-    var started = false;
     sb.auth.onAuthStateChange(function (ev, session) {
       var u = session ? session.user : null, changed = (u && u.id) !== (user && user.id);
       user = u;
-      if (changed || !started) { started = true; setTimeout(loadProfile, 0); }
+      if (ev === "PASSWORD_RECOVERY") setTimeout(function () { openModal("reset"); }, 0);
+      if (changed || ev === "INITIAL_SESSION") setTimeout(loadProfile, 0);
     });
+    function busy(form, on) { var b = form.querySelector("button[type=submit]"); if (b) b.disabled = on; }
+    function friendly(err) {
+      var m = (err && err.message) || "Something went wrong. Please try again.";
+      if (/invalid login/i.test(m)) return "That email and password don't match. Check them, or use Forgot password.";
+      if (/email not confirmed/i.test(m)) return "Please confirm your email first: open the link we sent you, then sign in.";
+      if (/already registered/i.test(m)) return "There's already an account with that email. Sign in instead.";
+      return m;
+    }
+    var back = location.origin + location.pathname;
 
-    $("bkEmailForm").addEventListener("submit", function (e) {
-      e.preventDefault(); status($("bkMsg"), "Sending…");
-      var back = location.origin + location.pathname;
-      sb.auth.signInWithOtp({ email: $("bkEmail").value.trim(), options: { emailRedirectTo: back } }).then(function (res) {
-        if (res.error) return status($("bkMsg"), res.error.message, true);
-        status($("bkMsg"), ""); pane("sent");
+    $("bkInForm").addEventListener("submit", function (e) {
+      e.preventDefault(); var f = e.target; busy(f, true); status($("bkMsg"), "Signing in…");
+      sb.auth.signInWithPassword({ email: $("bkInEmail").value.trim(), password: $("bkInPass").value }).then(function (res) {
+        busy(f, false);
+        if (res.error) return status($("bkMsg"), friendly(res.error), true);
+        f.reset(); closeModal();
+      });
+    });
+    $("bkUpForm").addEventListener("submit", function (e) {
+      e.preventDefault(); var f = e.target; busy(f, true); status($("bkMsg"), "Creating your account…");
+      sb.auth.signUp({ email: $("bkUpEmail").value.trim(), password: $("bkUpPass").value,
+        options: { data: { full_name: $("bkUpName").value.trim() }, emailRedirectTo: back } }).then(function (res) {
+        busy(f, false);
+        if (res.error) return status($("bkMsg"), friendly(res.error), true);
+        if (res.data && res.data.user && res.data.user.identities && res.data.user.identities.length === 0) return status($("bkMsg"), friendly({ message: "already registered" }), true);
+        if (res.data && res.data.session) { f.reset(); closeModal(); return; }
+        $("bkSentTxt").textContent = "We sent a confirmation link to " + $("bkUpEmail").value.trim() + ". Open it, then sign in with your email and password.";
+        f.reset(); pane("sent");
+      });
+    });
+    $("bkFgForm").addEventListener("submit", function (e) {
+      e.preventDefault(); var f = e.target; busy(f, true);
+      sb.auth.resetPasswordForEmail($("bkFgEmail").value.trim(), { redirectTo: back }).then(function (res) {
+        busy(f, false);
+        if (res.error) return status($("bkMsg"), friendly(res.error), true);
+        $("bkSentTxt").textContent = "If there's an account for that email, a reset link is on its way. Open it on this device.";
+        pane("sent");
+      });
+    });
+    $("bkRsForm").addEventListener("submit", function (e) {
+      e.preventDefault(); var f = e.target; busy(f, true);
+      sb.auth.updateUser({ password: $("bkRsPass").value }).then(function (res) {
+        busy(f, false);
+        if (res.error) return status($("bkMsg"), friendly(res.error), true);
+        f.reset(); openModal(); status($("bkMsg"), "Password saved. You're signed in.");
       });
     });
     $("bkJoinForm").addEventListener("submit", function (e) {
       e.preventDefault(); status($("bkMsg"), "Joining…");
-      sb.rpc("join_pilot", { p_code: $("bkCode").value, p_full_name: $("bkName").value }).then(function (res) {
-        if (res.error) return status($("bkMsg"), res.error.message, true);
-        status($("bkMsg"), ""); closeModal(); loadProfile();
+      sb.auth.getSession().then(function (s) {
+        if (!s.data.session) return status($("bkMsg"), "Your session ended. Please sign in again.", true);
+        return sb.rpc("join_pilot", { p_code: $("bkCode").value, p_full_name: profile ? profile.full_name : "" }).then(function (res) {
+          if (res.error) return status($("bkMsg"), friendly(res.error), true);
+          $("bkCode").value = ""; loadProfile().then(function () { openModal(); status($("bkMsg"), "You've joined " + orgName + "."); });
+        });
       });
     });
     $("bkOut").addEventListener("click", function () {
