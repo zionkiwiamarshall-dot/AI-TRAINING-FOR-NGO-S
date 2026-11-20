@@ -4,6 +4,6 @@
 // supabase/schema.sql decide what each signed-in person can read and write.
 // Leave both empty and the site runs as before, saving progress only in the learner's browser.
 window.AIW_CONFIG = {
-  supabaseUrl: "https://ngcdaprvhptodfmugxah.supabase.co",
-  supabaseAnonKey: ""   // the long "anon public" key
+  supabaseUrl: "https://hgcdaprvhptodfmugxah.supabase.co",
+  supabaseAnonKey: "sb_publishable_dM6q5dGEY5Fh4uWi-A5VTA__yv6YVd7"   // publishable (public) key
 };
