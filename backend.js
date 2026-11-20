@@ -32,15 +32,22 @@
     '<label class="bk-check"><input type="checkbox" id="bkConsent" required> I agree that my name, email, course progress and survey answers are stored so my trainer can follow my learning. They are only ever shared as anonymized results.</label>' +
     '<button class="btn primary" type="submit">Create my account</button></form>' +
     '<p class="bk-links">Already have an account? <button class="bk-link" data-go-pane="signin">Sign in</button></p></div>' +
-    '<div data-pane="forgot" hidden><p>Enter your email and we\'ll send you a link to set a new password.</p><form id="bkFgForm">' +
+    '<div data-pane="forgot" hidden><p>Use the recovery code you saved when you created your account.</p><form id="bkFgForm">' +
     '<label>Email<input type="email" id="bkFgEmail" required autocomplete="email"></label>' +
-    '<button class="btn primary" type="submit">Send reset link</button></form>' +
+    '<label>Recovery code<input id="bkFgCode" required autocomplete="off" autocapitalize="characters" placeholder="XXXX-XXXX-XXXX-XXXX"></label>' +
+    '<label>New password (at least 8 characters)<input type="password" id="bkFgPass" required minlength="8" autocomplete="new-password"></label>' +
+    '<button class="btn primary" type="submit">Set new password</button></form>' +
+    '<p class="bk-sub">Lost your recovery code too? Ask your trainer to reset your password.</p>' +
     '<p class="bk-links"><button class="bk-link" data-go-pane="signin">Back to sign in</button></p></div>' +
     '<div data-pane="sent" hidden><p id="bkSentTxt"></p><p class="bk-links"><button class="bk-link" data-go-pane="signin">Back to sign in</button></p></div>' +
+    '<div data-pane="code" hidden><p>Save this recovery code somewhere safe: a photo, your notes app, or on paper. If you forget your password, you\'ll need it to set a new one. You won\'t see it again.</p>' +
+    '<p class="bk-codeval" id="bkCodeVal"></p><p class="bk-row"><button class="btn" id="bkCopy" type="button">Copy code</button></p>' +
+    '<label class="bk-check"><input type="checkbox" id="bkSaved"> I\'ve saved my recovery code</label>' +
+    '<button class="btn primary" id="bkCodeDone" type="button" disabled>Continue</button></div>' +
     '<div data-pane="reset" hidden><form id="bkRsForm"><label>New password (at least 8 characters)<input type="password" id="bkRsPass" required minlength="8" autocomplete="new-password"></label>' +
     '<button class="btn primary" type="submit">Save new password</button></form></div>' +
     '<div data-pane="account" hidden><p id="bkWho"></p><p class="bk-sub" id="bkSync">Your progress is saved to your account.</p>' +
-    '<div class="bk-row"><a class="btn" href="#surveys" id="bkToSurvey">Surveys</a><button class="btn" id="bkOut">Sign out</button></div>' +
+    '<div class="bk-row"><a class="btn" href="#surveys" id="bkToSurvey">Surveys</a><button class="btn" id="bkNewCode" type="button">New recovery code</button><button class="btn" id="bkOut">Sign out</button></div>' +
     '<details class="bk-code" id="bkCodeBox"><summary>Have a pilot code from your organization?</summary><form id="bkJoinForm">' +
     '<label>Pilot code<input id="bkCode" required maxlength="40" autocapitalize="characters"></label>' +
     '<button class="btn" type="submit">Join my organization</button></form></details>' +
@@ -48,7 +55,7 @@
     '<p class="bk-msg" id="bkMsg" aria-live="polite"></p></div>';
   document.body.appendChild(modal);
 
-  var TITLES = { signin: "Sign in", signup: "Create your account", forgot: "Reset your password", sent: "Check your email", reset: "Set a new password", account: "Your account" };
+  var TITLES = { signin: "Sign in", signup: "Create your account", forgot: "Reset your password", sent: "Check your email", code: "Your recovery code", reset: "Set a new password", account: "Your account" };
   function pane(name) {
     modal.querySelectorAll("[data-pane]").forEach(function (p) { p.hidden = p.dataset.pane !== name; });
     $("bkTitle").textContent = TITLES[name]; status($("bkMsg"), "");
@@ -64,6 +71,26 @@
     $("bkCodeBox").hidden = !!orgName;
   }
   function closeModal() { modal.hidden = true; }
+  var ALPH = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  function randomCode(groups) {
+    var a = new Uint32Array(groups * 4), out = []; crypto.getRandomValues(a);
+    for (var g = 0; g < groups; g++) { var t = ""; for (var i = 0; i < 4; i++) t += ALPH[a[g * 4 + i] % ALPH.length]; out.push(t); }
+    return out.join("-");
+  }
+  // Creates a fresh recovery code, stores its hash, and shows it once.
+  function issueCode(after) {
+    var code = randomCode(4);
+    return sb.rpc("set_recovery_code", { p_code: code.replace(/-/g, "") }).then(function (res) {
+      if (res.error) { status($("bkMsg"), "Couldn't create a recovery code: " + res.error.message, true); return; }
+      modal.hidden = false; pane("code"); $("bkCodeVal").textContent = code; $("bkSaved").checked = false; $("bkCodeDone").disabled = true;
+      $("bkCodeDone").onclick = function () { if (after) after(); else closeModal(); };
+    });
+  }
+  $("bkSaved").addEventListener("change", function () { $("bkCodeDone").disabled = !this.checked; });
+  $("bkCopy").addEventListener("click", function () {
+    var t = $("bkCodeVal").textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { status($("bkMsg"), "Copied."); }, function () { status($("bkMsg"), "Select the code and copy it by hand."); });
+  });
   $("bkClose").addEventListener("click", closeModal);
   modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeModal(); });
@@ -136,7 +163,8 @@
     var box = $("trainerBox");
     if (!admin) { box.innerHTML = '<p>This page is only for the course trainer.</p>'; return; }
     box.innerHTML = '<p class="bk-sub">Loading pilot data…</p>';
-    Promise.all([sb.from("organizations").select("*").order("created_at"), sb.from("profiles").select("*"), sb.from("progress").select("*"), sb.from("surveys").select("*")]).then(function (r) {
+    Promise.all([sb.from("organizations").select("*").order("created_at"), sb.from("profiles").select("*"), sb.from("progress").select("*"), sb.from("surveys").select("*"), sb.rpc("admin_user_emails")]).then(function (r) {
+      var emails = {}; (r[4].data || []).forEach(function (x) { emails[x.id] = x.email; }); r = r.slice(0, 4);
       var err = r.filter(function (x) { return x.error; })[0]; if (err) { box.innerHTML = '<p class="bk-msg bad">' + esc(err.error.message) + '</p>'; return; }
       var orgs = r[0].data, people = r[1].data.filter(function (p) { return p.role !== "admin"; }), prog = {}, sv = r[3].data;
       r[2].data.forEach(function (p) { prog[p.user_id] = p; });
@@ -156,7 +184,7 @@
       var lrn = people.map(function (p) {
         var s = AIW.summary(prog[p.id] ? prog[p.id].state : {}), o = orgs.filter(function (x) { return x.id === p.organization_id; })[0];
         var mine = sv.filter(function (x) { return x.user_id === p.id; }), kinds = mine.map(function (x) { return x.kind === "baseline" ? "start" : "end"; }).join(", ");
-        return '<tr><td>' + esc(p.full_name) + '</td><td>' + esc(o ? o.name : "Individual") + '</td><td class="num">' + s.pct + '%</td><td class="num">' + s.coreDone + '/' + s.coreTotal + '</td><td>' + (kinds || "none") + '</td><td>' + (prog[p.id] ? new Date(prog[p.id].updated_at).toLocaleDateString() : "–") + '</td></tr>';
+        return '<tr><td>' + esc(p.full_name) + (emails[p.id] ? '<br><small>' + esc(emails[p.id]) + '</small>' : '') + '</td><td>' + esc(o ? o.name : "Individual") + '</td><td class="num">' + s.pct + '%</td><td class="num">' + s.coreDone + '/' + s.coreTotal + '</td><td>' + (kinds || "none") + '</td><td>' + (prog[p.id] ? new Date(prog[p.id].updated_at).toLocaleDateString() : "–") + '</td><td><button class="btn small" data-reset-pw="' + p.id + '">Reset password</button><div class="bk-tmp" data-tmp="' + p.id + '"></div></td></tr>';
       }).join("");
       box.innerHTML =
         '<h3>Pilot results by organization</h3><div class="tbl"><table><thead><tr><th>Organization and code</th><th>Learners</th><th>Avg. progress</th><th>Finished core</th><th>Confidence start → end</th><th>Task minutes, median, start → end</th><th>AI errors caught</th><th>Surveys start / end</th></tr></thead><tbody>' +
@@ -165,10 +193,21 @@
         '<h3>Add a pilot organization</h3><form id="trOrg" class="card bk-form bk-grid"><label>Organization name<input name="name" required maxlength="120"></label>' +
         '<label>Pilot code to give its staff<input name="code" required maxlength="40" pattern="[A-Za-z0-9-]{4,40}" title="4 to 40 letters, numbers or dashes"></label>' +
         '<button class="btn primary" type="submit">Add organization</button> <span class="bk-msg" id="trMsg" aria-live="polite"></span></form>' +
-        '<h3>Learners</h3><div class="tbl"><table><thead><tr><th>Name</th><th>Organization</th><th>Progress</th><th>Core chapters passed</th><th>Surveys done</th><th>Last active</th></tr></thead><tbody>' +
-        (lrn || '<tr><td colspan="6">No learners have joined yet.</td></tr>') + '</tbody></table></div>' +
+        '<h3>Learners</h3><div class="tbl"><table><thead><tr><th>Name</th><th>Organization</th><th>Progress</th><th>Core chapters passed</th><th>Surveys done</th><th>Last active</th><th>Password</th></tr></thead><tbody>' +
+        (lrn || '<tr><td colspan="7">No learners have joined yet.</td></tr>') + '</tbody></table></div>' +
         '<p class="bk-sub">Names are shown here for you only. Share results outside the organization only as anonymized totals, as agreed with each NGO.</p>';
       $("trReload").onclick = renderTrainer;
+      box.querySelectorAll("[data-reset-pw]").forEach(function (btn) {
+        btn.onclick = function () {
+          var id = btn.dataset.resetPw, tmp = randomCode(3), out = box.querySelector('[data-tmp="' + id + '"]');
+          btn.disabled = true;
+          sb.rpc("admin_set_password", { p_user: id, p_new_password: tmp }).then(function (res) {
+            btn.disabled = false;
+            out.innerHTML = res.error ? '<span class="bk-msg bad">' + esc(res.error.message) + '</span>'
+              : 'Temporary password: <code>' + esc(tmp) + '</code><br><small>Give it to the learner privately. They can sign in, then make a new recovery code.</small>';
+          });
+        };
+      });
       $("trCsv").onclick = csv;
       $("trOrg").addEventListener("submit", function (e) {
         e.preventDefault(); var fm = e.target;
@@ -234,7 +273,9 @@
       profile = res.data || null; admin = !!(profile && profile.role === "admin");
       return sb.rpc("my_org_name").then(function (o) { orgName = o.data || ""; });
     }).then(function () {
-      paintAcct(); AIW.onView(location.hash.slice(1)); return pull();
+      paintAcct(); AIW.onView(location.hash.slice(1));
+      sb.rpc("has_recovery_code").then(function (h) { if (h.data === false) issueCode(); });
+      return pull();
     });
   }
 
@@ -280,12 +321,17 @@
       });
     });
     $("bkFgForm").addEventListener("submit", function (e) {
-      e.preventDefault(); var f = e.target; busy(f, true);
-      sb.auth.resetPasswordForEmail($("bkFgEmail").value.trim(), { redirectTo: back }).then(function (res) {
-        busy(f, false);
-        if (res.error) return status($("bkMsg"), friendly(res.error), true);
-        $("bkSentTxt").textContent = "If there's an account for that email, a reset link is on its way. Open it on this device.";
-        pane("sent");
+      e.preventDefault(); var f = e.target, email = $("bkFgEmail").value.trim(), pw = $("bkFgPass").value; busy(f, true);
+      sb.rpc("reset_password_with_code", { p_email: email, p_code: $("bkFgCode").value.replace(/[^A-Za-z0-9]/g, ""), p_new_password: pw }).then(function (res) {
+        if (res.error) { busy(f, false); return status($("bkMsg"), friendly(res.error), true); }
+        var r = res.data;
+        if (r !== "ok") { busy(f, false); return status($("bkMsg"), r === "locked" ? "Too many wrong tries. Wait 15 minutes, or ask your trainer." : r === "short" ? "Your new password needs at least 8 characters." : "That email and recovery code don't match.", true); }
+        // The old code is used up: sign in, and the site issues a fresh one automatically.
+        return sb.auth.signInWithPassword({ email: email, password: pw }).then(function (si) {
+          busy(f, false); f.reset();
+          if (si.error) return status($("bkMsg"), "Password changed. Please sign in.", false), pane("signin");
+          status($("bkMsg"), "");
+        });
       });
     });
     $("bkRsForm").addEventListener("submit", function (e) {
@@ -306,6 +352,7 @@
         });
       });
     });
+    $("bkNewCode").addEventListener("click", function () { issueCode(function () { openModal(); }); });
     $("bkOut").addEventListener("click", function () {
       push(); sb.auth.signOut().then(function () { AIW.clearLocal(); location.hash = "home"; location.reload(); });
     });

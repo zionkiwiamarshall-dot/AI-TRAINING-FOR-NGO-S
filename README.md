@@ -18,7 +18,7 @@ Plain HTML, CSS and JavaScript. No build step. Hosted with GitHub Pages from the
 ## Setting up Supabase (about 15 minutes)
 
 1. **Create a project** at supabase.com (free plan). Pick the region closest to Tanzania that's offered.
-2. **Create the tables.** In the dashboard, open SQL Editor → New query, check the dropdown next to Save says **Database** (not Logs), paste all of `supabase/schema.sql`, and click Run. Projects set up before individual sign-up existed also need `supabase/2-individual-signup.sql` run once.
+2. **Create the tables.** In the dashboard, open SQL Editor → New query, check the dropdown next to Save says **Database** (not Logs), paste all of `supabase/schema.sql`, and click Run. Projects set up before these features existed also need `supabase/2-individual-signup.sql` and then `supabase/3-recovery-codes.sql`, each run once.
 3. **Set the sign-in redirect.** Authentication → URL Configuration:
    - Site URL: your GitHub Pages address, e.g. `https://zionkiwiamarshall-dot.github.io/ai-training-for-ngo-s/`
    - Redirect URLs: add the same address.
@@ -34,6 +34,13 @@ Plain HTML, CSS and JavaScript. No build step. Hosted with GitHub Pages from the
 ### Email limits
 
 Supabase's built-in email sender is only for testing and allows very few sign-in emails per hour. While testing, you can turn off Authentication → Sign In / Providers → Email → **Confirm email**, so new accounts can sign in straight away. Before a pilot session where 15 people sign up at once, set up your own SMTP under Authentication → Emails → SMTP Settings (Resend, Brevo or your Gmail with an app password all work).
+
+## Forgotten passwords (no email needed)
+
+- At sign-up every learner is shown a one-time **recovery code** (e.g. `XKJ5-HSZN-VLVP-TUMB`) to save. Only a scrambled hash is stored.
+- **Forgot password?** asks for email + recovery code + new password. The code works once; a new one is shown right after. Five wrong tries lock recovery for 15 minutes.
+- A learner who lost both can ask the trainer: **Trainer dashboard → Learners → Reset password** shows a temporary password to pass on privately.
+- Learners can make a new code any time from their account window.
 
 ## Data protection
 
