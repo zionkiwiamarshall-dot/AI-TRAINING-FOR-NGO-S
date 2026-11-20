@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI at Work for NGO Teams · Learn</title>
-<meta name="description" content="A self-paced course for NGO and SACCO staff: use AI tools safely on real work. Lessons, worked examples, quizzes and tools.">
+<meta name="description" content="A self-paced course for NGO staff: use AI tools safely on real work. Lessons, worked examples, quizzes and tools.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -345,6 +345,39 @@ ol.sources li{margin:4px 0}
 }
 .short{display:none}
 @media (max-width:480px){.brand .full,#answersBtn .full{display:none}#answersBtn .short{display:inline}.hero .inner{padding:26px 20px}}
+/* account, surveys and trainer dashboard (backend.js) */
+#acctBtn[hidden],#tocTrainer[hidden]{display:none!important}
+.bk-form [hidden]{display:none!important}
+.bk-form textarea{display:block;width:100%;margin-top:4px;min-height:80px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg)}
+.bk-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:60;display:flex;align-items:center;justify-content:center;padding:16px}
+.bk-modal[hidden]{display:none}
+.bk-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 16px;width:min(460px,100%);position:relative;max-height:90vh;overflow:auto;border-top:6px solid var(--brand-1)}
+.bk-card .btn{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.bk-card .btn.primary{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.bk-x{position:absolute;top:12px;right:12px}
+.bk-card label,.bk-form label{display:block;margin:10px 0;font-weight:600}
+.bk-card input:not([type=checkbox]):not([type=radio]),.bk-form input:not([type=checkbox]):not([type=radio]){display:block;width:100%;margin-top:4px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);font:inherit;color:inherit}
+.bk-check{font-weight:400!important;font-size:.92rem;display:flex!important;gap:8px;align-items:flex-start}
+.bk-check input{margin-top:4px}
+.bk-msg{font-size:.92rem;color:var(--brand-1);font-weight:600}
+.bk-msg.bad{color:var(--risk-r)}
+.bk-sub{color:var(--muted,#666);font-size:.9rem}
+.bk-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.bk-form fieldset{border:0;padding:0;margin:0 0 14px}
+.bk-form legend{font-weight:700;margin-bottom:6px}
+.bk-inline{display:flex!important;gap:8px;font-weight:400!important;margin:4px 0!important}
+.bk-scale{display:flex;gap:8px}
+.bk-scale label{margin:0!important;position:relative}
+.bk-scale input{position:absolute;opacity:0}
+.bk-scale span{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-weight:700}
+.bk-scale input:checked+span{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.bk-scale input:focus-visible+span{outline:2px solid var(--brand-4);outline-offset:2px}
+.bk-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.bk-grid label{margin:0}
+@media (max-width:700px){.bk-grid{grid-template-columns:1fr}}
+.tbl{overflow-x:auto;margin:10px 0 18px}
+.tbl td code{font-size:.85rem}
+#trainer h3{margin-top:26px}
 </style>
 </head>
 <body>
@@ -371,6 +404,7 @@ ol.sources li{margin:4px 0}
   </div>
   <div class="spacer"></div>
   <div class="xp"><span class="lbl">Points</span> <b class="num" id="xpVal">0</b></div>
+  <button class="btn" id="acctBtn" hidden><span class="full">Sign in</span><span class="short">Sign in</span></button>
   <button class="btn primary" id="answersBtn" aria-controls="drawer"><span class="full">Answer sheet</span><span class="short">Answers</span></button>
 </header>
 
@@ -401,6 +435,9 @@ ol.sources li{margin:4px 0}
     <li><a href="#worksheets" data-k=""><span class="tick">W</span>Worksheets</a></li>
     <li><a href="#achievements" data-k=""><span class="tick">A</span>Achievements</a></li>
     <li><a href="#glossary" data-k=""><span class="tick">G</span>Glossary and sources</a></li>
+    <li class="grp">Pilot</li>
+    <li><a href="#surveys" data-k=""><span class="tick">P</span>Pilot surveys</a></li>
+    <li id="tocTrainer" hidden><a href="#trainer" data-k=""><span class="tick">D</span>Trainer dashboard</a></li>
   </ul>
 </nav>
 
@@ -413,7 +450,7 @@ ol.sources li{margin:4px 0}
     <div class="inner">
       <div class="eyebrow" id="homeGreet">Your learning dashboard</div>
       <h1>Learn to use AI safely at work</h1>
-      <p>A self-paced course for NGO and SACCO staff in Tanzania and East Africa. Short chapters, real examples, quizzes and tools you can use on Monday.</p>
+      <p>A self-paced course for NGO staff in Tanzania and East Africa. Short chapters, real examples, quizzes and tools you can use on Monday.</p>
       <div class="row"><a class="btn" id="continueBtn" href="#whatis">Start learning</a><a class="btn ghost" href="#sectors">Find your sector</a></div>
       <div class="facts"><span><b class="num" id="hPct">0%</b>complete</span><span><b class="num" id="hQuiz">0/14</b>quizzes done</span><span><b class="num" id="hXp">0</b>points</span><span><b class="num" id="hBadge">0/8</b>badges</span></div>
     </div>
@@ -1224,6 +1261,17 @@ ol.sources li{margin:4px 0}
     <li><a href="https://eprints.whiterose.ac.uk/id/eprint/230962">Wen et al. (2025): LLMs for thematic analysis in the charity sector</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12412986/">Jowsey et al. (2025): GenAI thematic analysis appraisal</a></li>
   </ol>
 </section>
+<section class="chapter view" id="surveys" aria-labelledby="sv-h" hidden>
+  <div class="kicker">Pilot</div>
+  <h2 id="sv-h">Pilot surveys</h2>
+  <p class="lede">Two short surveys: one before session 1 and one after session 4. They show your organization how much time and confidence the course gave your team. Results are shared outside your organization only as anonymized totals.</p>
+  <div id="surveyBox"></div>
+</section>
+<section class="chapter view" id="trainer" aria-labelledby="tr-h" hidden style="max-width:1100px">
+  <div class="kicker">Trainer only</div>
+  <h2 id="tr-h">Trainer dashboard</h2>
+  <div id="trainerBox"></div>
+</section>
 </main>
 </div>
 
@@ -1240,7 +1288,7 @@ ol.sources li{margin:4px 0}
 var KEY="aiwork-ngo-v1";
 var S={answers:{},games:{},notes:{},checks:{}};
 try{var raw=localStorage.getItem(KEY);if(raw){var p=JSON.parse(raw);S.answers=p.answers||{};S.games=p.games||{};S.notes=p.notes||{};S.checks=p.checks||{};S.last=p.last;S.seen=p.seen||{};}}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.AIW&&AIW.onSave)AIW.onSave();}
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
 var L=["A","B","C","D"];
@@ -1675,8 +1723,8 @@ document.querySelectorAll("[data-strip]").forEach(function(el){el.outerHTML=stri
 document.querySelectorAll(".quiz[data-quiz]").forEach(function(el){if(!el.closest("#sector-panel"))renderQuiz(el,el.dataset.quiz);});
 
 /* ---------- dashboard and one-chapter-at-a-time navigation ---------- */
-var VIEWS=["home","whatis","welcome","requirements","ch1","ch2","ch3","ch4","sectors","functions","templates","safety","worksheets","achievements","glossary"];
-var VT={home:"Dashboard",whatis:"What is AI?",welcome:"Welcome and the team",requirements:"Requirements",ch1:"Chapter 1: Understanding AI",ch2:"Chapter 2: Prompting",ch3:"Chapter 3: Checking and protecting",ch4:"Chapter 4: Your new workflow",sectors:"Chapter 5: AI across NGO sectors",functions:"Chapter 6: AI by job role",templates:"Template library",safety:"Safety and data rules",worksheets:"Worksheets",achievements:"Achievements",glossary:"Glossary and sources"};
+var VIEWS=["home","whatis","welcome","requirements","ch1","ch2","ch3","ch4","sectors","functions","templates","safety","worksheets","achievements","glossary","surveys"];
+var VT={home:"Dashboard",whatis:"What is AI?",welcome:"Welcome and the team",requirements:"Requirements",ch1:"Chapter 1: Understanding AI",ch2:"Chapter 2: Prompting",ch3:"Chapter 3: Checking and protecting",ch4:"Chapter 4: Your new workflow",sectors:"Chapter 5: AI across NGO sectors",functions:"Chapter 6: AI by job role",templates:"Template library",safety:"Safety and data rules",worksheets:"Worksheets",achievements:"Achievements",glossary:"Glossary and sources",surveys:"Pilot surveys",trainer:"Trainer dashboard"};
 var CORE=[["ch1","Understanding AI","How AI writes, where it fails, hallucinations","20 min"],["ch2","Prompting for NGO tasks","The four-part prompt and Prompt Builder","30 min"],["ch3","Checking and protecting","Data traffic light, four checks, two games","35 min"],["ch4","Your new workflow","Redesign a task and measure the time saved","25 min"]];
 function statusOf(k){var s=quizStats(k);if(s.ans===s.n)return passed(k)?["done","Badge earned"]:["prog","Retry for badge"];if(s.ans)return ["prog",s.ans+"/"+s.n+" answered"];return (S.seen&&S.seen[k])?["prog","In progress"]:["","Not started"];}
 function nextCore(){for(var i=0;i<CORE.length;i++){if(!passed(CORE[i][0]))return CORE[i][0];}return "sectors";}
@@ -1697,18 +1745,30 @@ function renderHome(){
 document.addEventListener("click",function(e){var g=e.target.closest("[data-go]");if(g){try{sessionStorage.setItem("aiwork-sector",g.dataset.go);}catch(_){}renderSector(g.dataset.go);}});
 function pager(v){var i=VIEWS.indexOf(v),h='<div class="pager">';if(i>0)h+='<a href="#'+VIEWS[i-1]+'"><small>Previous</small><b>'+VT[VIEWS[i-1]]+'</b></a>';if(i<VIEWS.length-1)h+='<a class="nx" href="#'+VIEWS[i+1]+'"><small>Next</small><b>'+VT[VIEWS[i+1]]+'</b></a>';return h+'</div>';}
 function show(v){
-  if(VIEWS.indexOf(v)<0)v="home";
+  if(VIEWS.indexOf(v)<0&&v!=="trainer")v="home";
   document.querySelectorAll(".view").forEach(function(el){el.hidden=el.id!==v;});
   document.querySelectorAll(".pager").forEach(function(p){p.remove();});
-  if(v!=="home"){var el=$(v);el.insertAdjacentHTML("beforeend",pager(v));S.last=v;S.seen=S.seen||{};S.seen[v]=1;save();}
+  if(v==="trainer"){}else if(v!=="home"){var el=$(v);el.insertAdjacentHTML("beforeend",pager(v));S.last=v;S.seen=S.seen||{};S.seen[v]=1;save();}
   else renderHome();
   document.querySelectorAll("#toc a").forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+v);});
   document.title=(v==="home"?"":VT[v]+" · ")+"AI at Work for NGO Teams";
   window.scrollTo(0,0);
+  if(window.AIW&&AIW.onView)AIW.onView(v);
 }
 window.addEventListener("hashchange",function(){show(location.hash.slice(1));});
+/* ---------- hooks for backend.js (Supabase) ---------- */
+window.AIW={
+  getState:function(){return JSON.parse(JSON.stringify(S));},
+  writeLocal:function(st){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}},
+  clearLocal:function(){try{localStorage.removeItem(KEY);}catch(e){}},
+  summary:function(st){var keep=S.answers;S.answers=(st&&st.answers)||{};
+    var all=Object.keys(Q),done=all.filter(function(k){var s=quizStats(k);return s.ans===s.n;}).length,core=CORE.filter(function(c){return passed(c[0]);}).length;
+    S.answers=keep;return {pct:Math.round(done/all.length*100),quizzesDone:done,quizzesTotal:all.length,coreDone:core,coreTotal:CORE.length};}
+};
 buildPrompt();renderTL();calc();refreshAll();show(location.hash.slice(1));
 })();
 </script>
+<script src="config.js"></script>
+<script src="backend.js"></script>
 </body>
 </html>
