@@ -1,6 +1,6 @@
 # AI at Work for NGO Teams
 
-A self-paced learning website for NGO staff in Tanzania and East Africa: how to use AI tools safely on real work.
+A self-paced learning website for NGO staff anywhere in the world: how to use AI tools safely on real work.
 
 - `index.html`: the whole course. It opens on a learning dashboard (progress, next chapter, sector and toolkit cards) and shows one chapter at a time with Previous and Next links.
 - `config.js`: your Supabase project URL and public key. Leave it empty to run without accounts.
@@ -17,7 +17,7 @@ Plain HTML, CSS and JavaScript. No build step. Hosted with GitHub Pages from the
 
 ## Setting up Supabase (about 15 minutes)
 
-1. **Create a project** at supabase.com (free plan). Pick the region closest to Tanzania that's offered.
+1. **Create a project** at supabase.com (free plan). Pick the region closest to most of your learners.
 2. **Create the tables.** In the dashboard, open SQL Editor → New query, check the dropdown next to Save says **Database** (not Logs), paste all of `supabase/schema.sql`, and click Run. Projects set up before these features existed also need `supabase/2-individual-signup.sql` and then `supabase/3-recovery-codes.sql`, each run once.
 3. **Set the sign-in redirect.** Authentication → URL Configuration:
    - Site URL: your GitHub Pages address, e.g. `https://zionkiwiamarshall-dot.github.io/ai-training-for-ngo-s/`

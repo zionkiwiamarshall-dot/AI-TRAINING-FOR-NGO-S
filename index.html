@@ -9,35 +9,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* Layout: professional field guide. Black masthead with a diagonal ribbon in Tanzania's flag colours (green, yellow, black, blue).
+/* Layout: professional field guide. Navy masthead with an abstract shape motif in a neutral palette (teal, orange, indigo).
    Left rail = chapters + progress; centre = lessons with worked examples; right drawer = answer sheet.
    To make a location-neutral edition, change only the five brand tokens below. */
 :root{
-  --brand-1:#1EB53A; --brand-2:#FCD116; --brand-3:#0d0d0d; --brand-4:#00A3DD;
-  --g-ink:#14822f; --b-ink:#00739c;
-  --bg:#f6f7f5; --surface:#ffffff; --ink:#141a16; --muted:#58625b; --line:#dfe4e0;
-  --g-soft:#e7f6eb; --b-soft:#e2f3fa; --y-soft:#fff6cc;
+  --brand-1:#14B8A6; --brand-2:#FB923C; --brand-3:#0F172A; --brand-4:#6366F1;
+  --g-ink:#0F766E; --b-ink:#4338CA;
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#141821; --muted:#5a6170; --line:#e2e5eb;
+  --g-soft:#e6f7f5; --b-soft:#eef0fe; --y-soft:#fff1e6;
   --risk-r:#c4302b; --risk-r-soft:#fbe6e4; --risk-a:#a86b00; --risk-a-soft:#fdf0d5; --risk-g:#14822f; --risk-g-soft:#e7f6eb;
   --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --body:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
-  --radius:10px; --wall:#eef2ee; --floor:#dfe5df; --sky:#cdeefb; color-scheme:light;
+  --radius:10px; --wall:#eef0f4; --floor:#dfe3ea; --sky:#dcebfb; color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --g-ink:#55d97a; --b-ink:#4cc6f2;
-    --bg:#0d110f; --surface:#151b17; --ink:#e8eee9; --muted:#a1aca4; --line:#29322c;
-    --g-soft:#14291a; --b-soft:#0f2630; --y-soft:#2e2a10;
+    --g-ink:#2dd4bf; --b-ink:#a5b4fc;
+    --bg:#0e1117; --surface:#161a22; --ink:#e8eaf0; --muted:#a3a9b6; --line:#2a2f3a;
+    --g-soft:#10272a; --b-soft:#1a1c3a; --y-soft:#33200f;
     --risk-r:#f07d75; --risk-r-soft:#3a1b19; --risk-a:#f0b64a; --risk-a-soft:#352812; --risk-g:#55d97a; --risk-g-soft:#14291a;
-    --wall:#1b2420; --floor:#141b17; --sky:#173847;
+    --wall:#1c212b; --floor:#151922; --sky:#1b2a40;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --g-ink:#55d97a; --b-ink:#4cc6f2;
-  --bg:#0d110f; --surface:#151b17; --ink:#e8eee9; --muted:#a1aca4; --line:#29322c;
-  --g-soft:#14291a; --b-soft:#0f2630; --y-soft:#2e2a10;
+  --g-ink:#2dd4bf; --b-ink:#a5b4fc;
+  --bg:#0e1117; --surface:#161a22; --ink:#e8eaf0; --muted:#a3a9b6; --line:#2a2f3a;
+  --g-soft:#10272a; --b-soft:#1a1c3a; --y-soft:#33200f;
   --risk-r:#f07d75; --risk-r-soft:#3a1b19; --risk-a:#f0b64a; --risk-a-soft:#352812; --risk-g:#55d97a; --risk-g-soft:#14291a;
-  --wall:#1b2420; --floor:#141b17; --sky:#173847;
+  --wall:#1c212b; --floor:#151922; --sky:#1b2a40;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -65,7 +65,7 @@ svg text{font-family:var(--body)}
 .strip .frame svg{display:block;width:100%;height:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .strip .plab{display:flex;align-items:center;gap:8px;padding:8px 10px;font-family:var(--display);font-weight:700;font-size:.92rem}
 .strip .plab span{width:22px;height:22px;border-radius:50%;background:#0d0d0d;color:var(--brand-2);display:grid;place-items:center;font-size:.75rem}
-.strip .frame:nth-child(3) .plab span{background:var(--brand-1);color:#08210f}
+.strip .frame:nth-child(3) .plab span{background:var(--brand-1);color:#042F2E}
 .strip .frame p{margin:0;padding:8px 10px 10px;font-size:.88rem;color:var(--muted);line-height:1.45}
 @media (max-width:720px){.strip{grid-template-columns:1fr}}
 .person .av svg,.who .av svg{width:100%;height:100%;display:block}
@@ -110,7 +110,7 @@ svg text{font-family:var(--body)}
 .keypoints h4{color:var(--brand-2)}.keypoints li::marker{color:var(--brand-1)}
 /* masthead */
 .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0d0d0d;color:#f4f4f4}
-.topbar::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:5px;background:linear-gradient(90deg,var(--brand-1) 0 38%,var(--brand-2) 38% 42%,#0d0d0d 42% 58%,var(--brand-2) 58% 62%,var(--brand-4) 62% 100%)}
+.topbar::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:5px;background:linear-gradient(90deg,var(--brand-1),var(--brand-4) 60%,var(--brand-2))}
 .brand{font-family:var(--display);font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:10px;white-space:nowrap}
 .mark{width:26px;height:26px;flex:none}
 .topbar .spacer{flex:1}
@@ -118,7 +118,7 @@ svg text{font-family:var(--body)}
 .xp b{color:var(--brand-2)}
 .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 13px;cursor:pointer;font-weight:600;font-size:.92rem;text-decoration:none}
 .btn:hover{border-color:var(--brand-1)}
-.btn.primary{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.btn.primary{background:var(--brand-1);border-color:var(--brand-1);color:#042F2E}
 .btn.small{padding:4px 10px;font-size:.85rem}
 .topbar .btn{background:transparent;color:#f4f4f4;border-color:#444}
 .topbar .btn.primary{background:var(--brand-2);border-color:var(--brand-2);color:#0d0d0d}
@@ -134,7 +134,7 @@ nav.rail{position:sticky;top:62px;align-self:start;height:calc(100vh - 62px);ove
 .toc a{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:7px;text-decoration:none;color:var(--ink);font-size:.95rem}
 .toc a:hover{background:var(--g-soft)}
 .toc .tick{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.7rem;font-weight:700;color:var(--muted)}
-.toc .done .tick{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.toc .done .tick{background:var(--brand-1);border-color:var(--brand-1);color:#042F2E}
 .toc .grp{font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:14px 8px 4px;font-weight:700}
 
 main{padding:30px clamp(16px,4vw,56px) 120px;min-width:0}
@@ -361,7 +361,7 @@ ol.sources li{margin:4px 0}
 .bk-modal[hidden]{display:none}
 .bk-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 16px;width:min(460px,100%);position:relative;max-height:90vh;overflow:auto;border-top:6px solid var(--brand-1)}
 .bk-card .btn{background:var(--surface);color:var(--ink);border-color:var(--line)}
-.bk-card .btn.primary{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.bk-card .btn.primary{background:var(--brand-1);border-color:var(--brand-1);color:#042F2E}
 .bk-x{position:absolute;top:12px;right:12px}
 .bk-card label,.bk-form label{display:block;margin:10px 0;font-weight:600}
 .bk-card input:not([type=checkbox]):not([type=radio]),.bk-form input:not([type=checkbox]):not([type=radio]){display:block;width:100%;margin-top:4px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);font:inherit;color:inherit}
@@ -378,7 +378,7 @@ ol.sources li{margin:4px 0}
 .bk-scale label{margin:0!important;position:relative}
 .bk-scale input{position:absolute;opacity:0}
 .bk-scale span{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-weight:700}
-.bk-scale input:checked+span{background:var(--brand-1);border-color:var(--brand-1);color:#08210f}
+.bk-scale input:checked+span{background:var(--brand-1);border-color:var(--brand-1);color:#042F2E}
 .bk-scale input:focus-visible+span{outline:2px solid var(--brand-4);outline-offset:2px}
 .bk-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
 .bk-grid label{margin:0}
@@ -393,12 +393,12 @@ ol.sources li{margin:4px 0}
   <defs>
     <!-- sector icons -->
     <symbol id="i-health" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f1"/><path d="M24 37s-12-7-12-15a6.5 6.5 0 0 1 12-3.5A6.5 6.5 0 0 1 36 22c0 8-12 15-12 15z" fill="#fff"/><path d="M22 20h4v3h3v4h-3v3h-4v-3h-3v-4h3z" class="f1"/></symbol>
-    <symbol id="i-education" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><path d="M10 15c5-2 10-2 14 1v19c-4-3-9-3-14-1z" fill="#fff"/><path d="M38 15c-5-2-10-2-14 1v19c4-3 9-3 14-1z" fill="#e6f6fc"/><path d="M28 20h6M28 24h6M28 28h4" stroke="#00A3DD" stroke-width="1.6"/></symbol>
-    <symbol id="i-agri" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f1"/><path d="M24 38V22" stroke="#fff" stroke-width="2.4"/><path d="M24 25c-7 0-11-4-11-10 7 0 11 4 11 10zM24 22c0-7 4-11 11-11 0 7-4 11-11 11z" fill="#FCD116"/><path d="M12 38h24" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
-    <symbol id="i-human" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" fill="#0d0d0d"/><path d="M24 10 9 36h30z" class="f4"/><path d="M24 22l-6 14h12z" fill="#0d0d0d"/><path d="M24 10v-2" stroke="#FCD116" stroke-width="2"/><path d="M6 37h36" stroke="#FCD116" stroke-width="2"/></symbol>
-    <symbol id="i-env" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><circle cx="34" cy="14" r="5" fill="#FCD116"/><path d="M18 12c-6 5-8 12-5 17h10c3-5 1-12-5-17z" class="f1"/><path d="M18 26v12" stroke="#0d0d0d" stroke-width="2.4"/><path d="M8 38h32" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
-    <symbol id="i-wash" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><path d="M24 8s-11 13-11 20a11 11 0 0 0 22 0c0-7-11-20-11-20z" fill="#fff"/><path d="M18 29a6 6 0 0 0 6 6" stroke="#00A3DD" stroke-width="2" fill="none"/></symbol>
-    <symbol id="i-liveli" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f2"/><ellipse cx="20" cy="33" rx="9" ry="3.5" fill="#0d0d0d"/><rect x="11" y="24" width="18" height="9" fill="#0d0d0d"/><ellipse cx="20" cy="24" rx="9" ry="3.5" fill="#1EB53A"/><ellipse cx="32" cy="22" rx="7" ry="3" fill="#0d0d0d"/><rect x="25" y="14" width="14" height="8" fill="#0d0d0d"/><ellipse cx="32" cy="14" rx="7" ry="3" fill="#00A3DD"/></symbol>
+    <symbol id="i-education" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><path d="M10 15c5-2 10-2 14 1v19c-4-3-9-3-14-1z" fill="#fff"/><path d="M38 15c-5-2-10-2-14 1v19c4-3 9-3 14-1z" fill="#e6f6fc"/><path d="M28 20h6M28 24h6M28 28h4" stroke="#6366F1" stroke-width="1.6"/></symbol>
+    <symbol id="i-agri" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f1"/><path d="M24 38V22" stroke="#fff" stroke-width="2.4"/><path d="M24 25c-7 0-11-4-11-10 7 0 11 4 11 10zM24 22c0-7 4-11 11-11 0 7-4 11-11 11z" fill="#FB923C"/><path d="M12 38h24" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-human" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" fill="#0d0d0d"/><path d="M24 10 9 36h30z" class="f4"/><path d="M24 22l-6 14h12z" fill="#0d0d0d"/><path d="M24 10v-2" stroke="#FB923C" stroke-width="2"/><path d="M6 37h36" stroke="#FB923C" stroke-width="2"/></symbol>
+    <symbol id="i-env" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><circle cx="34" cy="14" r="5" fill="#FB923C"/><path d="M18 12c-6 5-8 12-5 17h10c3-5 1-12-5-17z" class="f1"/><path d="M18 26v12" stroke="#0d0d0d" stroke-width="2.4"/><path d="M8 38h32" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-wash" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f4"/><path d="M24 8s-11 13-11 20a11 11 0 0 0 22 0c0-7-11-20-11-20z" fill="#fff"/><path d="M18 29a6 6 0 0 0 6 6" stroke="#6366F1" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-liveli" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f2"/><ellipse cx="20" cy="33" rx="9" ry="3.5" fill="#0d0d0d"/><rect x="11" y="24" width="18" height="9" fill="#0d0d0d"/><ellipse cx="20" cy="24" rx="9" ry="3.5" fill="#14B8A6"/><ellipse cx="32" cy="22" rx="7" ry="3" fill="#0d0d0d"/><rect x="25" y="14" width="14" height="8" fill="#0d0d0d"/><ellipse cx="32" cy="14" rx="7" ry="3" fill="#6366F1"/></symbol>
     <symbol id="i-protect" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" fill="#0d0d0d"/><path d="M24 8 11 13v10c0 9 6 15 13 18 7-3 13-9 13-18V13z" class="f1"/><path d="M18 24l4 4 8-9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-gov" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="12" class="f2"/><path d="M24 9 9 17h30z" fill="#0d0d0d"/><path d="M13 19v14M20 19v14M28 19v14M35 19v14" stroke="#0d0d0d" stroke-width="3"/><path d="M9 36h30" stroke="#0d0d0d" stroke-width="3"/></symbol>
   </defs>
@@ -407,7 +407,7 @@ ol.sources li{margin:4px 0}
 <header class="topbar">
   <button class="btn menu-btn" id="menuBtn" aria-label="Open chapter list">Chapters</button>
   <div class="brand">
-    <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="6" fill="#1EB53A"/><path d="M26 0v26H0z" fill="#00A3DD"/><path d="M-2 23 23-2l5 5L3 28z" fill="#FCD116"/><path d="M0 24 24 0l2 2L2 26z" fill="#0d0d0d"/></svg>
+    <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#14B8A6"/><circle cx="12" cy="14" r="7" fill="#0F172A"/><circle cx="12" cy="14" r="3.2" fill="#6366F1"/><circle cx="19" cy="7" r="3" fill="#FB923C"/></svg>
     <a href="#home" style="color:inherit;text-decoration:none">AI at Work <span class="full">for NGO Teams</span></a>
   </div>
   <div class="spacer"></div>
@@ -452,13 +452,12 @@ ol.sources li{margin:4px 0}
 <main id="main">
 <div class="view" id="home">
   <div class="hero">
-    <svg class="ribbon" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-      <path d="M140 0h260v400z" fill="#1EB53A"/><path d="M400 130V400H180z" fill="#00A3DD"/><path d="M170 0h70L400 245v70z" fill="#FCD116"/><path d="M200 0h40L400 255v30z" fill="#0d0d0d"/><path d="M140 0h30L400 345v55z" fill="#0d0d0d"/>
+    <svg class="ribbon" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><circle cx="330" cy="60" r="170" fill="#14B8A6"/><circle cx="400" cy="330" r="150" fill="#6366F1"/><circle cx="215" cy="250" r="62" fill="#FB923C"/><circle cx="300" cy="190" r="34" fill="#0F172A"/>
     </svg>
     <div class="inner">
       <div class="eyebrow" id="homeGreet">Your learning dashboard</div>
       <h1>Learn to use AI safely at work</h1>
-      <p>A self-paced course for NGO staff in Tanzania and East Africa. Short chapters, real examples, quizzes and tools you can use on Monday.</p>
+      <p>A self-paced course for NGO staff anywhere in the world. Short chapters, real examples, quizzes and tools you can use on Monday.</p>
       <div class="row"><a class="btn" id="continueBtn" href="#whatis">Start learning</a><a class="btn ghost" href="#sectors">Find your sector</a></div>
       <div class="facts"><span><b class="num" id="hPct">0%</b>complete</span><span><b class="num" id="hQuiz">0/14</b>quizzes done</span><span><b class="num" id="hXp">0</b>points</span><span><b class="num" id="hBadge">0/8</b>badges</span></div>
     </div>
@@ -466,7 +465,7 @@ ol.sources li{margin:4px 0}
   <section class="chapter" style="max-width:980px">
     <div class="kicker">Start here</div>
     <h2>New to AI? Begin with the basics</h2>
-    <a class="dcard wide" href="#whatis" style="margin-bottom:40px"><span class="dnum">AI</span><span><b>What is AI, and how did it change the world?</b><small>A plain definition, 70 years of history, the money behind AI, and how Klarna, Safaricom, CRDB and NMB use it · 20 min</small></span></a>
+    <a class="dcard wide" href="#whatis" style="margin-bottom:40px"><span class="dnum">AI</span><span><b>What is AI, and how did it change the world?</b><small>A plain definition, 70 years of history, the money behind AI, and how Klarna, Safaricom and an Indian WhatsApp assistant use it · 20 min</small></span></a>
     <div class="kicker">Core course</div>
     <h2>Your four chapters</h2>
     <p class="lede">Work through them in order. Each ends with a quiz; score 80% or more to earn its badge.</p>
@@ -496,7 +495,7 @@ ol.sources li{margin:4px 0}
 <section class="chapter view" id="whatis" aria-labelledby="wia-h">
   <div class="kicker">Start here · Before Chapter 1</div>
   <h2 id="wia-h">What is AI, and how did it change the world?</h2>
-  <p class="lede">Before you use AI at work, it helps to know what it is, where it came from, how much money is behind it, and how real organizations already use it, including banks and telecoms in Tanzania and Kenya.</p>
+  <p class="lede">Before you use AI at work, it helps to know what it is, where it came from, how much money is behind it, and how real organizations already use it, with examples from Europe, Kenya, India and the USA.</p>
   <div class="objectives wia-box"><h4>In this chapter you will learn</h4><ul><li>A plain definition of AI, machine learning and generative AI</li><li>Seventy years of AI history, from a 1950 question to a billion weekly users</li><li>How big the AI economy has become, in spending and company value</li><li>How businesses in Africa and around the world already use AI, and what went wrong for some</li></ul></div>
 
   <h3>1. A plain definition</h3>
@@ -516,7 +515,7 @@ ol.sources li{margin:4px 0}
           <text x="128" y="100" font-size="16">Machine learning</text>
           <text x="214" y="140" font-size="15">Deep learning</text>
         </g>
-        <text x="358" y="186" font-size="14" font-weight="800" fill="#FCD116" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif">Generative AI</text>
+        <text x="358" y="186" font-size="14" font-weight="800" fill="#FB923C" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif">Generative AI</text>
         <text x="358" y="204" font-size="11" fill="#f4f4f4" text-anchor="middle">ChatGPT, Claude, Gemini</text>
         <g font-size="13" class="fi">
           <text x="520" y="60" font-weight="700">AI</text><text x="520" y="78" class="fm">Any software doing “thinking” tasks</text>
@@ -532,7 +531,7 @@ ol.sources li{margin:4px 0}
   <h3>2. AI you already use every day</h3>
   <div class="grid g3">
     <div class="card"><h4>Mobile money</h4><p>Safaricom has built AI into M-Pesa for real-time monitoring and fraud detection [W6].</p></div>
-    <div class="card"><h4>Customer chatbots</h4><p>Safaricom's Zuri, CRDB Bank's Elle and NMB Bank's Jirani answer customers on WhatsApp and online [W6][W7][W8].</p></div>
+    <div class="card"><h4>Customer chatbots</h4><p>Safaricom's Zuri in Kenya, Klarna's assistant in Europe and Jugalbandi in India answer people on WhatsApp and online [W6][W7][W10].</p></div>
     <div class="card"><h4>Your phone</h4><p>Face unlock, voice typing, spam filters, map traffic times and photo search all use machine learning.</p></div>
   </div>
 
@@ -555,7 +554,7 @@ ol.sources li{margin:4px 0}
           <circle cx="630" cy="163" r="11" class="f2" stroke="#0d0d0d" stroke-width="2"/><text x="630" y="196" text-anchor="middle" font-weight="800" class="fi">Nov 2022</text><text x="630" y="211" text-anchor="middle" class="fi">ChatGPT launches;</text><text x="630" y="226" text-anchor="middle" class="fi">100M users in</text><text x="630" y="241" text-anchor="middle" class="fi">about 2 months</text>
           <circle cx="718" cy="163" r="11" class="f4" stroke="#0d0d0d" stroke-width="2"/><text x="712" y="92" text-anchor="middle" font-weight="800" class="fi">2026</text><text x="712" y="107" text-anchor="middle" class="fi">1 billion+</text><text x="712" y="122" text-anchor="middle" class="fi">weekly users</text><path d="M716 127v24" class="sm" stroke-width="1.5"/>
         </g>
-        <text x="20" y="300" font-size="11" class="fm">Not to scale. Green: the modern deep-learning era. Sources: [W1][W2][W3].</text>
+        <text x="20" y="300" font-size="11" class="fm">Not to scale. Teal: the modern deep-learning era. Sources: [W1][W2][W3].</text>
       </svg>
     </div>
   </figure>
@@ -616,9 +615,10 @@ ol.sources li{margin:4px 0}
     <div class="wstep"><div class="wnum">3</div><div><h5>The lesson for NGOs</h5><p style="margin:0">People must always be able to reach a human. A chatbot that blocks that path damages trust, however efficient it is.</p></div></div>
   </div>
   <div class="worked">
-    <header><span class="tag">Case 3</span><h4>CRDB Bank and NMB Bank (Tanzania): AI in everyday banking</h4></header>
-    <div class="wstep"><div class="wnum">1</div><div><h5>What they did</h5><p style="margin:0">CRDB Bank launched “Elle”, an AI customer service chatbot, in October 2024 [W7], and rebuilt its SimBanking app using AI [W7]. NMB Bank introduced “Jirani”, an AI chatbot on WhatsApp that lets customers buy motor insurance from their phones [W8]; more than 4.7 million customers use NMB Mkononi, and 96% of the bank's transactions in 2024 were digital [W8].</p></div></div>
-    <div class="wstep"><div class="wnum">2</div><div><h5>The lesson for NGOs</h5><p style="margin:0">Tanzanians already talk to AI in Swahili on WhatsApp. Your beneficiaries and members are getting used to it, so NGOs need staff who understand both its value and its limits.</p></div></div>
+    <header><span class="tag">Case 3</span><h4>Jugalbandi (India, public services): AI on WhatsApp in local languages</h4></header>
+    <div class="wstep"><div class="wnum">1</div><div><h5>What they did</h5><p style="margin:0">In 2023 Microsoft, the government-backed AI4Bharat centre and OpenNyAI launched Jugalbandi, a WhatsApp assistant that answers typed or spoken questions about government schemes. Within weeks it covered 10 of India's 22 official languages and 171 of about 20,000 government programmes, finding information that is usually written in English and relaying it in the user's language [W7][W8].</p></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>What to watch</h5><p style="margin:0">Its own developers warned that the models still make errors because they are probabilistic machines [W8]. Accuracy depends on partners who know the local language and context.</p></div></div>
+    <div class="wstep"><div class="wnum">3</div><div><h5>The lesson for NGOs</h5><p style="margin:0">People everywhere are starting to ask AI questions in their own language on WhatsApp. Your beneficiaries are getting used to it, so NGOs need staff who understand both its value and its limits.</p></div></div>
   </div>
   <div class="worked">
     <header><span class="tag">Case 4</span><h4>Nvidia (USA, chips): selling the tools behind the boom</h4></header>
@@ -633,7 +633,7 @@ ol.sources li{margin:4px 0}
     <li><b>Spending is not the same as value.</b> Most organizations are still piloting. Measure what AI saves you, honestly.</li>
     <li><b>Trust is the asset NGOs cannot lose.</b> Use AI in ways that protect the people you serve. The rest of this course shows how.</li>
   </ol>
-  <div class="keypoints wia-dark"><h4>Key points</h4><ul><li>AI is software that learns patterns from examples; generative AI creates new text and images.</li><li>The field is 70 years old, but the modern boom began with deep learning in 2012 and ChatGPT in 2022.</li><li>Worldwide AI spending is forecast at about $2.67 trillion in 2026, mostly on infrastructure.</li><li>Businesses from Klarna to CRDB Bank use AI for high-volume customer work, and the best keep humans available.</li><li>Figures in this chapter are dated; check the sources for the latest numbers.</li></ul></div>
+  <div class="keypoints wia-dark"><h4>Key points</h4><ul><li>AI is software that learns patterns from examples; generative AI creates new text and images.</li><li>The field is 70 years old, but the modern boom began with deep learning in 2012 and ChatGPT in 2022.</li><li>Worldwide AI spending is forecast at about $2.67 trillion in 2026, mostly on infrastructure.</li><li>Organizations from Klarna to Safaricom use AI for high-volume customer work, and the best keep humans available.</li><li>Figures in this chapter are dated; check the sources for the latest numbers.</li></ul></div>
   <div class="wia-src">
     <h4>Sources for this chapter (checked November 2026)</h4>
     <ol>
@@ -643,8 +643,8 @@ ol.sources li{margin:4px 0}
       <li value="4">[W4] <a href="https://gartner.com/en/newsroom/press-releases/2026-09-16-gartner-forecasts-worldwide-ai-spending-to-grow-49-point-5-percent-in-2026">Gartner: worldwide AI spending to grow 49.5% in 2026</a></li>
       <li value="5">[W5] <a href="https://www.clickorlando.com/news/2025/10/29/nvidia-has-started-the-5-trillion-club-a-look-at-its-rise-by-the-numbers/">AP: Nvidia becomes first $5 trillion company</a></li>
       <li value="6">[W6] <a href="https://techtrendske.co.ke/safaricom-zuri-ai-chatbot/">Safaricom Zuri launch</a>; <a href="https://tech-ish.com/2020/02/22/safaricom-zuri-chatbot-whatsapp/">Zuri on WhatsApp</a>; <a href="https://www.techinafrica.com/safaricom-innovation-strategy-ai-fintech-future-kenya-tech-ecosystem/">Safaricom AI strategy</a>; <a href="https://safaricom.co.ke/media-center-landing/press-releases/opportunity-international-safaricom-launch-new-ai-chatbot-for-smallholder-farmers">FarmerAI launch</a>; <a href="https://thestandard.ke/business/amp/crime-and-justice/article/2001545642/safaricoms-zuri-on-trial-man-in-court-over-use-of-ai-for-customer-care">The Standard: Zuri court case</a></li>
-      <li value="7">[W7] <a href="https://ippmedia.com/the-guardian/business/read/crdb-launches-ai-empowered-customer-service-system-2024-10-09-074514">The Guardian (Tanzania): CRDB launches Elle</a>; <a href="https://dailynews.co.tz/?p=33894">Daily News: CRDB SimBanking uses AI</a></li>
-      <li value="8">[W8] <a href="https://ippmedia.co.tz/the-guardian/business/read/nmb-bank-heavily-invests-on-digital-platforms-to-boost-financial-inclusion-2025-07-09-115836">The Guardian (Tanzania): NMB digital platforms</a>; <a href="https://thedigitalbanker.com/nmb-launches-digital-insurance-services/">The Digital Banker: NMB Jirani</a></li>
+      <li value="7">[W7] <a href="https://news.microsoft.com/source/asia/features/with-help-from-next-generation-ai-indian-villagers-gain-easier-access-to-government-services/">Microsoft: Jugalbandi helps Indian villagers access government services</a>; <a href="https://techcrunch.com/2023/05/24/microsoft-ai-chatgpt-reaches-rural-india/">TechCrunch: Jugalbandi reaches rural India</a></li>
+      <li value="8">[W8] <a href="https://www.business-standard.com/technology/tech-news/microsoft-backed-group-aims-to-bridge-language-gap-with-ai-assistant-123052301059_1.html">Reuters via Business Standard: bridging the language gap with an AI assistant</a></li>
       <li value="9">[W9] <a href="https://www.mckinsey.com/featured-insights/charts/ai-at-work-but-not-at-scale">McKinsey: AI at work but not at scale (2025)</a></li>
       <li value="10">[W10] <a href="https://www.usefini.com/blog/klarna-automates-two-thirds-of-customer-service-with-ai-assistant">Klarna AI assistant: results and 2025 reversal</a>; <a href="https://thom.eu/?p=22732">resolution time and rehiring</a></li>
     </ol>
@@ -652,17 +652,12 @@ ol.sources li{margin:4px 0}
 </section>
 
 <div class="view" id="welcome"><div class="hero">
-  <svg class="ribbon" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-    <path d="M140 0h260v400z" fill="#1EB53A"/>
-    <path d="M400 130V400H180z" fill="#00A3DD"/>
-    <path d="M170 0h70L400 245v70z" fill="#FCD116"/>
-    <path d="M200 0h40L400 255v30z" fill="#0d0d0d"/>
-    <path d="M140 0h30L400 345v55z" fill="#0d0d0d"/>
+  <svg class="ribbon" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><circle cx="330" cy="60" r="170" fill="#14B8A6"/><circle cx="400" cy="330" r="150" fill="#6366F1"/><circle cx="215" cy="250" r="62" fill="#FB923C"/><circle cx="300" cy="190" r="34" fill="#0F172A"/>
   </svg>
   <div class="inner">
     <div class="eyebrow">Start here · Level 1 Foundation</div>
     <h1>Welcome to AI at Work for NGO Teams</h1>
-    <p>A practical course for NGO staff in Tanzania and East Africa. Use AI tools on real work, check what they produce, protect the people you serve, and measure the time you save.</p>
+    <p>A practical course for NGO staff anywhere in the world. Use AI tools on real work, check what they produce, protect the people you serve, and measure the time you save.</p>
     <div class="row">
       <a class="btn" href="#ch1">Start Chapter 1</a>
       <a class="btn ghost" href="#sectors">Find your sector</a>
@@ -701,19 +696,19 @@ ol.sources li{margin:4px 0}
         <g font-size="11" class="fm"><text x="300" y="243" text-anchor="middle">0</text><text x="460" y="243" text-anchor="middle">40%</text><text x="620" y="243" text-anchor="middle">80%</text></g>
       </svg>
     </div>
-    <figcaption>Green: what individuals do. Blue: what organizations have in place. Source: Humanitarian Leadership Academy and Data Friendly Space, 2025 [1][2].</figcaption>
+    <figcaption>Teal: what individuals do. Indigo: what organizations have in place. Source: Humanitarian Leadership Academy and Data Friendly Space, 2025 [1][2].</figcaption>
   </figure>
   <div class="grid g3">
     <div class="stat"><div class="big num">7%</div><p>of 346 nonprofits have built AI into their goals, budgets and strategy. 65% describe their use as reactive and individual.</p><div class="src">Virtuous, 2026 [3]</div></div>
-    <div class="stat"><div class="big num">10,155</div><p>NGOs were registered in Tanzania by November 2023, and more than 30% of them work in health.</p><div class="src">Pan African Medical Journal [6]</div></div>
-    <div class="stat"><div class="big num">1 May 2023</div><p>Tanzania's Personal Data Protection Act came into force. AI use must respect it.</p><div class="src">DLA Piper [4]</div></div>
+    <div class="stat"><div class="big num">45%</div><p>of 917 nonprofit staff surveyed in 2025 use AI for work at least daily, and 98% use it in some way.</p><div class="src">NTEN and Bridgespan [6]</div></div>
+    <div class="stat"><div class="big num">66%</div><p>of countries had a data protection law in 2020: 96% in Europe but 50% in Africa. More have passed one since.</p><div class="src">UNCTAD [4]</div></div>
   </div>
 
   <h3>Meet the team you will learn with</h3>
-  <p class="prose">Four fictional NGO staff appear throughout this guide. Their tasks are typical of real work in Tanzanian NGOs, so you can see exactly what AI does well and where it goes wrong.</p>
+  <p class="prose">Four fictional NGO staff appear throughout this guide. They work in different countries, and their tasks are typical of real NGO work everywhere, so you can see exactly what AI does well and where it goes wrong.</p>
   <div class="cast" id="cast"></div>
 
-  <p class="src">Also appearing in the sector guides: Baraka, Daudi, Rehema and Salma.</p>
+  <p class="src">Also appearing in the sector guides: Baraka, Ravi, Lucía and Salma.</p>
   <figure><div class="art" id="office" style="padding:0;overflow:hidden"></div><figcaption>Monday morning at four NGOs. Each chapter follows one of these problems and shows how AI helps, and where it goes wrong.</figcaption></figure>
 
   <h3>How this guide works</h3>
@@ -765,15 +760,15 @@ ol.sources li{margin:4px 0}
   </div>
 
   <div class="callout yellow">
-    <h4>Tanzania's Personal Data Protection Act, in brief</h4>
+    <h4>Data protection law: what most countries have in common</h4>
     <div class="tablewrap" style="margin:8px 0"><table><tbody>
-      <tr><th>Law</th><td>Personal Data Protection Act, 2022 (Act No. 11 of 2022)</td></tr>
-      <tr><th>In force</th><td>1 May 2023 [4]</td></tr>
-      <tr><th>Regulator</th><td>Personal Data Protection Commission (PDPC), which registers data collectors and processors and handles complaints [5]</td></tr>
-      <tr><th>Transfers abroad</th><td>Personal data may leave Tanzania only under the conditions the Act sets [5]</td></tr>
-      <tr><th>What it means for AI</th><td>Most popular AI tools process your text on servers outside Tanzania. Pasting personal data into them may count as a transfer abroad. Keep personal data out, and ask your data protection contact before any exception.</td></tr>
+      <tr><th>Does your country have one?</th><td>Two thirds of countries had a data protection law in 2020, and more have passed one since [4]. Find out the name of yours and who the regulator is.</td></tr>
+      <tr><th>Common rules</th><td>Collect only what you need, for a stated purpose and with a lawful basis such as consent; keep it secure; let people see and correct their data.</td></tr>
+      <tr><th>A widely used model</th><td>The EU's General Data Protection Regulation (GDPR) [5]. Countries such as Brazil and Thailand based their laws on it [4].</td></tr>
+      <tr><th>Transfers abroad</th><td>Many laws restrict sending personal data to other countries.</td></tr>
+      <tr><th>What it means for AI</th><td>Most popular AI tools process your text on servers in other countries. Pasting personal data into them may count as a transfer abroad. Keep personal data out, and ask your data protection contact before any exception.</td></tr>
     </tbody></table></div>
-    <p class="src">General information, not legal advice. Read the official text on TanzLII [5].</p>
+    <p class="src">General information, not legal advice. Check the law that applies where you work.</p>
   </div>
 
   <h3>How you complete the course</h3>
@@ -797,7 +792,7 @@ ol.sources li{margin:4px 0}
     <div class="art">
       <svg viewBox="0 0 720 230" role="img" aria-labelledby="nw-t nw-d">
         <title id="nw-t">How an AI tool chooses the next word</title>
-        <desc id="nw-d">For the sentence "The farmer group meeting was held in", the model scores possible next words: Morogoro 31%, the 18%, March 14%, Kilosa 9%, and picks a likely one. Likely does not mean true.</desc>
+        <desc id="nw-d">For the sentence "The farmer group meeting was held in", the model scores possible next words: Cusco 31%, the 18%, March 14%, Kilosa 9%, and picks a likely one. Likely does not mean true.</desc>
         <rect x="10" y="20" width="330" height="64" rx="10" class="fbg sl" stroke-width="1.5"/>
         <text x="28" y="48" font-size="15" class="fm">You typed:</text>
         <text x="28" y="71" font-size="17" font-weight="700" class="fi">“The farmer group meeting was held in …”</text>
@@ -805,7 +800,7 @@ ol.sources li{margin:4px 0}
         <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0l10 5-10 5z" class="fi"/></marker></defs>
         <text x="395" y="30" font-size="13" class="fm">Model scores possible next words</text>
         <g font-size="14" class="fi">
-          <text x="395" y="60">Morogoro</text><text x="395" y="92">the</text><text x="395" y="124">March</text><text x="395" y="156">Kilosa</text>
+          <text x="395" y="60">Cusco</text><text x="395" y="92">the</text><text x="395" y="124">March</text><text x="395" y="156">Kilosa</text>
         </g>
         <rect x="475" y="46" width="186" height="20" rx="3" class="f1"/>
         <rect x="475" y="78" width="108" height="20" rx="3" class="f4"/>
@@ -813,7 +808,7 @@ ol.sources li{margin:4px 0}
         <rect x="475" y="142" width="54" height="20" rx="3" class="f4"/>
         <g font-size="13" font-weight="700" class="fi"><text x="667" y="61">31%</text><text x="589" y="93">18%</text><text x="565" y="125">14%</text><text x="535" y="157">9%</text></g>
         <rect x="10" y="120" width="330" height="80" rx="10" class="f3"/>
-        <text x="28" y="150" font-size="14" fill="#FCD116" font-weight="700">The catch</text>
+        <text x="28" y="150" font-size="14" fill="#FB923C" font-weight="700">The catch</text>
         <text x="28" y="172" font-size="14" fill="#f4f4f4">It picks what is likely, not what is true.</text>
         <text x="28" y="190" font-size="14" fill="#f4f4f4">Your meeting may have been in Kilosa.</text>
         <text x="395" y="200" font-size="11" class="fm">Percentages are illustrative.</text>
@@ -832,9 +827,9 @@ ol.sources li{margin:4px 0}
   <div data-strip="ch1"></div>
   <div class="worked">
     <header><span class="tag">Real instance</span><h4>Amina asks for a statistic for a funding proposal</h4></header>
-    <div class="wstep"><div class="wnum">1</div><div><h5>What Amina typed</h5><div class="doc">What percentage of NGOs in Tanzania use AI tools? Give a source.</div></div></div>
-    <div class="wstep"><div class="wnum">2</div><div><h5>The kind of answer she got (illustrative)</h5><div class="doc ai">According to <mark class="err">a 2024 national survey by the Tanzania Communications Regulatory Authority</mark>, <mark class="err">47% of registered NGOs</mark> in Tanzania use AI tools, mainly for communications and reporting.</div></div></div>
-    <div class="wstep"><div class="wnum">3</div><div><h5>What checking revealed</h5><ul class="notes"><li>Amina searched the regulator's website: no such survey exists.</li><li>When we researched this guide, we found no published national figure for AI use by Tanzanian NGOs at all.</li><li>The number, the year and the source were all invented, and they sounded perfectly plausible.</li></ul></div></div>
+    <div class="wstep"><div class="wnum">1</div><div><h5>What Amina typed</h5><div class="doc">What percentage of NGOs in Bangladesh use AI tools? Give a source.</div></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>The kind of answer she got (illustrative)</h5><div class="doc ai">According to <mark class="err">a 2024 national survey by the telecoms regulator</mark>, <mark class="err">47% of registered NGOs</mark> in Bangladesh use AI tools, mainly for communications and reporting.</div></div></div>
+    <div class="wstep"><div class="wnum">3</div><div><h5>What checking revealed</h5><ul class="notes"><li>Amina searched the regulator's website: no such survey exists.</li><li>She found no published national figure at all, only international surveys of nonprofits.</li><li>The number, the year and the source were all invented, and they sounded perfectly plausible.</li></ul></div></div>
     <div class="wstep"><div class="wnum">4</div><div><h5>What she used instead</h5><div class="doc final">A 2025 global survey of 2,539 humanitarian workers found that 93% had used AI tools, but only 22% worked under a formal AI policy (Humanitarian Leadership Academy and Data Friendly Space).</div><p class="src">A real figure from a source she opened and read herself.</p></div></div>
   </div>
 
@@ -878,17 +873,17 @@ ol.sources li{margin:4px 0}
         <rect x="362" y="14" width="168" height="182" rx="10" class="f3"/>
         <rect x="538" y="14" width="172" height="182" rx="10" class="f4"/>
         <g font-family="Bricolage Grotesque, sans-serif" font-size="20" font-weight="800">
-          <text x="26" y="46" fill="#08210f">1 Role</text><text x="202" y="46" fill="#0d0d0d">2 Task</text><text x="378" y="46" fill="#FCD116">3 Context</text><text x="554" y="46" fill="#00202c">4 Format</text>
+          <text x="26" y="46" fill="#042F2E">1 Role</text><text x="202" y="46" fill="#0d0d0d">2 Task</text><text x="378" y="46" fill="#FB923C">3 Context</text><text x="554" y="46" fill="#ffffff">4 Format</text>
         </g>
         <g font-size="13.5">
-          <text x="26" y="72" fill="#08210f" font-weight="700">Who should it act as?</text>
-          <text x="26" y="98" fill="#08210f">“You are the</text><text x="26" y="116" fill="#08210f">communications lead</text><text x="26" y="134" fill="#08210f">of a girls' education</text><text x="26" y="152" fill="#08210f">NGO in Dar es Salaam.”</text>
+          <text x="26" y="72" fill="#042F2E" font-weight="700">Who should it act as?</text>
+          <text x="26" y="98" fill="#042F2E">“You are the</text><text x="26" y="116" fill="#042F2E">communications lead</text><text x="26" y="134" fill="#042F2E">of a girls' education</text><text x="26" y="152" fill="#042F2E">NGO in Dhaka.”</text>
           <text x="202" y="72" fill="#0d0d0d" font-weight="700">What exactly to do?</text>
           <text x="202" y="98" fill="#0d0d0d">“Write a Facebook</text><text x="202" y="116" fill="#0d0d0d">post about our</text><text x="202" y="134" fill="#0d0d0d">reading club results.”</text>
           <text x="378" y="72" fill="#f4f4f4" font-weight="700">What facts does it need?</text>
           <text x="378" y="98" fill="#f4f4f4">“40 learners, Std 4–6,</text><text x="378" y="116" fill="#f4f4f4">12 weeks, reading</text><text x="378" y="134" fill="#f4f4f4">speed 38 → 52 words</text><text x="378" y="152" fill="#f4f4f4">per minute.”</text>
-          <text x="554" y="72" fill="#00202c" font-weight="700">What should it look like?</text>
-          <text x="554" y="98" fill="#00202c">“Under 80 words,</text><text x="554" y="116" fill="#00202c">warm tone, no</text><text x="554" y="134" fill="#00202c">names, end with a</text><text x="554" y="152" fill="#00202c">call to volunteer.”</text>
+          <text x="554" y="72" fill="#ffffff" font-weight="700">What should it look like?</text>
+          <text x="554" y="98" fill="#ffffff">“Under 80 words,</text><text x="554" y="116" fill="#ffffff">warm tone, no</text><text x="554" y="134" fill="#ffffff">names, end with a</text><text x="554" y="152" fill="#ffffff">call to volunteer.”</text>
         </g>
       </svg>
     </div>
@@ -902,12 +897,12 @@ ol.sources li{margin:4px 0}
     <div class="wstep"><div class="wnum">1</div><div><h5>Weak prompt and its result</h5>
       <div class="vs">
         <div><div class="label">Prompt</div><div class="doc">Write a post about our reading club.</div></div>
-        <div><div class="label">Output (illustrative)</div><div class="doc ai">Our reading club is transforming lives! <mark class="err">Hundreds of girls</mark> across Tanzania are discovering the joy of books, and <mark class="err">their grades have doubled</mark>. Join us in changing the future!</div></div>
+        <div><div class="label">Output (illustrative)</div><div class="doc ai">Our reading club is transforming lives! <mark class="err">Hundreds of girls</mark> across the country are discovering the joy of books, and <mark class="err">their grades have doubled</mark>. Join us in changing the future!</div></div>
       </div>
       <ul class="notes"><li>“Hundreds of girls” and “grades have doubled” are invented. The club has 40 learners and measured reading speed, not grades.</li><li>Posting this would mislead the public and the donor.</li></ul></div></div>
     <div class="wstep"><div class="wnum">2</div><div><h5>Strong prompt and its result</h5>
       <div class="vs">
-        <div><div class="label">Prompt</div><div class="doc">You are the communications lead of a girls' education NGO in Dar es Salaam. Write a Facebook post about our reading club results. Facts: 40 learners in Standards 4 to 6 at one partner primary school; 12 weeks of after-school sessions; average reading speed rose from 38 to 52 words per minute. Under 80 words, warm tone, no names or photos of children, end by inviting volunteers. Use only these facts.</div></div>
+        <div><div class="label">Prompt</div><div class="doc">You are the communications lead of a girls' education NGO in Dhaka. Write a Facebook post about our reading club results. Facts: 40 learners in Grades 4 to 6 at one partner primary school; 12 weeks of after-school sessions; average reading speed rose from 38 to 52 words per minute. Under 80 words, warm tone, no names or photos of children, end by inviting volunteers. Use only these facts.</div></div>
         <div><div class="label">Output (illustrative)</div><div class="doc ai">Twelve weeks, 40 young readers, real progress. 📚 Learners in Standards 4 to 6 at our partner school raised their average reading speed from 38 to 52 words per minute in our after-school reading club. That is more confidence in every lesson. Want to help the next group grow? Volunteer as a reading buddy: message us to join.</div></div>
       </div>
       <ul class="notes"><li>Every fact matches what Amina supplied.</li><li>She still checks it: the emoji is fine for Facebook, the numbers are correct, no child is identifiable. It is ready to post.</li></ul></div></div>
@@ -923,7 +918,7 @@ ol.sources li{margin:4px 0}
     <h4>Prompt Builder</h4>
     <p class="src" style="margin-top:0">Fill in the four parts. Your prompt appears below, ready to copy into any AI tool. Amina's example is pre-filled; replace it with your own task.</p>
     <div class="form">
-      <label for="pb-role">1 · Role<input id="pb-role" value="the communications lead of a girls' education NGO in Dar es Salaam"></label>
+      <label for="pb-role">1 · Role<input id="pb-role" value="the communications lead of a girls' education NGO in Dhaka"></label>
       <label for="pb-task">2 · Task<input id="pb-task" value="write a thank-you message to the head teacher of our partner school"></label>
       <label for="pb-ctx">3 · Context (only safe, non-confidential facts)<textarea id="pb-ctx">The school hosted our reading club for 40 learners for 12 weeks. Average reading speed rose from 38 to 52 words per minute. We want to continue next term.</textarea></label>
       <label for="pb-fmt">4 · Format<input id="pb-fmt" value="under 120 words, formal and warm, in English"></label>
@@ -945,11 +940,11 @@ ol.sources li{margin:4px 0}
         <title id="it-t">Three follow-up moves in a conversation</title>
         <desc id="it-d">A chat showing three follow-ups: make it shorter for the board, fix the wrong date, use simpler words. Each reply improves the same draft.</desc>
         <g font-size="14">
-          <rect x="380" y="10" width="330" height="40" rx="14" class="f4"/><text x="396" y="35" fill="#00202c" font-weight="700">Add detail: “Shorter, for our board.”</text>
+          <rect x="380" y="10" width="330" height="40" rx="14" class="f4"/><text x="396" y="35" fill="#ffffff" font-weight="700">Add detail: “Shorter, for our board.”</text>
           <rect x="10" y="60" width="330" height="40" rx="14" class="fbg sl" stroke-width="1.5"/><text x="26" y="85" class="fi">Draft v2: 5 lines, board-level summary</text>
           <rect x="380" y="110" width="330" height="40" rx="14" class="f2"/><text x="396" y="135" fill="#0d0d0d" font-weight="700">Fix an error: “It was 12 March.”</text>
           <rect x="10" y="160" width="330" height="40" rx="14" class="fbg sl" stroke-width="1.5"/><text x="26" y="185" class="fi">Draft v3: date corrected</text>
-          <rect x="380" y="210" width="330" height="36" rx="14" class="f1"/><text x="396" y="233" fill="#08210f" font-weight="700">Change style: “Simpler words.”</text>
+          <rect x="380" y="210" width="330" height="36" rx="14" class="f1"/><text x="396" y="233" fill="#042F2E" font-weight="700">Change style: “Simpler words.”</text>
         </g>
       </svg>
     </div>
@@ -995,8 +990,8 @@ ol.sources li{margin:4px 0}
 
   <div class="worked">
     <header><span class="tag">Worked example</span><h4>Neema wants AI help with a field case summary</h4></header>
-    <div class="wstep"><div class="wnum">1</div><div><h5>The original field note: red</h5><div class="doc"><mark class="id">Halima Said</mark>, <mark class="id">34</mark>, from <mark class="id">Igoma ward</mark>, <mark class="id">HIV-positive</mark>, missed two antenatal visits. She says transport costs <mark class="id">TZS 6,000</mark> each way and <mark class="id">her husband</mark> controls the money.</div><p class="src">Highlighted: details that identify her or are sensitive health data. All names are fictional.</p></div></div>
-    <div class="wstep"><div class="wnum">2</div><div><h5>Removing the name is not enough</h5><p class="prose">“A 34-year-old HIV-positive woman in Igoma ward” could still identify one person in a small community. HIV status is sensitive health data that never goes into a public tool, with or without a name.</p></div></div>
+    <div class="wstep"><div class="wnum">1</div><div><h5>The original field note: red</h5><div class="doc"><mark class="id">Halima Said</mark>, <mark class="id">34</mark>, from <mark class="id">Nyalenda ward</mark>, <mark class="id">HIV-positive</mark>, missed two antenatal visits. She says transport costs <mark class="id">KES 300</mark> each way and <mark class="id">her husband</mark> controls the money.</div><p class="src">Highlighted: details that identify her or are sensitive health data. All names are fictional.</p></div></div>
+    <div class="wstep"><div class="wnum">2</div><div><h5>Removing the name is not enough</h5><p class="prose">“A 34-year-old HIV-positive woman in Nyalenda ward” could still identify one person in a small community. HIV status is sensitive health data that never goes into a public tool, with or without a name.</p></div></div>
     <div class="wstep"><div class="wnum">3</div><div><h5>The rewritten version: amber, usable if policy allows</h5><div class="doc final">Several women in one of our project wards missed antenatal visits. They report that transport costs are high and that they do not control household money.</div><p class="src">Now it describes a pattern, not a person. Neema can ask AI to help her draft a donor paragraph on transport barriers.</p></div></div>
   </div>
 
@@ -1083,23 +1078,23 @@ ol.sources li{margin:4px 0}
   <h3>Step 3: Measure honestly</h3>
   <div data-strip="ch4"></div>
   <div class="worked">
-    <header><span class="tag">Worked example</span><h4>Peter redesigns the SACCO's monthly member update</h4></header>
+    <header><span class="tag">Worked example</span><h4>Peter redesigns the cooperative's monthly member update</h4></header>
     <div class="wstep"><div class="wnum">1</div><div><h5>Before and after, timed</h5>
       <figure style="margin:6px 0">
         <svg viewBox="0 0 720 190" role="img" aria-labelledby="wf-t wf-d">
           <title id="wf-t">Peter's task before and after AI</title>
-          <desc id="wf-d">Before: 120 minutes made of gathering figures 30, writing 60, translating to Swahili 20, formatting 10. After: 55 minutes made of gathering figures 30, prompting 5, checking and correcting 15, formatting 5.</desc>
+          <desc id="wf-d">Before: 120 minutes made of gathering figures 30, writing 60, translating to Filipino 20, formatting 10. After: 55 minutes made of gathering figures 30, prompting 5, checking and correcting 15, formatting 5.</desc>
           <text x="0" y="40" font-size="14" font-weight="700" class="fi">Before</text>
           <text x="0" y="58" font-size="13" class="fm">120 min</text>
           <rect x="80" y="22" width="150" height="40" class="fl"/><rect x="230" y="22" width="300" height="40" class="f4"/><rect x="530" y="22" width="100" height="40" class="f2"/><rect x="630" y="22" width="50" height="40" class="fm"/>
-          <g font-size="12"><text x="88" y="47" class="fi">Gather figures 30</text><text x="238" y="47" fill="#00202c" font-weight="700">Write the update 60</text><text x="536" y="47" fill="#0d0d0d">Translate 20</text><text x="634" y="47" class="fs">10</text></g>
+          <g font-size="12"><text x="88" y="47" class="fi">Gather figures 30</text><text x="238" y="47" fill="#ffffff" font-weight="700">Write the update 60</text><text x="536" y="47" fill="#0d0d0d">Translate 20</text><text x="634" y="47" class="fs">10</text></g>
           <text x="0" y="120" font-size="14" font-weight="700" class="fi">After</text>
           <text x="0" y="138" font-size="13" class="fm">55 min</text>
           <rect x="80" y="102" width="150" height="40" class="fl"/><rect x="230" y="102" width="25" height="40" class="f1"/><rect x="255" y="102" width="75" height="40" class="f3"/><rect x="330" y="102" width="25" height="40" class="fm"/>
-          <g font-size="12"><text x="88" y="127" class="fi">Gather figures 30</text><text x="260" y="127" fill="#FCD116" font-weight="700">Check 15</text></g>
-          <text x="230" y="160" font-size="11" class="fm">AI draft in English and Swahili: 5</text>
+          <g font-size="12"><text x="88" y="127" class="fi">Gather figures 30</text><text x="260" y="127" fill="#FB923C" font-weight="700">Check 15</text></g>
+          <text x="230" y="160" font-size="11" class="fm">AI draft in English and Filipino: 5</text>
           <text x="365" y="127" font-size="14" font-weight="700" fill="var(--g-ink)">65 minutes saved each month</text>
-          <text x="80" y="184" font-size="11" class="fm">1 minute = 5 px. Gathering the figures does not get faster: AI cannot see the SACCO's records.</text>
+          <text x="80" y="184" font-size="11" class="fm">1 minute = 5 px. Gathering the figures does not get faster: AI cannot see the cooperative's records.</text>
         </svg>
       </figure></div></div>
     <div class="wstep"><div class="wnum">2</div><div><h5>The honest result</h5><p class="prose">65 minutes a month is about 13 hours a year. That is less than Peter hoped, because the slowest part, collecting figures from the ledger, still needs him. But writing and translating went from 80 minutes to 5, and checking takes 15. He keeps member balances out of the prompt and pastes only group totals.</p></div></div>
@@ -1122,7 +1117,7 @@ ol.sources li{margin:4px 0}
   </div>
 
   <h3>Step 4: Make your 30-day plan</h3>
-  <p class="prose">Write it in the Worksheets section: when you will use the new workflow, which template, and who checks your work. Peter's plan: first Monday of each month, Template 3, checked by the SACCO chair before it goes to members.</p>
+  <p class="prose">Write it in the Worksheets section: when you will use the new workflow, which template, and who checks your work. Peter's plan: first Monday of each month, Template 3, checked by the cooperative's chair before it goes to members.</p>
 
   <div class="quiz" data-quiz="ch4"></div>
 </section>
@@ -1175,7 +1170,7 @@ ol.sources li{margin:4px 0}
     <tr><td><b>4</b></td><td>Get consent before using anyone's story, photo or details, with or without AI.</td></tr>
     <tr><td><b>5</b></td><td>Check each donor's rules on AI use before using AI in funded work.</td></tr>
     <tr><td><b>6</b></td><td>Watch for biased or stereotyped wording about the communities you serve.</td></tr>
-    <tr><td><b>7</b></td><td>Follow Tanzania's Personal Data Protection Act and your organization's policy; ask when unsure.</td></tr>
+    <tr><td><b>7</b></td><td>Follow your country's data protection law and your organization's policy; ask when unsure.</td></tr>
   </tbody></table></div>
   <h3>Research with AI safely</h3>
   <ul>
@@ -1195,7 +1190,7 @@ ol.sources li{margin:4px 0}
   <h3>Workflow redesign</h3>
   <div class="form card">
     <label for="wf1">1. The task and how long it takes today<input id="wf1" data-note="wf1" placeholder="e.g. Monthly member update, 120 minutes"></label>
-    <label for="wf2">2. Parts AI can draft<input id="wf2" data-note="wf2" placeholder="e.g. English and Swahili text from my totals"></label>
+    <label for="wf2">2. Parts AI can draft<input id="wf2" data-note="wf2" placeholder="e.g. English and local-language text from my totals"></label>
     <label for="wf3">3. Template or prompt I will use<input id="wf3" data-note="wf3" placeholder="e.g. Template 3"></label>
     <label for="wf4">4. Checks that matter most<input id="wf4" data-note="wf4" placeholder="e.g. Numbers, then wording"></label>
     <label for="wf5">5. Data that stays out<input id="wf5" data-note="wf5" placeholder="e.g. Individual member balances"></label>
@@ -1254,9 +1249,9 @@ ol.sources li{margin:4px 0}
     <li><a href="https://www.humanitarianleadershipacademy.org/news/global-study-highlights-shadow-ai-as-humanitarian-workers-outpace-organizations-in-technology-adoption/">Humanitarian Leadership Academy: global study highlights shadow AI (2025)</a></li>
     <li><a href="https://www.humanitarianleadershipacademy.org/resources/how-are-humanitarians-using-artificial-intelligence-in-2025-reflections-on-a-six-month-research-journey/">HLA: How are humanitarians using AI in 2025? Reflections</a>; <a href="https://hhi.harvard.edu/publication/humanitarian-artificial-intelligence-begins-model-lessons-kobotoolbox-responsible">Harvard Humanitarian Initiative on the same study (22% policy figure)</a></li>
     <li><a href="https://virtuous.org/blog/the-2026-nonprofit-ai-adoption-report-blog/">Virtuous: The 2026 Nonprofit AI Adoption Report</a></li>
-    <li><a href="https://www.dlapiperdataprotection.com/?c=TZ&amp;t=law">DLA Piper: Data protection laws in Tanzania</a></li>
-    <li><a href="https://cyrilla.org/fr/entity/9h7zwuex6oa">Short notes on the Personal Data Protection Act, 2022 (Tanzania)</a>; <a href="https://media.tanzlii.org/media/legislation/376041/source_file/b6ac2610a78cbbe3/tz-act-gn-2023-395b-1-publication-document.pdf">Official English text, GN 395B (TanzLII)</a></li>
-    <li><a href="https://www.panafrican-med-journal.com//content/article/46/115/full">Pan African Medical Journal: NGOs in Tanzania</a></li>
+    <li><a href="https://unctad.org/news/data-and-privacy-unprotected-one-third-countries-despite-progress">UNCTAD: Data and privacy unprotected in one third of countries (2020)</a></li>
+    <li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">EU General Data Protection Regulation (GDPR), official text</a></li>
+    <li><a href="https://nonprofitquarterly.org/how-nonprofits-adopt-and-govern-ai-insights-from-a-new-report/">Nonprofit Quarterly: NTEN and Bridgespan report on how nonprofits adopt and govern AI (2025)</a></li>
     <li><a href="https://www.ai4d.ai/innovations/prompts">AI4D: Jacaranda Health PROMPTS</a></li>
     <li><a href="https://idrc-crdi.ca/en/stories/technology-support-maternity">IDRC: Technology in support of maternity</a></li>
     <li><a href="https://aws.amazon.com/blogs/social-impact/how-ai-powered-weather-alerts-help-mothers-survive-extreme-heat-in-sub-saharan-africa/">AWS: Jacaranda Health countries of operation</a></li>
@@ -1267,6 +1262,7 @@ ol.sources li{margin:4px 0}
     <li><a href="https://www.github.com/hotosm/fAIr">Humanitarian OpenStreetMap Team: fAIr</a>; <a href="https://parispeaceforum.org/?p=1436148">Paris Peace Forum: AI and maps for disaster response</a></li>
     <li><a href="https://blog.google/products-and-platforms/products/earth/ai-finds-where-the-wild-things-are/">Google: Wildlife Insights speed figures</a>; <a href="https://www.euronews.com/living/2019/12/24/ai-from-google-is-helping-identify-animals-deep-in-the-rainforest">Euronews: blank camera-trap images</a></li>
     <li><a href="https://eprints.whiterose.ac.uk/id/eprint/230962">Wen et al. (2025): LLMs for thematic analysis in the charity sector</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12412986/">Jowsey et al. (2025): GenAI thematic analysis appraisal</a></li>
+    <li><a href="https://www.who.int/health-topics/health-workforce">WHO: Health workforce (projected shortfall of 11.1 million health workers by 2030)</a></li>
   </ol>
 </section>
 <section class="chapter view" id="surveys" aria-labelledby="sv-h" hidden>
@@ -1306,7 +1302,7 @@ ch1:{title:"Chapter 1 quiz: Understanding AI",items:[
  {q:"Which statement best describes AI writing tools?",o:["They look up verified facts in a database","They predict likely text from patterns in large amounts of writing","They know your organization's records","They always give the same answer"],a:1,w:"AI writing tools predict likely words. They do not check facts, so they can be fluent and wrong."},
  {q:"Who is responsible for a donor report drafted with AI?",o:["The AI company","The AI tool","Nobody, if the AI wrote it","The person who sends it"],a:3,w:"The person who sends a document is its author and is responsible for every word."},
  {q:"Which task is AI generally good at?",o:["Drafting meeting minutes from your notes","Knowing what your team decided last week","Confirming that a quote is real","Giving exact figures from your records without being told"],a:0,w:"Turning material you provide into a structured draft is a strength. Knowing your private facts is not."},
- {q:"Amina's AI tool cited “a 2024 regulator survey” showing 47% of Tanzanian NGOs use AI. What should she have done first?",o:["Used it, since it named a source","Asked the AI whether it was sure","Searched for the survey herself and opened it before using the number","Rounded it to 50%"],a:2,w:"The survey did not exist. A named source is not proof; only opening it yourself is."},
+ {q:"Amina's AI tool cited “a 2024 regulator survey” showing 47% of NGOs in her country use AI. What should she have done first?",o:["Used it, since it named a source","Asked the AI whether it was sure","Searched for the survey herself and opened it before using the number","Rounded it to 50%"],a:2,w:"The survey did not exist. A named source is not proof; only opening it yourself is."},
  {q:"A confident answer that is false is called…",o:["A hallucination","A prompt","A template","A bias"],a:0,w:"Hallucinations look exactly like real answers, which is why checking is a habit, not an extra."}]},
 ch2:{title:"Chapter 2 quiz: Prompting",items:[
  {q:"What are the four parts of a strong prompt?",o:["Greeting, task, tone, thanks","Question, answer, source, date","Role, task, context, format","Draft, edit, send, file"],a:2,w:"Role, task, context and format give the tool what it needs so it stops guessing."},
@@ -1317,13 +1313,13 @@ ch2:{title:"Chapter 2 quiz: Prompting",items:[
 ch3:{title:"Chapter 3 quiz: Checking and protecting",items:[
  {q:"Which item is red?",o:["A blank template","A public donor report","A beneficiary's name with case details","A published news article"],a:2,w:"Identifying beneficiary details and case information never go into public AI tools."},
  {q:"Neema's facts say 286 of 412 clients attended four or more visits. What percentage is that?",o:["About 69%","75%","41%","86%"],a:0,w:"286 ÷ 412 = 0.694. The AI wrote 75%; always recalculate."},
- {q:"Neema removed the name from her field note but kept age, ward and HIV status. Is it safe to paste?",o:["Yes, the name is gone","No: the remaining details can still identify her, and HIV status is sensitive health data","Yes, if written in Swahili","Only on a weekend"],a:1,w:"Removing names is not enough. She rewrote it as a pattern across several women."},
+ {q:"Neema removed the name from her field note but kept age, ward and HIV status. Is it safe to paste?",o:["Yes, the name is gone","No: the remaining details can still identify her, and HIV status is sensitive health data","Yes, if written in another language","Only on a weekend"],a:1,w:"Removing names is not enough. She rewrote it as a pattern across several women."},
  {q:"The draft has a quotation that is not in your notes. What do you do?",o:["Keep it, it sounds good","Change a few words","Add a person's name to it","Remove it unless the person really said it and agreed to be quoted"],a:3,w:"Invented quotations damage trust and can put people at risk."},
- {q:"In Tanzania, which body oversees the Personal Data Protection Act?",o:["The Personal Data Protection Commission (PDPC)","The Registrar of NGOs","The Bank of Tanzania","The National Bureau of Statistics"],a:0,w:"The Act created the PDPC, which registers data collectors and processors and handles complaints."},
+ {q:"Under data protection laws such as the EU's GDPR, which of these is personal data?",o:["A beneficiary's phone number","A published national statistic","A blank attendance template","A public policy document"],a:0,w:"Personal data is any information that can identify a person, directly or combined with other details."},
  {q:"The AI draft said rural mothers are “careless” about clinic visits. Which check catches this?",o:["Numbers","Names and quotes","Wording and bias","Facts"],a:2,w:"Blaming wording misrepresents the community; the real barrier was transport cost."}]},
 ch4:{title:"Chapter 4 quiz: Your new workflow",items:[
  {q:"When you time a task with AI, what must the time include?",o:["Only the tool's response time","Checking and correcting the output","Nothing else","Your breaks"],a:1,w:"Checking is part of the real cost. Leaving it out exaggerates the saving."},
- {q:"Which part of Peter's task did AI not speed up?",o:["Writing the update","Translating to Swahili","Gathering figures from the SACCO's records","Formatting"],a:2,w:"AI cannot see the ledger. Collecting real figures stays with Peter."},
+ {q:"Which part of Peter's task did AI not speed up?",o:["Writing the update","Translating to Filipino","Gathering figures from the cooperative's records","Formatting"],a:2,w:"AI cannot see the ledger. Collecting real figures stays with Peter."},
  {q:"What belongs in your 30-day plan?",o:["A promise to use AI more","A list of tools to buy","When you will use it, which template, and who checks your work","Nothing"],a:2,w:"A plan needs a time, a method and a checker to become a habit."},
  {q:"A task involves safeguarding case notes. What is right?",o:["Use a public AI tool with names removed","Paste the notes and check later","Ask the AI to decide","Do not use a public AI tool for it"],a:3,w:"Safeguarding information is red. It never goes into public tools."},
  {q:"AI saves you 30 minutes on a task you do 3 times a week, for 48 weeks. How many hours a year is that?",o:["24","72","90","144"],a:1,w:"30 × 3 × 48 = 4,320 minutes = 72 hours, about 9 working days."}]},
@@ -1338,10 +1334,10 @@ fn:{title:"Chapter 6 quiz: AI by job role",items:[
 
 var SECT=[
 {id:"health",name:"Health and nutrition",ev:"strong",
- stats:[["30%+","of Tanzania's 10,155 registered NGOs work in health [6]"],["4,000–15,000","messages a day handled by one AI-assisted help desk [8]"],["≈3 million","mothers reached by that service in Kenya [7]"]],
- need:"Health is the largest NGO sector in Tanzania. Community health workers and help desks get more questions than staff can answer, and health messages must be both simple and exactly right.",
+ stats:[["11.1 million","health workers short worldwide by 2030, mostly in lower-income countries [17]"],["4,000–15,000","messages a day handled by one AI-assisted help desk [8]"],["≈3 million","mothers reached by that service in Kenya [7]"]],
+ need:"Health is one of the largest NGO sectors worldwide. Community health workers and help desks get more questions than staff can answer, and health messages must be both simple and exactly right.",
  sc:{who:"neema",title:"Neema simplifies an approved antenatal message",task:"The district health team approved a set of key messages. Neema needs them in plain language for SMS reminders.",prompt:"You are a health educator at a maternal health NGO. Rewrite the approved message below for mothers with a primary-school reading level. Keep it under 160 characters. Do not add any advice that is not in the original.\nApproved message: Pregnant women should attend their first antenatal visit as early as possible in pregnancy.",out:"As soon as you think you are pregnant, visit your nearest clinic. Early checks help keep you and your baby healthy. <mark class=\"err\">Take iron tablets every day.</mark>",fix:"The last sentence is medical advice that was not in the approved message. Neema deleted it, and a clinician signed off the final text before it went into the SMS system."},
- uses:["Rewrite approved health messages in plain Swahili or English","Summarize supervision visit reports (no patient details)","Make practice quizzes for community health worker training","Draft donor reports from aggregate, anonymized figures","Turn guidelines into checklists for field staff"],
+ uses:["Rewrite approved health messages in plain language, in English or the local language","Summarize supervision visit reports (no patient details)","Make practice quizzes for community health worker training","Draft donor reports from aggregate, anonymized figures","Turn guidelines into checklists for field staff"],
  caseT:"Published example · Jacaranda Health, PROMPTS (Kenya)",
  caseB:"An AI-enabled SMS service for pregnant women and new mothers. The AI sorts and prioritizes incoming messages so the clinical help desk can spot urgent cases and refer mothers to care [7]. Jacaranda Health also operates in Ghana, Tanzania and Nigeria [9]. What made it work: nurses still answer; AI routes and prioritizes.",
  protect:"Patient names, phone numbers, diagnoses, HIV status, pregnancy status of named people: red. Aggregate counts with no identifiers: amber or green.",
@@ -1351,7 +1347,7 @@ var SECT=[
 {id:"education",name:"Education",ev:"strong",
  stats:[["0.36","effect size on maths scores, described as about an extra year of school [10]"],["1 hour","a week of use on WhatsApp [10]"],["≈500","students in the Ghana study [10]"]],
  need:"Large classes and few tutors mean many learners never get individual practice or feedback.",
- sc:{who:"amina",title:"Amina's team makes leveled reading questions",task:"A volunteer tutor needs comprehension questions for a short story used in the reading club.",prompt:"You are a primary school reading tutor in Tanzania. Using only the story below, write 5 comprehension questions for Standard 4 learners: 2 easy (facts from the story), 2 medium (why), 1 hard (opinion). Put the answers in a separate list. Simple English.\nStory: [paste the story]",out:"1. Where did Zawadi walk every morning?\n2. What did she carry to the market?\n3. Why did Zawadi stop at the well?\n4. Why was her grandmother proud?\n5. What would you have done if the bucket broke?\nAnswers: 1. To the river… <mark class=\"err\">2. Mangoes and a basket of eggs</mark>",fix:"The story mentions only mangoes. The tutor caught the invented eggs by checking each answer against the text, a two-minute check that keeps the key accurate."},
+ sc:{who:"amina",title:"Amina's team makes leveled reading questions",task:"A volunteer tutor needs comprehension questions for a short story used in the reading club.",prompt:"You are a primary school reading tutor in Bangladesh. Using only the story below, write 5 comprehension questions for Grade 4 learners: 2 easy (facts from the story), 2 medium (why), 1 hard (opinion). Put the answers in a separate list. Simple English.\nStory: [paste the story]",out:"1. Where did Rina walk every morning?\n2. What did she carry to the market?\n3. Why did Rina stop at the well?\n4. Why was her grandmother proud?\n5. What would you have done if the bucket broke?\nAnswers: 1. To the river… <mark class=\"err\">2. Mangoes and a basket of eggs</mark>",fix:"The story mentions only mangoes. The tutor caught the invented eggs by checking each answer against the text, a two-minute check that keeps the key accurate."},
  uses:["Draft lesson plans and differentiated worksheets","Generate practice questions with a separate answer key","Simplify reading texts for different levels","Draft letters to parents and school committees","Summarize aggregate assessment results"],
  caseT:"Published example · Rising Academies, Rori (Ghana)",
  caseB:"Rori is an AI maths tutor on WhatsApp that runs on low-cost phones. In a study with about 500 students who used it for one hour a week, maths results improved with an effect size of 0.36, which EdTech Hub describes as roughly an extra year of schooling. Normal classes stayed the same for both groups [10].",
@@ -1362,18 +1358,18 @@ var SECT=[
 {id:"agri",name:"Agriculture and food security",ev:"strong",
  stats:[["1 : 1,000–5,000","extension agents to farmers in Kenya [11]"],["830,000+","FarmerChat users in four countries [12]"],["6.2 million+","farmer queries answered [12]"]],
  need:"Farmers need timely, local advice on pests, weather and markets, but there are far too few extension officers to reach them.",
- sc:{who:"juma",title:"Juma turns pest research into a farmer advice sheet",task:"Fall armyworm is damaging maize in his farmer groups. He has a two-page summary from the district agricultural office.",prompt:"You are an agricultural extension officer in Morogoro. Using only the summary below, write a one-page advice sheet for smallholder maize farmers in simple Swahili: how to recognize the pest, three actions for this week, and when to call the extension officer. Do not recommend any product that is not in the summary.\nSummary: [paste district office summary]",out:"… Hatua 3: Nyunyizia dawa ya <mark class=\"err\">[brand name not in the summary]</mark> mara moja kwa wiki …",fix:"The AI named a pesticide brand the district office had not recommended. Juma replaced it with the office's guidance and had the extension officer approve the sheet before printing 200 copies."},
- uses:["Turn research into simple farmer advice sheets","Translate advice into Swahili, checked by a fluent speaker","Draft radio scripts and SMS tips","Summarize market price and weather bulletins","Plan farmer field school sessions"],
+ sc:{who:"juma",title:"Carlos turns pest research into a farmer advice sheet",task:"Fall armyworm is damaging maize in his farmer groups. He has a two-page summary from the district agricultural office.",prompt:"You are an agricultural extension officer in Cusco. Using only the summary below, write a one-page advice sheet for smallholder maize farmers in simple Spanish: how to recognize the pest, three actions for this week, and when to call the extension officer. Do not recommend any product that is not in the summary.\nSummary: [paste district office summary]",out:"… Paso 3: Fumigue con <mark class=\"err\">[brand name not in the summary]</mark> una vez por semana …",fix:"The AI named a pesticide brand the district office had not recommended. Carlos replaced it with the office's guidance and had the extension officer approve the sheet before printing 200 copies."},
+ uses:["Turn research into simple farmer advice sheets","Translate advice into local languages, checked by a fluent speaker","Draft radio scripts and SMS tips","Summarize market price and weather bulletins","Plan farmer field school sessions"],
  caseT:"Published examples · FarmerChat (Digital Green) and Nuru (PlantVillage)",
  caseB:"FarmerChat answers farmers' and extension workers' questions by text, voice and image in local languages. Digital Green estimates advisory cost falls from about $35 to $0.35 per farmer, a figure from the developer itself [12]. Nuru, developed by IITA and Penn State, diagnoses cassava diseases from leaf photos, runs offline on a standard Android phone, speaks Swahili, and was field tested in Tanzania [13].",
  protect:"Farmer names, phone numbers, land and loan data: red. Crop, weather and market information: green.",
  needs:["Vetted local agronomy content behind every answer","Extension officers approve advice before it spreads","Offline options and voice for low literacy","Local language checked by fluent speakers"],
  quiz:[{q:"Why is AI attractive for agricultural extension in Kenya?",o:["Farmers dislike extension agents","One agent may serve 1,000 to 5,000 farmers","AI is always correct","Agents are banned"],a:1,w:"The gap is scale: far too few advisors for the number of farmers."},
-  {q:"The AI named a pesticide brand that was not in Juma's source. What should he do?",o:["Keep it, the AI knows best","Replace it with the district office's guidance and get the sheet approved","Add two more brands","Remove the whole sheet"],a:1,w:"Advice that farmers act on must come from a vetted source."}]},
+  {q:"The AI named a pesticide brand that was not in Carlos's source. What should he do?",o:["Keep it, the AI knows best","Replace it with the district office's guidance and get the sheet approved","Add two more brands","Remove the whole sheet"],a:1,w:"Advice that farmers act on must come from a vetted source."}]},
 {id:"human",name:"Humanitarian and disaster response",ev:"strong",
  stats:[["93%","of 2,539 humanitarian workers have used AI tools [1]"],["8%","of their organizations have integrated AI widely [2]"],["144","countries in the survey [1]"]],
  need:"In emergencies, teams must produce accurate reports fast, from incomplete information, while protecting people at risk.",
- sc:{who:"juma",title:"Juma drafts a flood situation report",task:"Heavy rains have flooded two villages where his farmer groups work. His director needs a situation report by evening.",prompt:"You are a humanitarian coordinator. Using only the verified notes below, draft a one-page situation report with headings: Situation, Needs, Response so far, Gaps, Next steps. Write [MISSING] for any figure I did not give you.\nNotes: two villages flooded since Tuesday; about 140 households affected (village leaders' estimate); maize stores damaged; one road impassable; district team assessing.",out:"Situation: Since Tuesday, flooding has affected about 140 households in two villages … Needs: food, safe water, shelter materials. Number of displaced people: <mark class=\"fix\">[MISSING]</mark>. Response so far: district team assessing; <mark class=\"fix\">[MISSING]</mark> …",fix:"Because Juma asked for [MISSING] markers, the draft shows exactly what he still needs to confirm instead of inventing figures. He fills two gaps by phone and sends it."},
+ sc:{who:"juma",title:"Carlos drafts a flood situation report",task:"Heavy rains have flooded two villages where his farmer groups work. His director needs a situation report by evening.",prompt:"You are a humanitarian coordinator. Using only the verified notes below, draft a one-page situation report with headings: Situation, Needs, Response so far, Gaps, Next steps. Write [MISSING] for any figure I did not give you.\nNotes: two villages flooded since Tuesday; about 140 households affected (village leaders' estimate); maize stores damaged; one road impassable; district team assessing.",out:"Situation: Since Tuesday, flooding has affected about 140 households in two villages … Needs: food, safe water, shelter materials. Number of displaced people: <mark class=\"fix\">[MISSING]</mark>. Response so far: district team assessing; <mark class=\"fix\">[MISSING]</mark> …",fix:"Because Carlos asked for [MISSING] markers, the draft shows exactly what he still needs to confirm instead of inventing figures. He fills two gaps by phone and sends it."},
  uses:["Draft situation reports from verified notes","Summarize long assessment and coordination reports","Draft needs-assessment questions for review","Translate community notices, checked by a native speaker","Write coordination meeting minutes"],
  caseT:"Published example · Humanitarian OpenStreetMap Team, fAIr",
  caseB:"fAIr is a free, open-source AI-assisted mapping tool. It detects buildings and roads in satellite and drone images and suggests them for OpenStreetMap. Local communities train the models for their own area, and people validate every suggestion [14]. Disaster officials use the maps to plan for floods and landslides [14].",
@@ -1384,7 +1380,7 @@ var SECT=[
 {id:"env",name:"Environment, climate and conservation",ev:"strong",
  stats:[["300–1,000","camera-trap images a person can label per hour [15]"],["3.6 million","images per hour with Wildlife Insights AI [15]"],["Up to 80%","of camera-trap images can be blank [15]"]],
  need:"Conservation teams collect more data than people can review, and communities living with wildlife need clear, practical information.",
- sc:{who:"daudi",title:"Daudi writes a human–wildlife conflict leaflet",task:"Elephants are raiding farms near a wildlife corridor. The team needs a leaflet for villagers on safe deterrents.",prompt:"You are a communications officer at a conservation NGO. Using only the guidance below, write a 250-word leaflet for farmers in simple Swahili: why elephants come, three safe deterrents, and who to call. Do not include locations of animals or patrols.\nGuidance: [paste approved guidance]",out:"… Tembo huonekana mara nyingi karibu na <mark class=\"err\">[a named waterhole and grid reference copied from the notes]</mark> …",fix:"The pasted notes contained patrol details. The AI repeated a location that could help poachers. The team removed it, and learned to strip locations before pasting anything."},
+ sc:{who:"daudi",title:"Ravi writes a human–wildlife conflict leaflet",task:"Elephants are raiding farms near a wildlife corridor. The team needs a leaflet for villagers on safe deterrents.",prompt:"You are a communications officer at a conservation NGO. Using only the guidance below, write a 250-word leaflet for farmers in simple language: why elephants come, three safe deterrents, and who to call. Do not include locations of animals or patrols.\nGuidance: [paste approved guidance]",out:"… Elephants are often seen near <mark class=\"err\">[a named waterhole and grid reference copied from the notes]</mark> …",fix:"The pasted notes contained patrol details. The AI repeated a location that could help poachers. The team removed it, and learned to strip locations before pasting anything."},
  uses:["Summarize climate and biodiversity reports","Draft community awareness materials","Draft sections of climate fund proposals","Turn survey notes into reports (no sensitive locations)","Explain technical terms for community meetings"],
  caseT:"Published example · Wildlife Insights",
  caseB:"Wildlife Insights uses AI to classify camera-trap images up to 3,000 times faster than people and filters out blank images automatically [15]. Experts then review only the photos with animals.",
@@ -1402,19 +1398,19 @@ var SECT=[
  needs:["Good-quality field data before any analysis","Approved behaviour-change content as the source","Community feedback on messages before wide use"],
  quiz:[{q:"What is the evidence status for generative AI in WASH programmes?",o:["Strong, from many trials","Thin: treat uses as pilots to test and measure","Proven to repair pumps","Banned by law"],a:1,w:"Be honest about evidence: pilot, measure, then scale."},
   {q:"Which is a good green task?",o:["Drafting hygiene messages from approved guidance","Pasting a household survey with names","Letting AI choose which village gets a borehole","Uploading staff payroll"],a:0,w:"Public, approved content is safe to work with."}]},
-{id:"liveli",name:"Livelihoods, savings groups and SACCOs",ev:"thin",stats:[],
- need:"Savings groups and SACCOs need clear member communication, financial literacy materials and well-kept records, often run by small teams or volunteers.",
- sc:{who:"peter",title:"Peter explains the loan policy in plain words",task:"Members keep asking how loan limits work. The policy is four pages of formal text.",prompt:"You are a SACCO member-education officer. Explain the loan policy below in plain Swahili for members, in under 200 words: who can borrow, how the limit is set, repayment rules, and what happens if a payment is late. Do not add rules that are not in the policy.\nPolicy: [paste policy text, no member data]",out:"… Unaweza kukopa hadi mara tatu ya akiba yako … <mark class=\"err\">Riba ni asilimia 1 kwa mwezi</mark> …",fix:"The policy text Peter pasted never stated an interest rate; the AI made one up. He replaced it with the rate approved at the last general meeting and had the chair approve the leaflet."},
- uses:["Draft financial literacy lessons in simple Swahili","Write member notices and meeting minutes","Explain a policy in plain words","Build savings templates with sample data","Prepare agenda questions for general meetings"],
+{id:"liveli",name:"Livelihoods, savings groups and cooperatives",ev:"thin",stats:[],
+ need:"Savings groups and cooperatives need clear member communication, financial literacy materials and well-kept records, often run by small teams or volunteers.",
+ sc:{who:"peter",title:"Peter explains the loan policy in plain words",task:"Members keep asking how loan limits work. The policy is four pages of formal text.",prompt:"You are a member-education officer at a savings cooperative. Explain the loan policy below in plain Filipino for members, in under 200 words: who can borrow, how the limit is set, repayment rules, and what happens if a payment is late. Do not add rules that are not in the policy.\nPolicy: [paste policy text, no member data]",out:"… Maaari kang humiram ng hanggang tatlong beses ng iyong ipon … <mark class=\"err\">Ang interes ay 1% bawat buwan</mark> …",fix:"The policy text Peter pasted never stated an interest rate; the AI made one up. He replaced it with the rate approved at the last general meeting and had the chair approve the leaflet."},
+ uses:["Draft financial literacy lessons in simple local language","Write member notices and meeting minutes","Explain a policy in plain words","Build savings templates with sample data","Prepare agenda questions for general meetings"],
  caseT:"Evidence status",
- caseB:"We did not find strong published evaluations of generative AI in savings groups or SACCOs. Start with low-risk writing tasks and measure the time saved, as Peter did in Chapter 4.",
+ caseB:"We did not find strong published evaluations of generative AI in savings groups or cooperatives. Start with low-risk writing tasks and measure the time saved, as Peter did in Chapter 4.",
  protect:"Member names with loan balances, ID numbers, mobile money numbers and repayment histories: red.",
- needs:["Follow your SACCO's rules and financial regulations","AI never makes credit or membership decisions","Keep member records in your own system, not in AI chats"],
- quiz:[{q:"Which is red data for a SACCO?",o:["Published interest rates","Member names with loan balances and phone numbers","A blank savings tracker","A public financial literacy guide"],a:1,w:"Financial details tied to a person are always red."},
-  {q:"Should AI decide who gets a loan?",o:["Yes","Only for small loans","No: people decide under the SACCO's rules; AI can help draft explanations","Only in Swahili"],a:2,w:"Decisions about people stay with accountable people."}]},
+ needs:["Follow your cooperative's rules and financial regulations","AI never makes credit or membership decisions","Keep member records in your own system, not in AI chats"],
+ quiz:[{q:"Which is red data for a savings cooperative?",o:["Published interest rates","Member names with loan balances and phone numbers","A blank savings tracker","A public financial literacy guide"],a:1,w:"Financial details tied to a person are always red."},
+  {q:"Should AI decide who gets a loan?",o:["Yes","Only for small loans","No: people decide under the cooperative's rules; AI can help draft explanations","Only in English"],a:2,w:"Decisions about people stay with accountable people."}]},
 {id:"protect",name:"Protection, gender and child safeguarding",ev:"thin",stats:[],
  need:"Protection work handles the most sensitive information NGOs hold. The main skill here is knowing where AI must not be used.",
- sc:{who:"rehema",title:"Rehema builds a staff training quiz",task:"New field staff need a short quiz on recognizing and reporting concerns, built from the organization's public safeguarding guidance.",prompt:"You are a safeguarding trainer. Using only the public guidance below, write 8 multiple-choice questions for NGO field staff on recognizing and reporting safeguarding concerns. List answers separately.\nGuidance: [paste public guidance]",out:"… Q6: If a child tells you about abuse, you should <mark class=\"err\">promise to keep it secret so they keep trusting you</mark> (correct answer) …",fix:"The AI marked a dangerous answer as correct: staff must never promise secrecy. The safeguarding lead fixed it and now reviews every AI-drafted training item line by line."},
+ sc:{who:"rehema",title:"Lucía builds a staff training quiz",task:"New field staff need a short quiz on recognizing and reporting concerns, built from the organization's public safeguarding guidance.",prompt:"You are a safeguarding trainer. Using only the public guidance below, write 8 multiple-choice questions for NGO field staff on recognizing and reporting safeguarding concerns. List answers separately.\nGuidance: [paste public guidance]",out:"… Q6: If a child tells you about abuse, you should <mark class=\"err\">promise to keep it secret so they keep trusting you</mark> (correct answer) …",fix:"The AI marked a dangerous answer as correct: staff must never promise secrecy. The safeguarding lead fixed it and now reviews every AI-drafted training item line by line."},
  uses:["Draft staff training materials from public safeguarding guidance","Draft or update policy wording for the safeguarding lead to review","Write awareness messages from approved content","Summarize public research and guidance"],
  caseT:"Evidence status",
  caseB:"We found no strong published evidence supporting generative AI with case information. The safe position is to keep all case work out of AI tools entirely.",
@@ -1437,34 +1433,34 @@ SECT.forEach(function(s){Q["sec-"+s.id]={title:s.name+" quiz",items:s.quiz};});
 
 
 var FN=[
- {n:"Fundraising and grants",u:"Proposal outlines, donor updates, thank-you letters, rewriting for different donors, checking a draft against the call's criteria.",ex:"Before submitting a concept note, Juma pastes the donor's eight criteria and his draft, and asks which criteria are not addressed. The AI flags two: sustainability and gender. He writes those paragraphs himself.",l:"Never invent results or statistics. Check donor rules on AI before submitting.",p:"You are a grants officer. Compare my draft below with the donor's criteria. List any criterion my draft does not address, and quote the sentence that comes closest.\nCriteria: [paste]\nDraft: [paste]"},
+ {n:"Fundraising and grants",u:"Proposal outlines, donor updates, thank-you letters, rewriting for different donors, checking a draft against the call's criteria.",ex:"Before submitting a concept note, Carlos pastes the donor's eight criteria and his draft, and asks which criteria are not addressed. The AI flags two: sustainability and gender. He writes those paragraphs himself.",l:"Never invent results or statistics. Check donor rules on AI before submitting.",p:"You are a grants officer. Compare my draft below with the donor's criteria. List any criterion my draft does not address, and quote the sentence that comes closest.\nCriteria: [paste]\nDraft: [paste]"},
  {n:"Monitoring, evaluation and learning",u:"Drafting survey questions, first-pass grouping of open-ended answers (anonymized), report structure, plain-language summaries.",ex:"Neema has 60 anonymized answers to “What stops you attending clinic?”. AI suggests five themes with answer numbers. She checks every assignment and moves 9 answers. Transport cost stays the top theme.",l:"Research shows AI coding of qualitative data works only with skilled human guidance and checking [16]. Analysts own the conclusions.",p:"Here are 30 anonymized answers to the question “[question]”. Suggest up to six themes. For each theme, list the answer numbers that fit so I can check every one.\nAnswers: [paste]"},
  {n:"Communications",u:"Social posts, newsletters, press releases, rewriting for different audiences, captions, translation drafts.",ex:"Amina turns one quarterly report into a newsletter story, a Facebook post and a two-line SMS, all from the same verified facts, in 25 minutes instead of 90.",l:"Consent for every story and photo. No exaggerated results. Check wording for stereotypes.",p:"Write a Facebook post (max 80 words) about [activity] for [audience]. Facts: [list]. Do not name or describe any person. Warm, plain tone."},
- {n:"Finance and operations",u:"Spreadsheet formulas, budget narrative drafts, procurement templates, policy summaries, logistics checklists.",ex:"Peter needs to total spending by project and budget line. He gives the AI three made-up rows, gets a SUMIFS formula with an explanation, then applies it to the real file himself.",l:"Never paste payroll, bank details or confidential budgets. Use invented sample data to get formulas.",p:"I have a spreadsheet with columns: Date, Project, Budget line, Amount (TZS). Using three made-up sample rows, show me a formula that totals Amount by Project and Budget line, and explain each part."},
+ {n:"Finance and operations",u:"Spreadsheet formulas, budget narrative drafts, procurement templates, policy summaries, logistics checklists.",ex:"Peter needs to total spending by project and budget line. He gives the AI three made-up rows, gets a SUMIFS formula with an explanation, then applies it to the real file himself.",l:"Never paste payroll, bank details or confidential budgets. Use invented sample data to get formulas.",p:"I have a spreadsheet with columns: Date, Project, Budget line, Amount (USD). Using three made-up sample rows, show me a formula that totals Amount by Project and Budget line, and explain each part."},
  {n:"HR and volunteers",u:"Job descriptions, onboarding checklists, volunteer role descriptions, training schedules, policy drafts for HR review.",ex:"Amina drafts a volunteer reading-buddy role description and onboarding checklist in 15 minutes, then HR adds the safeguarding requirements.",l:"AI must not screen, score or rank people. No staff personal data.",p:"Write a role description for a [role] at a [type] NGO in [city]: purpose, five main duties, required and preferred qualifications. Inclusive, plain language."},
- {n:"Leadership and governance",u:"Drafting an AI use policy, board briefing papers, strategy summaries, risk registers.",ex:"An executive director drafts a two-page AI use policy with AI help, marks three clauses for legal review, and shares it with staff for comment before the board approves it.",l:"Only 22% of humanitarian respondents worked under a formal AI policy in 2025 [2]. Leaders set the rules; staff are already using the tools.",p:"Draft a two-page AI use policy for a [size] NGO in Tanzania. Include: approved tools, the red/amber/green data rule, who to ask, how to report a mistake, and a review date. Mark anything that needs legal review."}
+ {n:"Leadership and governance",u:"Drafting an AI use policy, board briefing papers, strategy summaries, risk registers.",ex:"An executive director drafts a two-page AI use policy with AI help, marks three clauses for legal review, and shares it with staff for comment before the board approves it.",l:"Only 22% of humanitarian respondents worked under a formal AI policy in 2025 [2]. Leaders set the rules; staff are already using the tools.",p:"Draft a two-page AI use policy for a [size] NGO in [country]. Include: approved tools, the red/amber/green data rule, who to ask, how to report a mistake, and a review date. Mark anything that needs legal review."}
 ];
 
 var TPL=[
  {n:"Donor report section from notes",p:"You are a programme officer at [type of NGO]. Write the section titled [section name] of a donor report using only the facts below. Use [number] short paragraphs followed by a bulleted list of next steps. Do not add any facts, numbers, names or quotations that are not in my notes. If something is missing, write [MISSING] instead of guessing.\nFacts: [paste notes]\nDonor priorities: [list]",c:"Facts, numbers, names and quotes. Donor's rules on AI.",ex:"Neema's Quarter 3 paragraph in Chapter 3."},
- {n:"Meeting minutes from rough notes",p:"Turn the notes below into meeting minutes. Use these headings: Date and attendees, Decisions, Actions (with owner and deadline), Open questions. Use only information in the notes. Mark anything unclear as [CHECK].\nNotes: [paste notes]",c:"Names, deadlines and every decision against your memory of the meeting.",ex:"Juma's monthly farmer group meeting."},
- {n:"Letter, email or member update",p:"Write a [letter/email/update] from [your role] to [audience] about [topic]. The purpose is [purpose]. Include these points: [list]. Tone: [formal, warm or direct]. Language: [English/Swahili/both]. Length: under [number] words. Do not invent dates, figures or commitments.",c:"Facts, commitments and tone.",ex:"Peter's monthly SACCO member update in Chapter 4."},
+ {n:"Meeting minutes from rough notes",p:"Turn the notes below into meeting minutes. Use these headings: Date and attendees, Decisions, Actions (with owner and deadline), Open questions. Use only information in the notes. Mark anything unclear as [CHECK].\nNotes: [paste notes]",c:"Names, deadlines and every decision against your memory of the meeting.",ex:"Carlos's monthly farmer group meeting."},
+ {n:"Letter, email or member update",p:"Write a [letter/email/update] from [your role] to [audience] about [topic]. The purpose is [purpose]. Include these points: [list]. Tone: [formal, warm or direct]. Language: [English/local language/both]. Length: under [number] words. Do not invent dates, figures or commitments.",c:"Facts, commitments and tone.",ex:"Peter's monthly cooperative member update in Chapter 4."},
  {n:"Summary of a long document",p:"Summarize the document below in [five] bullet points for [audience]. Give the section or page for each point. Then list anything unclear or missing. Do not add information that is not in the document.\nDocument: [paste text]",c:"Compare with the original for anything missing or changed.",ex:"The bill summary in the Governance sector guide."},
- {n:"Proposal outline",p:"You are a grants officer at [type of NGO]. Create an outline for a [concept note or proposal] to [donor type] about [project idea]. Include: problem statement, objectives, activities, expected results, monitoring and evaluation, risks, budget summary. Under each section, list the questions I must answer with my own information. Do not write the content for me.",c:"Compare with the donor's guidelines.",ex:"Juma's concept note in Chapter 6."},
- {n:"Translation with a check",p:"Translate the text below from [language] into [language]. Keep names, numbers and dates unchanged. Then list any words or phrases where the meaning may differ by region or context.\nText: [paste text]",c:"A fluent speaker reviews it, especially for community, legal or safeguarding material.",ex:"Juma's Swahili farmer advice sheet."},
+ {n:"Proposal outline",p:"You are a grants officer at [type of NGO]. Create an outline for a [concept note or proposal] to [donor type] about [project idea]. Include: problem statement, objectives, activities, expected results, monitoring and evaluation, risks, budget summary. Under each section, list the questions I must answer with my own information. Do not write the content for me.",c:"Compare with the donor's guidelines.",ex:"Carlos's concept note in Chapter 6."},
+ {n:"Translation with a check",p:"Translate the text below from [language] into [language]. Keep names, numbers and dates unchanged. Then list any words or phrases where the meaning may differ by region or context.\nText: [paste text]",c:"A fluent speaker reviews it, especially for community, legal or safeguarding material.",ex:"Carlos's Spanish farmer advice sheet."},
  {n:"Communications post",p:"Write a [platform] post for [audience] about [topic]. Include these facts: [list]. Tone: [tone]. Maximum [number] words. Do not use any person's name, photo description or story unless I gave it to you with consent. Do not exaggerate results.",c:"Consent, facts, and wording for bias or stereotypes.",ex:"Amina's reading club post in Chapter 2."}
 ];
 
 var TL=[
  {t:"A list of beneficiaries with names and villages",a:"r",w:"Identifies people directly."},
  {t:"A UN agency's published annual report",a:"g",w:"Public information."},
- {t:"Amina's draft newsletter paragraph about a project in Temeke, with no names",a:"a",w:"Mentions a place and project; use only if policy allows."},
+ {t:"Amina's draft newsletter paragraph about a project in a named district, with no names",a:"a",w:"Mentions a place and project; use only if policy allows."},
  {t:"The staff salary sheet",a:"r",w:"Confidential staff and financial data."},
  {t:"A blank meeting-minutes template",a:"g",w:"No information about anyone."},
  {t:"Neema's field note with the name removed but age, ward and HIV status left in",a:"r",w:"Those details can still identify her, and HIV status is sensitive health data."},
  {t:"A donor's confidential feedback on your budget",a:"r",w:"Confidential to the donor and your organization."},
- {t:"Peter's SACCO totals for the month, with no member details",a:"a",w:"Aggregate figures are low risk; check your policy first."},
- {t:"Tanzania's published National Education Policy",a:"g",w:"Public document."}
+ {t:"Peter's cooperative totals for the month, with no member details",a:"a",w:"Aggregate figures are low risk; check your policy first."},
+ {t:"A government's published national education policy",a:"g",w:"Public document."}
 ];
 
 var BADGES=[
@@ -1480,14 +1476,14 @@ var BADGES=[
 
 /* ---------- illustrated people and office scenes ---------- */
 var PPL={
- neema:{name:"Neema",role:"Monitoring and evaluation officer, maternal health NGO, Mwanza",skin:"#6b4226",hair:"wrap",hc:"#1EB53A",shirt:"#FCD116"},
- juma:{name:"Juma",role:"Programme officer, farmer groups, Morogoro",skin:"#4e2f1c",hair:"short",shirt:"#00A3DD"},
- amina:{name:"Amina",role:"Communications lead, girls' education NGO, Dar es Salaam",skin:"#7a4a2b",hair:"hijab",hc:"#0d0d0d",trim:"#FCD116",shirt:"#00A3DD"},
- peter:{name:"Peter",role:"Finance officer, savings and credit cooperative (SACCO), Arusha",skin:"#6b4226",hair:"short",glasses:1,shirt:"#1EB53A"},
- baraka:{name:"Baraka",role:"WASH officer, Dodoma",skin:"#5a3620",hair:"short",beard:1,shirt:"#00A3DD"},
- daudi:{name:"Daudi",role:"Conservation officer, Iringa",skin:"#4e2f1c",hair:"short",shirt:"#7d7346"},
- rehema:{name:"Rehema",role:"Safeguarding lead, Dar es Salaam",skin:"#7a4a2b",hair:"bun",shirt:"#6b3f8f"},
- salma:{name:"Salma",role:"Advocacy officer, Zanzibar",skin:"#8a5a3a",hair:"hijab",hc:"#00A3DD",trim:"#0d0d0d",shirt:"#0d0d0d"}
+ neema:{name:"Neema",role:"Monitoring and evaluation officer, maternal health NGO, Kisumu, Kenya",skin:"#6b4226",hair:"wrap",hc:"#14B8A6",shirt:"#FB923C"},
+ juma:{name:"Carlos",role:"Programme officer, farmer groups, Cusco, Peru",skin:"#9a6440",hair:"short",shirt:"#6366F1"},
+ amina:{name:"Amina",role:"Communications lead, girls' education NGO, Dhaka, Bangladesh",skin:"#7a4a2b",hair:"hijab",hc:"#0d0d0d",trim:"#FB923C",shirt:"#6366F1"},
+ peter:{name:"Peter",role:"Finance officer, savings cooperative, Manila, Philippines",skin:"#b07a52",hair:"short",glasses:1,shirt:"#14B8A6"},
+ baraka:{name:"Baraka",role:"WASH officer, Kilifi, Kenya",skin:"#5a3620",hair:"short",beard:1,shirt:"#6366F1"},
+ daudi:{name:"Ravi",role:"Conservation officer, Assam, India",skin:"#8a5a3a",hair:"short",shirt:"#7d7346"},
+ rehema:{name:"Lucía",role:"Safeguarding lead, Guatemala City",skin:"#a0694a",hair:"bun",shirt:"#6b3f8f"},
+ salma:{name:"Salma",role:"Advocacy officer, Amman, Jordan",skin:"#8a5a3a",hair:"hijab",hc:"#6366F1",trim:"#0d0d0d",shirt:"#0d0d0d"}
 };
 function svgEsc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
 function wrap(t,n){var w=String(t).split(" "),L=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>n&&c){L.push(c);c=x;}else c=(c+" "+x).trim();});if(c)L.push(c);return L;}
@@ -1500,7 +1496,7 @@ function person(id,mood,x,y,s){
  g+='<circle cx="0" cy="0" r="'+r+'" fill="'+P.skin+'"/>';
  if(P.hair==="short"||P.hair==="bun")g+='<path d="M-18-2C-19-25 19-25 18-2C15-13-15-13-18-2Z" fill="#1a1a1a"/>';
  if(P.hair==="bun")g+='<circle cx="0" cy="-23" r="8" fill="#1a1a1a"/>';
- if(P.hair==="wrap")g+='<path d="M-21-3C-25-35 25-35 21-3C12-12-12-12-21-3Z" fill="'+P.hc+'"/><path d="M-20-12C-8-18 8-18 20-12" stroke="#FCD116" stroke-width="2.6" fill="none"/><path d="M-21-20C-8-26 8-26 21-20" stroke="#0d0d0d" stroke-width="2" fill="none"/><circle cx="17" cy="-24" r="6.5" fill="'+P.hc+'"/>';
+ if(P.hair==="wrap")g+='<path d="M-21-3C-25-35 25-35 21-3C12-12-12-12-21-3Z" fill="'+P.hc+'"/><path d="M-20-12C-8-18 8-18 20-12" stroke="#FB923C" stroke-width="2.6" fill="none"/><path d="M-21-20C-8-26 8-26 21-20" stroke="#0d0d0d" stroke-width="2" fill="none"/><circle cx="17" cy="-24" r="6.5" fill="'+P.hc+'"/>';
  if(hj)g+='<path d="M-15-1C-14-19 14-19 15-1C10-10-10-10-15-1Z" fill="'+P.hc+'"/><path d="M-15-1C-10-10 10-10 15-1" fill="none" stroke="'+P.trim+'" stroke-width="1.6"/>';
  if(P.beard)g+='<path d="M-14 6C-12 22 12 22 14 6C8 15-8 15-14 6Z" fill="#1a1a1a"/>';
  var ey=hj?2:0;
@@ -1508,7 +1504,7 @@ function person(id,mood,x,y,s){
  if(mood==="worried")g+='<path d="M-10 '+(ey-5)+'L-3 '+(ey-8)+'M10 '+(ey-5)+'L3 '+(ey-8)+'" stroke="#111" stroke-width="1.6" stroke-linecap="round"/><path d="M-5 '+(ey+10)+'Q0 '+(ey+6)+' 5 '+(ey+10)+'" stroke="#111" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M14 '+(ey-12)+'q2 4 0 6q-2-2 0-6z" fill="#7fd3f5"/>';
  else if(mood==="happy")g+='<path d="M-10 '+(ey-7)+'Q-6 '+(ey-10)+' -2 '+(ey-7)+'M2 '+(ey-7)+'Q6 '+(ey-10)+' 10 '+(ey-7)+'" stroke="#111" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M-7 '+(ey+6)+'Q0 '+(ey+14)+' 7 '+(ey+6)+'Z" fill="#fff" stroke="#111" stroke-width="1.4"/>';
  else g+='<path d="M-10 '+(ey-7)+'L-3 '+(ey-7)+'M3 '+(ey-7)+'L10 '+(ey-7)+'" stroke="#111" stroke-width="1.6" stroke-linecap="round"/><path d="M-4 '+(ey+8)+'L4 '+(ey+8)+'" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>';
- if(P.glasses)g+='<circle cx="-6" cy="0" r="5.5" fill="none" stroke="#FCD116" stroke-width="1.6"/><circle cx="6" cy="0" r="5.5" fill="none" stroke="#FCD116" stroke-width="1.6"/><path d="M-0.5 0h1" stroke="#FCD116" stroke-width="1.6"/>';
+ if(P.glasses)g+='<circle cx="-6" cy="0" r="5.5" fill="none" stroke="#FB923C" stroke-width="1.6"/><circle cx="6" cy="0" r="5.5" fill="none" stroke="#FB923C" stroke-width="1.6"/><path d="M-0.5 0h1" stroke="#FB923C" stroke-width="1.6"/>';
  return g+'</g>';
 }
 function avatar(id){return '<svg viewBox="-32 -32 64 64" aria-hidden="true"><defs><clipPath id="av-'+id+'"><circle r="32"/></clipPath></defs><circle r="32" class="wall"/><g clip-path="url(#av-'+id+')">'+person(id,"happy",0,4,0.82)+'</g></svg>';}
@@ -1522,7 +1518,7 @@ function papers(x,n){var s="";for(var i=0;i<n;i++)s+='<rect x="'+(x+(i%2)*3)+'" 
 function bubble(x,y,w,t,tx,ty,cls,fs){fs=fs||12;var n=Math.floor((w-14)/(fs*0.52)),L=wrap(t,n),h=L.length*(fs+3)+12;var s='<path d="M'+(x+18)+' '+(y+h-1)+'L'+tx+' '+ty+'L'+(x+34)+' '+(y+h-1)+'Z" class="'+(cls||"fs")+' sl" stroke-width="1.5"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="10" class="'+(cls||"fs")+' sl" stroke-width="1.5"/>';
  L.forEach(function(l,i){s+='<text x="'+(x+8)+'" y="'+(y+fs+4+i*(fs+3))+'" font-size="'+fs+'" class="fi">'+svgEsc(l)+'</text>';});return s;}
 function chat(x,y,w,you,ai,flag){
- var s='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="186" rx="8" class="fs sl" stroke-width="1.5"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="18" rx="8" class="f3"/><rect x="'+x+'" y="'+(y+10)+'" width="'+w+'" height="8" class="f3"/><text x="'+(x+8)+'" y="'+(y+13)+'" font-size="9.5" fill="#FCD116" font-weight="700">AI assistant</text>';
+ var s='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="186" rx="8" class="fs sl" stroke-width="1.5"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="18" rx="8" class="f3"/><rect x="'+x+'" y="'+(y+10)+'" width="'+w+'" height="8" class="f3"/><text x="'+(x+8)+'" y="'+(y+13)+'" font-size="9.5" fill="#FB923C" font-weight="700">AI assistant</text>';
  var fs=10,n=Math.floor((w-24)/(fs*0.52)),yl=y+26,Ly=wrap(you,n),La=wrap(ai,n);
  var hy=Ly.length*13+8;s+='<rect x="'+(x+14)+'" y="'+yl+'" width="'+(w-20)+'" height="'+hy+'" rx="6" class="bsoft"/>';Ly.forEach(function(l,i){s+='<text x="'+(x+20)+'" y="'+(yl+13+i*13)+'" font-size="'+fs+'" class="fi">'+svgEsc(l)+'</text>';});
  yl+=hy+6;var ha=La.length*13+8;s+='<rect x="'+(x+6)+'" y="'+yl+'" width="'+(w-20)+'" height="'+ha+'" rx="6" class="gsoft"/>';La.forEach(function(l,i){s+='<text x="'+(x+12)+'" y="'+(yl+13+i*13)+'" font-size="'+fs+'" class="fi">'+svgEsc(l)+'</text>';});
@@ -1542,18 +1538,18 @@ function strip(d){
  return h+'</div>';
 }
 var STRIPS={
- ch1:{who:"amina",labs:["The problem","What AI does","The result"],p1:{b:"I need a Tanzania figure for this proposal by 5pm!",cap:"Amina needs a statistic on NGO AI use for a proposal due today.",h:4},p2:{you:"What % of Tanzanian NGOs use AI? Give a source.",ai:"47%, according to a 2024 national regulator survey.",flag:"Sounds right… is it?",cap:"The tool answers instantly, with a confident number and a named source."},p3:{b:"That survey doesn't exist. I'll use the real 2025 study.",cap:"She searches for the source, finds nothing, and uses a verified figure instead."}},
+ ch1:{who:"amina",labs:["The problem","What AI does","The result"],p1:{b:"I need a national figure for this proposal by 5pm!",cap:"Amina needs a statistic on NGO AI use for a proposal due today.",h:4},p2:{you:"What % of NGOs in Bangladesh use AI? Give a source.",ai:"47%, according to a 2024 national regulator survey.",flag:"Sounds right… is it?",cap:"The tool answers instantly, with a confident number and a named source."},p3:{b:"That survey doesn't exist. I'll use the real 2025 study.",cap:"She searches for the source, finds nothing, and uses a verified figure instead."}},
  ch2:{who:"amina",p1:{b:"Another post to write and ten minutes to do it.",cap:"Amina has to post about the reading club before a partner meeting.",h:9},p2:{you:"Role, task, our facts: 40 learners, 38 to 52 words per minute. Under 80 words.",ai:"Twelve weeks, 40 young readers, real progress…",flag:"Check every number",cap:"She gives the tool a four-part prompt with her own facts."},p3:{b:"Every number checks out. Posted!",cap:"Ready in ten minutes, with nothing invented."}},
  ch3:{who:"neema",p1:{b:"Can I paste this field note? It has her name and HIV status…",cap:"Neema wants help writing a donor paragraph from a sensitive field note.",pile:6,h:3},p2:{you:"Several women missed visits. Transport costs are high.",ai:"Clients report transport costs as the main barrier to attendance…",flag:"No one identifiable",cap:"She rewrites the note as a pattern, with no identifying details, before using AI."},p3:{b:"No one can be identified. Paragraph checked and done.",cap:"The donor gets the insight; the woman's privacy is protected."}},
- ch4:{who:"peter",p1:{b:"This member update takes me two hours every month.",cap:"Peter writes the SACCO's monthly update in English and Swahili.",pile:4,h:7},p2:{you:"Write this month's update from these group totals, English and Swahili.",ai:"Dear members, this month total savings rose…",flag:"Check figures",cap:"He pastes group totals only, never member balances."},p3:{b:"55 minutes, checked by the chair. 13 hours saved a year.",cap:"Honest saving: collecting figures still takes him 30 minutes."}},
+ ch4:{who:"peter",p1:{b:"This member update takes me two hours every month.",cap:"Peter writes the cooperative's monthly update in English and Filipino.",pile:4,h:7},p2:{you:"Write this month's update from these group totals, English and Filipino.",ai:"Dear members, this month total savings rose…",flag:"Check figures",cap:"He pastes group totals only, never member balances."},p3:{b:"55 minutes, checked by the chair. 13 hours saved a year.",cap:"Honest saving: collecting figures still takes him 30 minutes."}},
  health:{who:"neema",p1:{b:"40 health messages to simplify before the SMS launch.",cap:"Approved messages are too technical for mothers to read on SMS.",pile:6},p2:{you:"Rewrite this approved message for mothers. Under 160 characters. Add nothing.",ai:"As soon as you think you are pregnant, visit your clinic… Take iron daily.",flag:"Extra advice added!",cap:"The plain version arrives in seconds, plus one sentence nobody approved."},p3:{b:"Extra advice removed. Clinician signed off.",cap:"Every message is checked against the approved source before launch."}},
- education:{who:"amina",p1:{b:"Our tutors need questions for every story by Saturday.",cap:"Volunteer tutors have stories but no comprehension questions."},p2:{you:"5 questions for Standard 4 from this story. Answers separate.",ai:"1. Where did Zawadi walk every morning? … Answer 2: mangoes and eggs",flag:"Eggs? Not in story",cap:"Questions in seconds; one answer adds something the story never said."},p3:{b:"Answer key checked against the story. Ready for Saturday.",cap:"A two-minute check keeps the answer key accurate."}},
- agri:{who:"juma",p1:{b:"Armyworm is spreading. 200 farmers need advice this week.",cap:"The district summary is two pages of technical text.",pile:5},p2:{you:"One-page advice sheet in simple Swahili, only from this summary.",ai:"Hatua 1: Kagua shamba lako… Hatua 3: [pesticide brand]",flag:"Brand not in source",cap:"A clear Swahili draft, but with a product the office never recommended."},p3:{b:"Brand removed, officer approved. 200 copies printed.",cap:"Farmers get fast advice that comes from a vetted source."}},
+ education:{who:"amina",p1:{b:"Our tutors need questions for every story by Saturday.",cap:"Volunteer tutors have stories but no comprehension questions."},p2:{you:"5 questions for Grade 4 from this story. Answers separate.",ai:"1. Where did Rina walk every morning? … Answer 2: mangoes and eggs",flag:"Eggs? Not in story",cap:"Questions in seconds; one answer adds something the story never said."},p3:{b:"Answer key checked against the story. Ready for Saturday.",cap:"A two-minute check keeps the answer key accurate."}},
+ agri:{who:"juma",p1:{b:"Armyworm is spreading. 200 farmers need advice this week.",cap:"The district summary is two pages of technical text.",pile:5},p2:{you:"One-page advice sheet in simple Spanish, only from this summary.",ai:"Paso 1: Revise su campo… Paso 3: [pesticide brand]",flag:"Brand not in source",cap:"A clear Spanish draft, but with a product the office never recommended."},p3:{b:"Brand removed, officer approved. 200 copies printed.",cap:"Farmers get fast advice that comes from a vetted source."}},
  human:{who:"juma",p1:{b:"Two villages flooded. The director needs a sitrep tonight.",cap:"Information is incomplete and the deadline is hours away.",h:5},p2:{you:"Sitrep from these verified notes. Write [MISSING] for any gap.",ai:"Households affected: about 140. Displaced: [MISSING]. Response: [MISSING]",flag:"2 gaps to fill",cap:"The draft shows exactly what still needs confirming."},p3:{b:"Two gaps filled by phone. Report sent by 6pm.",cap:"No invented figures in an emergency report."}},
- env:{who:"daudi",p1:{b:"Elephants raided three farms. Villagers want guidance.",cap:"Communities need safe, practical deterrent advice fast."},p2:{you:"250-word leaflet in Swahili: why elephants come, 3 safe deterrents.",ai:"Tembo huonekana karibu na [waterhole + grid ref]…",flag:"Location leaked!",cap:"His pasted notes held patrol details, and the AI repeated a location."},p3:{b:"Location removed. Next time I strip locations first.",cap:"Location data can help poachers, so it never goes in."}},
+ env:{who:"daudi",p1:{b:"Elephants raided three farms. Villagers want guidance.",cap:"Communities need safe, practical deterrent advice fast."},p2:{you:"250-word leaflet in simple language: why elephants come, 3 safe deterrents.",ai:"Elephants are often seen near [waterhole + grid ref]…",flag:"Location leaked!",cap:"His pasted notes held patrol details, and the AI repeated a location."},p3:{b:"Location removed. Next time I strip locations first.",cap:"Location data can help poachers, so it never goes in."}},
  wash:{who:"baraka",p1:{b:"The water committee wants weekly hygiene reminders.",cap:"Baraka has approved key messages but no time to write weekly texts."},p2:{you:"Five WhatsApp messages from these approved key messages.",ai:"Message 1: Always cover your water bucket… Message 4: boil 30 minutes",flag:"Check the guidance",cap:"Five friendly messages, one with the wrong boiling time."},p3:{b:"Corrected to match guidance. Sent every Monday.",cap:"A committee member reads them aloud to check they sound natural."}},
- liveli:{who:"peter",p1:{b:"Members keep asking how loan limits work.",cap:"The loan policy is four pages of formal text.",pile:4},p2:{you:"Explain this policy in plain Swahili, under 200 words. Add no rules.",ai:"You can borrow up to three times your savings… Interest: 1% a month",flag:"Rate not in policy",cap:"A clear explanation, with an interest rate the policy never stated."},p3:{b:"Approved rate inserted. The chair signed off.",cap:"Members get a leaflet they understand, with correct terms."}},
- protect:{who:"rehema",p1:{b:"New field staff start Monday. They need safeguarding training.",cap:"Rehema has public guidance but no ready quiz.",pile:5},p2:{you:"8 quiz questions from our public safeguarding guidance.",ai:"Q6: If a child discloses abuse, promise to keep it secret (correct)",flag:"Dangerous answer!",cap:"No case data used. But the AI marked a harmful answer as correct."},p3:{b:"Fixed. I review every item line by line.",cap:"Expert review turns a risky draft into safe training."}},
+ liveli:{who:"peter",p1:{b:"Members keep asking how loan limits work.",cap:"The loan policy is four pages of formal text.",pile:4},p2:{you:"Explain this policy in plain Filipino, under 200 words. Add no rules.",ai:"You can borrow up to three times your savings… Interest: 1% a month",flag:"Rate not in policy",cap:"A clear explanation, with an interest rate the policy never stated."},p3:{b:"Approved rate inserted. The chair signed off.",cap:"Members get a leaflet they understand, with correct terms."}},
+ protect:{who:"rehema",p1:{b:"New field staff start Monday. They need safeguarding training.",cap:"Lucía has public guidance but no ready quiz.",pile:5},p2:{you:"8 quiz questions from our public safeguarding guidance.",ai:"Q6: If a child discloses abuse, promise to keep it secret (correct)",flag:"Dangerous answer!",cap:"No case data used. But the AI marked a harmful answer as correct."},p3:{b:"Fixed. I review every item line by line.",cap:"Expert review turns a risky draft into safe training."}},
  gov:{who:"salma",p1:{b:"The bill consultation is Thursday. 40 pages to read.",cap:"Community leaders need a plain summary before the meeting.",pile:6},p2:{you:"Plain summary with the section number for every point.",ai:"Section 12: private schools must register within 6 months.",flag:"Check Section 12",cap:"Asking for section numbers makes every point quick to verify."},p3:{b:"Section 12 says 12 months. Corrected and linked.",cap:"One wrong legal detail caught before it reached 40 leaders."}}
 };
 function officeScene(){
@@ -1776,7 +1772,7 @@ window.AIW={
 buildPrompt();renderTL();calc();refreshAll();show(location.hash.slice(1));
 })();
 </script>
-<script src="config.js?v=4"></script>
-<script src="backend.js?v=4"></script>
+<script src="config.js?v=5"></script>
+<script src="backend.js?v=5"></script>
 </body>
 </html>
